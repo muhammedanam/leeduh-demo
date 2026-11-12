@@ -785,7 +785,7 @@ function renderBestSellers() {
 function animateDynamicGrid(grid) {
   if (!grid || prefersReducedMotion.matches) return;
   Array.from(grid.children).forEach((el, idx) => {
-    el.style.setProperty('--enter-delay', `${Math.min(idx, 7) * 35}ms`);
+    el.style.setProperty('--enter-delay', `${Math.min(idx, 7) * 55}ms`);
     el.classList.add('card-enter');
   });
 }
@@ -953,6 +953,7 @@ function initCatalogControls() {
     sortSelect.addEventListener('change', (e) => {
       STATE.catalogFilters.sort = e.target.value;
       renderCatalog();
+      animateDynamicGrid(document.getElementById('catalogGrid'));
     });
   }
 
@@ -962,6 +963,7 @@ function initCatalogControls() {
       chip.classList.add('active');
       STATE.catalogFilters.category = chip.getAttribute('data-category') || 'all';
       renderCatalog();
+      animateDynamicGrid(document.getElementById('catalogGrid'));
     });
   });
 
@@ -971,11 +973,15 @@ function initCatalogControls() {
       chip.classList.add('active');
       STATE.catalogFilters.scent = chip.getAttribute('data-scent') || 'all';
       renderCatalog();
+      animateDynamicGrid(document.getElementById('catalogGrid'));
     });
   });
 
   if (resetBtn) {
-    resetBtn.addEventListener('click', resetCatalogFilters);
+    resetBtn.addEventListener('click', () => {
+      resetCatalogFilters();
+      animateDynamicGrid(document.getElementById('catalogGrid'));
+    });
   }
 }
 
@@ -2016,19 +2022,19 @@ function initScrollReveals() {
         observer.unobserve(entry.target);
       }
     });
-  }, { root: null, rootMargin: '60px 0px 60px 0px', threshold: 0.04 });
+  }, { root: null, rootMargin: '0px 0px -12px 0px', threshold: 0.02 });
 
   targets.forEach((el, idx) => {
     const isGridCard = el.classList.contains('boutique-card') ||
       el.classList.contains('category-tile') ||
       el.classList.contains('trust-item');
     if (isGridCard) {
-      el.style.setProperty('--reveal-delay', `${(idx % 4) * 50}ms`);
+      el.style.setProperty('--reveal-delay', `${(idx % 4) * 75}ms`);
     }
     el.classList.add('reveal-item');
 
     const rect = el.getBoundingClientRect();
-    if (rect.top < vh * 1.05) {
+    if (rect.top < vh * 0.95) {
       el.classList.add('is-revealed');
     } else {
       observer.observe(el);
