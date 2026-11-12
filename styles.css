@@ -664,6 +664,7 @@ img {
   text-transform: uppercase;
   color: var(--accent-gold);
   margin-bottom: 0.7rem;
+  animation: heroGentleSettle 0.55s var(--ease-calm) both;
 }
 
 .hero-title {
@@ -674,6 +675,7 @@ img {
   letter-spacing: -0.028em;
   color: var(--ink-strong);
   margin-bottom: 0.85rem;
+  animation: heroGentleSettle 0.6s var(--ease-calm) 0.06s both;
 }
 
 .hero-title em {
@@ -689,6 +691,7 @@ img {
   color: var(--ink-secondary);
   max-width: 580px;
   margin: 0 auto 1.5rem;
+  animation: heroGentleSettle 0.6s var(--ease-calm) 0.1s both;
 }
 
 /* Hero Staggered Trio Showcase */
@@ -723,11 +726,24 @@ img {
   align-items: center;
   gap: 0.65rem;
   padding: 0.25rem 0.5rem;
-  transition: transform 0.35s var(--ease-calm);
+  transition: transform 0.4s var(--ease-calm);
+  animation: heroGentleSettle 0.65s var(--ease-calm) both;
+}
+
+.hero-flacon-item.is-side-left {
+  animation-delay: 0.12s;
+}
+
+.hero-flacon-item.is-center {
+  animation-delay: 0.08s;
+}
+
+.hero-flacon-item.is-side-right {
+  animation-delay: 0.16s;
 }
 
 .hero-flacon-item:hover {
-  transform: translateY(-6px);
+  transform: translate3d(0, -8px, 0);
 }
 
 .hero-flacon-img {
@@ -735,6 +751,19 @@ img {
   height: 196px;
   object-fit: contain;
   filter: var(--bottle-shadow);
+  animation: flaconBreathe 6.5s ease-in-out infinite;
+}
+
+.hero-flacon-item.is-side-left .hero-flacon-img {
+  animation-delay: -2.1s;
+}
+
+.hero-flacon-item.is-side-right .hero-flacon-img {
+  animation-delay: -4.2s;
+}
+
+.hero-flacon-item:hover .hero-flacon-img {
+  animation-play-state: paused;
 }
 
 .hero-flacon-item.is-center .hero-flacon-img {
@@ -763,6 +792,7 @@ img {
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 0.75rem;
+  animation: heroGentleSettle 0.6s var(--ease-calm) 0.18s both;
 }
 
 /* ==========================================================================
@@ -2203,6 +2233,138 @@ dialog::backdrop {
   font-weight: 500;
   letter-spacing: 0.02em;
   box-shadow: var(--shadow-modal);
+  animation: toastEnter 0.3s var(--ease-calm) both;
+}
+
+/* ==========================================================================
+   GPU-Composited Luxury Motion Layer (transform + opacity only)
+   ========================================================================== */
+@keyframes heroGentleSettle {
+  from {
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes flaconBreathe {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drawerSlideIn {
+  from {
+    opacity: 0;
+    transform: translate3d(26px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes toastEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.26); }
+  100% { transform: scale(1); }
+}
+
+@keyframes badgeBump {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+/* Scroll-triggered reveal (only enabled when IntersectionObserver is active) */
+.anim-ready .reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition: opacity 0.55s var(--ease-calm), transform 0.55s var(--ease-calm);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.anim-ready .reveal-item.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Smooth grid transition when toggling tabs or search/filters */
+.card-enter {
+  animation: cardEnter 0.4s var(--ease-calm) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+/* Dialogs & Drawers Slide/Scale Transitions */
+.drawer-dialog[open] {
+  animation: drawerSlideIn 0.28s var(--ease-calm) both;
+}
+
+.atelier-dialog[open] {
+  animation: modalScaleIn 0.26s var(--ease-calm) both;
+}
+
+dialog[open]::backdrop {
+  animation: backdropFadeIn 0.25s ease both;
+}
+
+/* Tactile Micro-Feedback */
+.card-wish-btn.is-pop svg {
+  animation: heartPop 0.34s var(--ease-calm);
+}
+
+.bag-btn-count.is-bump {
+  animation: badgeBump 0.34s var(--ease-calm);
+}
+
+.btn-champagne:active,
+.btn-pill-dark:active,
+.btn-pill-outline:active,
+.card-hover-add-btn:active,
+.category-tile:active {
+  transform: scale(0.98);
 }
 
 /* ==========================================================================
@@ -2322,8 +2484,13 @@ dialog::backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .anim-ready .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
 }

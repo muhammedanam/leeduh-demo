@@ -782,6 +782,14 @@ function renderBestSellers() {
   grid.innerHTML = topFour.map((item, idx) => renderBoutiqueCard(item, idx === 0 ? '#1 Best Seller' : item.badge)).join('');
 }
 
+function animateDynamicGrid(grid) {
+  if (!grid || prefersReducedMotion.matches) return;
+  Array.from(grid.children).forEach((el, idx) => {
+    el.style.setProperty('--enter-delay', `${Math.min(idx, 7) * 35}ms`);
+    el.classList.add('card-enter');
+  });
+}
+
 function setActivePerfumeFormat(formatId) {
   STATE.activePerfumeFormat = formatId;
   document.querySelectorAll('#perfumeFormatTabs [data-perfume-format]').forEach((tab) => {
@@ -790,6 +798,7 @@ function setActivePerfumeFormat(formatId) {
     tab.setAttribute('aria-selected', active ? 'true' : 'false');
   });
   renderFinePerfumes();
+  animateDynamicGrid(document.getElementById('finePerfumesGrid'));
 }
 
 function initPerfumeFormatTabs() {
@@ -853,6 +862,7 @@ function setActivePurifierTab(tabName) {
     tab.setAttribute('aria-selected', active ? 'true' : 'false');
   });
   renderPurifiersShowcase();
+  animateDynamicGrid(document.getElementById('purifiersShowcaseGrid'));
 }
 
 function initPurifierTabs() {
@@ -1169,6 +1179,11 @@ function addItemToBag(scent, piece, size, price, isRitual = false) {
 
   saveBag();
   updateBagUI();
+  if (bagCountBadge && !prefersReducedMotion.matches) {
+    bagCountBadge.classList.remove('is-bump');
+    void bagCountBadge.offsetWidth;
+    bagCountBadge.classList.add('is-bump');
+  }
   if (!isRitual) {
     showToast(`${lineTitle} (${size}) added to bag`);
   }
@@ -1376,6 +1391,13 @@ function toggleWishlist(catalogId, preferredSize = null) {
     STATE.wishlist.push({ catalogId, size: sizeToSave });
     saveWishlist();
     updateWishlistUI();
+    if (!prefersReducedMotion.matches) {
+      document.querySelectorAll(`[data-wishlist-id="${catalogId}"]`).forEach((btn) => {
+        btn.classList.remove('is-pop');
+        void btn.offsetWidth;
+        btn.classList.add('is-pop');
+      });
+    }
     showToast(`Saved ${item.title} (${sizeToSave}) to wishlist`);
   }
 }
@@ -1976,6 +1998,44 @@ function initNavigation() {
   });
 }
 
+function initScrollReveals() {
+  if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+  const targets = document.querySelectorAll(
+    '.section-center-head, .editorial-quote, .section-head-row, .category-tile, .boutique-card, .ritual-banner, .editorial-split-card, .trust-item'
+  );
+  if (targets.length === 0) return;
+
+  document.documentElement.classList.add('anim-ready');
+
+  const vh = window.innerHeight || 900;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { root: null, rootMargin: '60px 0px 60px 0px', threshold: 0.04 });
+
+  targets.forEach((el, idx) => {
+    const isGridCard = el.classList.contains('boutique-card') ||
+      el.classList.contains('category-tile') ||
+      el.classList.contains('trust-item');
+    if (isGridCard) {
+      el.style.setProperty('--reveal-delay', `${(idx % 4) * 50}ms`);
+    }
+    el.classList.add('reveal-item');
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < vh * 1.05) {
+      el.classList.add('is-revealed');
+    } else {
+      observer.observe(el);
+    }
+  });
+}
+
 function init() {
   loadBag();
   loadWishlist();
@@ -2002,6 +2062,7 @@ function init() {
   updateBagUI();
   updateWishlistUI();
   updateProfileUI();
+  initScrollReveals();
 }
 
 document.addEventListener('DOMContentLoaded', init);
