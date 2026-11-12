@@ -3,7 +3,7 @@
  * ============================================================================
  * Sections:
  * 1. Data Definitions (4 Fine Perfumes, 3 Formats, 6 Separate Purifiers, 14 Catalog Items)
- * 2. State, Theme & LocalStorage Persistence (Light Gallery default + Dark Atelier toggle)
+ * 2. State & LocalStorage Persistence
  * 3. Handcrafted Inline SVG Asset Generators
  * 4. Unified Minimalist Boutique Card Renderer & Size Selection Sync
  * 5. Collections, Best Sellers, Fine Perfumes & Purifiers Renderers
@@ -421,7 +421,7 @@ function findBuyableItem(catalogId) {
 }
 
 /* ==========================================================================
-   2. State, Theme & Persistence
+   2. State & Persistence
    ========================================================================== */
 
 const DEFAULT_PROFILE = {
@@ -448,7 +448,6 @@ const DEFAULT_PROFILE = {
 };
 
 const STATE = {
-  theme: 'light',
   activePerfumeFormat: 'extrait',
   purifierTab: 'all',
   selectedSizesById: {},
@@ -478,7 +477,6 @@ S.forEach((scent) => {
 const STORAGE_KEY = 'leeduh-bag';
 const WISHLIST_KEY = 'leeduh-wishlist';
 const PROFILE_KEY = 'leeduh-profile';
-const THEME_KEY = 'leeduh-theme';
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function formatAED(amount) {
@@ -487,63 +485,6 @@ function formatAED(amount) {
 
 function getHeartSVG(filled = false) {
   return `<svg width="16" height="16" viewBox="0 0 24 24" fill="${filled ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
-}
-
-function updateThemeUI() {
-  const isDark = STATE.theme === 'dark';
-  const toggleBtn = document.getElementById('themeToggleBtn');
-  if (toggleBtn) {
-    toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-    toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    toggleBtn.setAttribute('title', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
-  }
-  const mobileThemeBtn = document.getElementById('mobileThemeBtn');
-  if (mobileThemeBtn) {
-    mobileThemeBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-  }
-  const mobileThemeLabel = document.getElementById('mobileThemeLabel');
-  if (mobileThemeLabel) {
-    mobileThemeLabel.textContent = isDark ? 'Dark Mode' : 'Light Mode';
-  }
-}
-
-function applyTheme(theme, announce = false) {
-  const next = theme === 'dark' ? 'dark' : 'light';
-  STATE.theme = next;
-  document.documentElement.classList.add('is-theme-switching');
-  document.documentElement.setAttribute('data-theme', next);
-  const tcMeta = document.getElementById('themeColorMeta');
-  if (tcMeta) {
-    tcMeta.setAttribute('content', next === 'dark' ? '#0b0a09' : '#ffffff');
-  }
-  updateThemeUI();
-  void document.documentElement.offsetHeight;
-  document.documentElement.classList.remove('is-theme-switching');
-  try {
-    localStorage.setItem(THEME_KEY, next);
-  } catch (err) {
-    console.warn('Unable to persist theme preference', err);
-  }
-  if (announce) {
-    showToast(next === 'dark' ? 'Switched to Dark Mode' : 'Switched to Light Mode');
-  }
-}
-
-function loadTheme() {
-  let theme = 'light';
-  try {
-    const saved = localStorage.getItem(THEME_KEY);
-    if (saved === 'dark' || saved === 'light') {
-      theme = saved;
-    }
-  } catch (err) {
-    console.warn('Unable to load theme preference', err);
-  }
-  applyTheme(theme, false);
-}
-
-function toggleTheme() {
-  applyTheme(STATE.theme === 'dark' ? 'light' : 'dark', true);
 }
 
 function loadBag() {
@@ -1288,9 +1229,9 @@ function updateBagUI() {
   bagDialogBody.innerHTML = `
     <div class="bag-list-items">
       ${STATE.bag.map((item, index) => {
-        const lineTotal = item.price * item.qty;
-        subtotal += lineTotal;
-        return `
+    const lineTotal = item.price * item.qty;
+    subtotal += lineTotal;
+    return `
           <div class="bag-row-item">
             <div class="bag-row-info">
               <div class="bag-row-title">${item.title}</div>
@@ -1310,7 +1251,7 @@ function updateBagUI() {
             </div>
           </div>
         `;
-      }).join('')}
+  }).join('')}
     </div>
   `;
 
@@ -1501,12 +1442,12 @@ function updateWishlistUI() {
   wishlistDialogBody.innerHTML = `
     <div class="wishlist-items-list">
       ${STATE.wishlist.map((entry) => {
-        const item = findBuyableItem(entry.catalogId);
-        if (!item) return '';
-        const sizeObj = item.sizes.find((s) => s.size === entry.size) || item.sizes[0];
-        const thumbHTML = getItemVisualHTML(item);
+    const item = findBuyableItem(entry.catalogId);
+    if (!item) return '';
+    const sizeObj = item.sizes.find((s) => s.size === entry.size) || item.sizes[0];
+    const thumbHTML = getItemVisualHTML(item);
 
-        return `
+    return `
           <div class="wishlist-item-row">
             <div class="wishlist-item-thumb">${thumbHTML}</div>
             <div class="wishlist-item-info">
@@ -1520,7 +1461,7 @@ function updateWishlistUI() {
             </div>
           </div>
         `;
-      }).join('')}
+  }).join('')}
     </div>
   `;
 
@@ -1907,8 +1848,6 @@ function initNavigation() {
   const navSearchTrigger = document.getElementById('navSearchTrigger');
   const mobileWishlistBtn = document.getElementById('mobileWishlistBtn');
   const mobileProfileBtn = document.getElementById('mobileProfileBtn');
-  const mobileThemeBtn = document.getElementById('mobileThemeBtn');
-  const themeToggleBtn = document.getElementById('themeToggleBtn');
   const footerRegistryForm = document.getElementById('footerRegistryForm');
 
   function openMobileNav() {
@@ -1959,9 +1898,6 @@ function initNavigation() {
       openProfileModal('details');
     });
   }
-
-  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-  if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', toggleTheme);
 
   if (navSearchTrigger) {
     navSearchTrigger.addEventListener('click', () => {
@@ -2040,7 +1976,6 @@ function initNavigation() {
 }
 
 function init() {
-  loadTheme();
   loadBag();
   loadWishlist();
   loadProfile();

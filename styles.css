@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LEEDUH — Clean Minimalist Boutique Storefront (Light Gallery & Dark Atelier)
+   LEEDUH — Clean Minimalist Boutique Storefront
    ========================================================================== */
 
 :root {
@@ -56,57 +56,6 @@
   --radius-pill: 9999px;
   --header-height: 68px;
   --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Optional Dark Atelier Mode */
-:root[data-theme="dark"] {
-  color-scheme: dark;
-
-  --bg-page: #0b0a09;
-  --bg-subtle: #141210;
-  --bg-elevated: #171411;
-  --bg-plinth: #1a1714;
-  --bg-header: rgba(11, 10, 9, 0.92);
-  --bg-announcement: #1a1611;
-  --ink-announcement: #e6c878;
-
-  --ink-primary: #f2eadc;
-  --ink-secondary: #a59c8f;
-  --ink-muted: #766e63;
-
-  --accent-gold: #d2ab56;
-  --accent-gold-hover: #e6c878;
-  --accent-gold-tint: rgba(210, 171, 86, 0.12);
-
-  --border-subtle: rgba(210, 171, 86, 0.18);
-  --border-medium: rgba(210, 171, 86, 0.32);
-  --border-strong: rgba(210, 171, 86, 0.56);
-
-  --btn-solid-bg: linear-gradient(110deg, #e2c271 0%, #9b772b 100%);
-  --btn-solid-hover: linear-gradient(110deg, #ecd084 0%, #b18834 100%);
-  --btn-solid-ink: #0b0a09;
-  --btn-outline-hover-bg: #d2ab56;
-  --btn-outline-hover-ink: #0b0a09;
-
-  --badge-dark-bg: #d2ab56;
-  --badge-dark-ink: #0b0a09;
-  --tag-bg: rgba(11, 10, 9, 0.82);
-  --tag-ink: #d2ab56;
-
-  --backdrop-color: rgba(0, 0, 0, 0.72);
-  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.65);
-  --shadow-drawer: -14px 0 48px rgba(0, 0, 0, 0.65);
-  --shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.38);
-  --bottle-shadow: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.62));
-  --svg-shadow: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.55));
-  --ground-shadow: radial-gradient(ellipse, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 70%);
-}
-
-/* Instant synchronized theme switch without desynced color fade flash */
-:root.is-theme-switching *,
-:root.is-theme-switching *::before,
-:root.is-theme-switching *::after {
-  transition: none !important;
 }
 
 /* Base Reset */
@@ -255,14 +204,6 @@ img {
   filter: drop-shadow(0 1px 2px rgba(18, 17, 16, 0.22)) brightness(0.82) contrast(1.1);
 }
 
-:root[data-theme="dark"] .brand-monogram-img {
-  filter: drop-shadow(0 2px 6px rgba(210, 171, 86, 0.35));
-}
-
-:root[data-theme="dark"] .brand-wordmark-img {
-  filter: drop-shadow(0 2px 5px rgba(210, 171, 86, 0.28));
-}
-
 .main-nav {
   display: flex;
   align-items: center;
@@ -329,18 +270,6 @@ img {
 .utility-bag-btn:hover {
   background-color: var(--bg-subtle);
   color: var(--accent-gold);
-}
-
-.utility-theme-btn .theme-icon-sun {
-  display: none;
-}
-
-:root[data-theme="dark"] .utility-theme-btn .theme-icon-moon {
-  display: none;
-}
-
-:root[data-theme="dark"] .utility-theme-btn .theme-icon-sun {
-  display: block;
 }
 
 .utility-dot-count,

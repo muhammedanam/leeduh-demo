@@ -8,41 +8,39 @@ Fine **Skin Perfumes** and **Home & Car Purifiers** are curated as completely se
 
 ## 1. Architecture & Key Storefront Flows
 
-1. **Announcement Strip & Minimal Header ([`#mainHeader`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L53-L148))**
-   - Features the **LD** monogram ([`brand-monogram.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/brand-monogram.png)) and **LEE DUH** wordmark ([`brand-wordmark.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/brand-wordmark.png)), smooth single-row navigation (`Best Sellers`, `Fine Perfumes`, `Home & Car`, `All Creations`, `Our Story`) with `IntersectionObserver` scroll-spy tracking, and mobile slide-over drawer ([`#mobileNavDrawer`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L118-L147)).
-   - Quiet utility controls: Search jump ([`#navSearchTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L69)), Light/Dark theme toggle ([`#themeToggleBtn`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L76)), Customer Profile ([`#profileTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L86)), Wishlist ([`#wishlistTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L94)), and Shopping Bag ([`#bagTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L101)).
+1. **Announcement Strip & Minimal Header ([`#mainHeader`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L43-L96))**
+   - Features the **LD** monogram ([`brand-monogram.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/brand-monogram.png)) and **LEE DUH** wordmark ([`brand-wordmark.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/brand-wordmark.png)), smooth single-row navigation (`Best Sellers`, `Fine Perfumes`, `Home & Car`, `All Creations`, `Our Story`) with `IntersectionObserver` scroll-spy tracking, and mobile slide-over drawer ([`#mobileNavDrawer`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L99-L124)).
+   - Quiet utility controls: Search jump ([`#navSearchTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L59)), Customer Profile ([`#profileTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L66)), Wishlist ([`#wishlistTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L74)), and Shopping Bag ([`#bagTrigger`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L81)).
 
-2. **Calm Boutique Hero & 4-Tile Collection Strip ([`#hero`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L152-L224))**
+2. **Calm Boutique Hero & 4-Tile Collection Strip ([`#hero`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L128-L200))**
    - Staggered three-flacon spotlight (`Avenor`, `Oud Rose`, `Oud Maracuja`) opening rich product Quick-View inspection, paired with a four-tile Shop-by-Line grid (`Fine Perfumes`, `Travel & Coffrets`, `Home Purifiers`, `Car Purifiers`) that activates the corresponding collection format or purifier tab on scroll.
 
-3. **Best Sellers 4-Column Grid ([`#bestsellers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L227-L238))**
-   - Rendered by [`renderBestSellers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L845-L851) showcasing top-requested Fine Perfume and Purifier creations with synced inline size pills, live `AED` pricing, wishlist pinning, and 1-click Add to Bag.
+3. **Best Sellers 4-Column Grid ([`#bestsellers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L203-L214))**
+   - Rendered by [`renderBestSellers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L786-L792) showcasing top-requested Fine Perfume and Purifier creations with synced inline size pills, live `AED` pricing, wishlist pinning, and 1-click Add to Bag.
 
-4. **The Four Fine Perfumes ([`#perfumes`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L241-L278))**
-   - Strictly features the **4 Fine Perfumes** rendered by [`renderFinePerfumes`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L880-L891) with instant format tabs (`Extrait (25%)`, `Travel Atomizer`, `Gift Coffret`) and an interactive **3-Piece Signature Pairing (-10%)** bar ([`addRitualSetForScent`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L902-L914), default `AED 549` vs `AED 610`).
+4. **The Four Fine Perfumes ([`#perfumes`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L217-L254))**
+   - Strictly features the **4 Fine Perfumes** rendered by [`renderFinePerfumes`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L821-L832) with instant format tabs (`Extrait (25%)`, `Travel Atomizer`, `Gift Coffret`) and an interactive **3-Piece Signature Pairing (-10%)** bar ([`addRitualSetForScent`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L843-L855), default `AED 549` vs `AED 610`).
 
-5. **Separate Home & Car Purifiers ([`#purifiers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L281-L298))**
-   - Rendered by [`renderPurifiersShowcase`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L934-L946) with category tabs (`All (6)`, `Home Purifiers (3)`, `Car Purifiers (3)`) and custom inline architectural reed decanter & anodized vent diffuser SVGs.
+5. **Separate Home & Car Purifiers ([`#purifiers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L257-L274))**
+   - Rendered by [`renderPurifiersShowcase`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L875-L887) with category tabs (`All (6)`, `Home Purifiers (3)`, `Car Purifiers (3)`) and custom inline architectural reed decanter & anodized vent diffuser SVGs.
 
-6. **All Creations Archive ([`#catalog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L301-L355))**
-   - Complete 14-item searchable catalog (`8 Fine Perfumes` + `3 Home Purifiers` + `3 Car Purifiers`) in [`CATALOG`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L289-L363) and [`renderCatalog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L1040-L1092), supporting keyword search, Line & Signature filter chips, live price/name/popularity sorting, empty-state reset, and synchronized multi-grid size selection ([`selectCardSize`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L761-L798)).
+6. **All Creations Archive ([`#catalog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L277-L331))**
+   - Complete 14-item searchable catalog (`8 Fine Perfumes` + `3 Home Purifiers` + `3 Car Purifiers`) in [`CATALOG`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L289-L363) and [`renderCatalog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L981-L1033), supporting keyword search, Line & Signature filter chips, live price/name/popularity sorting, empty-state reset, and synchronized multi-grid size selection ([`selectCardSize`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L702-L739)).
 
 7. **Product Quick-View Modal & Slide-Over Customer Portals**
-   - **Quick-View Modal ([`#quickViewDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L436-L441))**: Opened via [`openQuickView`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L1102-L1181) on any bottle artwork, title, hero bottle, or footer signature link; displays Arabic script, house story, Top/Heart/Base olfactory notes, interactive size pills, Save toggle, Add to Bag, and 3-Piece Perfume Set pairing.
-   - **Slide-Over Bag Drawer ([`#bagDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L444-L463))**: `localStorage['leeduh-bag']` persistence, max 20 quantity cap, `-10%` set badges, dynamic `"Free UAE delivery over AED 500 · Prices include 5% VAT"` status, and prototype checkout logging orders directly into the Profile order list.
-   - **Slide-Over Wishlist Drawer ([`#wishlistDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L466-L482))**: `localStorage['leeduh-wishlist']` persistence with individual Move to Bag and batch Move All to Bag.
-   - **Customer Profile Modal ([`#profileDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L485-L562))**: `localStorage['leeduh-profile']` persistence for Account Details (7 UAE Emirates + Guest Mode switch), Order History with 1-click Reorder, and Scent Wardrobe quick-view links.
+   - **Quick-View Modal ([`#quickViewDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L412-L417))**: Opened via [`openQuickView`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L1043-L1122) on any bottle artwork, title, hero bottle, or footer signature link; displays Arabic script, house story, Top/Heart/Base olfactory notes, interactive size pills, Save toggle, Add to Bag, and 3-Piece Perfume Set pairing.
+   - **Slide-Over Bag Drawer ([`#bagDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L420-L439))**: `localStorage['leeduh-bag']` persistence, max 20 quantity cap, `-10%` set badges, dynamic `"Free UAE delivery over AED 500 · Prices include 5% VAT"` status, and prototype checkout logging orders directly into the Profile order list.
+   - **Slide-Over Wishlist Drawer ([`#wishlistDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L442-L458))**: `localStorage['leeduh-wishlist']` persistence with individual Move to Bag and batch Move All to Bag.
+   - **Customer Profile Modal ([`#profileDialog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L461-L538))**: `localStorage['leeduh-profile']` persistence for Account Details (7 UAE Emirates + Guest Mode switch), Order History with 1-click Reorder, and Scent Wardrobe quick-view links.
 
-8. **Story, Delivery Concierge & Footer Registry ([`#about`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L358-L433))**
+8. **Story, Delivery Concierge & Footer Registry ([`#about`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L334-L409))**
    - Editorial crest display ([`brand-full-lockup.jpg`](file:///c:/Users/ASUS/Documents/demo%20leeduh/brand-full-lockup.jpg)), UAE concierge commitments, signature shortcuts, and Atelier Registry email opt-in toast.
 
 ---
 
-## 2. Design System & Light / Dark Themes
+## 2. Design System
 
-- **Light Gallery (`:root`, default)**: Crisp White (`#ffffff`), Warm Stone Neutral (`#f7f6f3`), Cream Plinth (`#f5f3ee`), Obsidian Ink (`#121110`), Muted Warm Gray (`#5c5750`), and Antique Gold (`#8c661c` / `#6f4f12`).
-- **Dark Atelier (`:root[data-theme="dark"]`)**: Obsidian Night (`#0b0a09`), Raised Obsidian (`#141210`), Warm Ivory (`#f2eadc`), Brushed Gold (`#d2ab56` / `#e6c878`), and foil `110deg` CTA gradient.
-- **Zero-FOUC Persistence**: [`applyTheme`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L510-L530) persists `localStorage['leeduh-theme']` and synchronizes `[data-theme]` + `meta#themeColorMeta` prior to initial paint.
+- **Light Gallery Palette ([`styles.css`](file:///c:/Users/ASUS/Documents/demo%20leeduh/styles.css#L5-L59))**: Crisp White (`#ffffff`), Warm Stone Neutral (`#f7f6f3`), Cream Plinth (`#f5f3ee`), Obsidian Ink (`#121110`), Muted Warm Gray (`#5c5750`), and Antique Gold (`#8c661c` / `#6f4f12`).
 - **Typography & Accessibility**: `Syne` (500/700), `Newsreader` (400/500), and `Noto Naskh Arabic` (600) with offline system fallbacks; `prefers-reduced-motion` disables transitions cleanly; `AED` VAT-inclusive pricing formatted in `en-US`.
 
 ---
