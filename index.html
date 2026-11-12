@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>LEEDUH · Atelier Dubai</title>
-  <meta name="description" content="LEEDUH Perfumes Dubai — Small-batch haute parfumerie crafted at 25% pure extrait alongside dedicated architectural home and car purifiers.">
-  <meta name="theme-color" id="themeColorMeta" content="#0b0a09">
+  <title>LEEDUH · Fine Perfumes &amp; Purifiers | Dubai</title>
+  <meta name="description" content="LEEDUH Perfumes Dubai — Four small-batch 25% pure extrait perfumes and six bespoke architectural home &amp; car purifiers handcrafted in the UAE.">
+  <meta name="theme-color" id="themeColorMeta" content="#ffffff">
 
   <!-- Favicon & Touch Icon -->
   <link rel="icon" type="image/png" href="brand-monogram.png">
@@ -14,768 +14,512 @@
   <!-- OpenGraph / WhatsApp & Social Previews -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LEEDUH · Atelier Dubai">
-  <meta property="og:title" content="LEEDUH · Haute Parfumerie &amp; Home Purifiers | Dubai">
-  <meta property="og:description" content="Explore four signature 25% pure extrait perfumes and six bespoke ambient purifiers handcrafted in Dubai. Complimentary white-glove UAE delivery over AED 500.">
+  <meta property="og:title" content="LEEDUH · Fine Perfumes &amp; Home Purifiers | Dubai">
+  <meta property="og:description" content="Four pure 25% extrait perfumes and six dedicated home &amp; car purifiers crafted in Dubai. Complimentary UAE delivery over AED 500.">
   <meta property="og:image" content="https://leeduh-demo.vercel.app/brand-full-lockup.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="768">
-  <meta property="og:image:alt" content="LEE DUH Perfumes Dubai — Black and gold atelier crest">
+  <meta property="og:image:alt" content="LEE DUH Perfumes Dubai crest">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LEEDUH · Haute Parfumerie &amp; Home Purifiers | Dubai">
-  <meta name="twitter:description" content="Four pure extrait perfumes and dedicated home &amp; car purifiers handcrafted in Dubai.">
+  <meta name="twitter:title" content="LEEDUH · Fine Perfumes &amp; Home Purifiers | Dubai">
+  <meta name="twitter:description" content="Four pure extrait perfumes and dedicated home &amp; car purifiers crafted in Dubai.">
   <meta name="twitter:image" content="https://leeduh-demo.vercel.app/brand-full-lockup.jpg">
-  
-  <!-- External Google Fonts with system fallbacks -->
+
+  <!-- Google Fonts with system fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Naskh+Arabic:wght@600&family=Syne:wght@500;700&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="styles.css">
   <script>
     try {
-      var savedLeeduhTheme = localStorage.getItem('leeduh-theme');
-      if (savedLeeduhTheme === 'light' || savedLeeduhTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', savedLeeduhTheme);
-        var tcMeta = document.getElementById('themeColorMeta');
-        if (tcMeta) tcMeta.setAttribute('content', savedLeeduhTheme === 'light' ? '#f7f2e8' : '#0b0a09');
+      var savedTheme = localStorage.getItem('leeduh-theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        var tc = document.getElementById('themeColorMeta');
+        if (tc) tc.setAttribute('content', savedTheme === 'dark' ? '#0b0a09' : '#ffffff');
       }
     } catch (e) {}
   </script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="atelier-header" role="banner" id="mainHeader">
+  <!-- Quiet Top Announcement Strip -->
+  <div class="announcement-bar" role="region" aria-label="Storefront notice">
+    <p>Complimentary UAE delivery on orders over AED 500 &middot; Prices include 5% VAT</p>
+  </div>
+
+  <!-- Minimal Single-Row Header -->
+  <header class="site-header" id="mainHeader" role="banner">
     <div class="header-inner">
-      <a href="#hero" class="brand-wordmark" aria-label="LEE DUH Perfumes Dubai">
-        <img src="brand-monogram.png" alt="LD Monogram" class="header-logo-icon">
-        <img src="brand-wordmark.png" alt="LEE DUH" class="header-logo-wordmark">
+      <a href="#hero" class="brand-lockup" aria-label="LEE DUH Perfumes Home">
+        <img src="brand-monogram.png" alt="LD Monogram" class="brand-monogram-img" width="32" height="28">
+        <img src="brand-wordmark.png" alt="LEE DUH" class="brand-wordmark-img" width="104" height="15">
       </a>
-      
-      <nav class="atelier-nav" id="desktopNav" aria-label="Main navigation">
-        <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+
+      <nav class="main-nav" id="desktopNav" aria-label="Main navigation">
         <a href="#bestsellers" class="nav-link" data-section="bestsellers">Best Sellers</a>
-        <a href="#scents" class="nav-link" data-section="scents">Perfumes</a>
+        <a href="#perfumes" class="nav-link" data-section="perfumes">Fine Perfumes</a>
         <a href="#purifiers" class="nav-link" data-section="purifiers">Home &amp; Car</a>
         <a href="#catalog" class="nav-link" data-section="catalog">All Creations</a>
-        <a href="#about" class="nav-link" data-section="about">About</a>
-        <a href="#delivery" class="nav-link" data-section="delivery">Concierge</a>
+        <a href="#about" class="nav-link" data-section="about">Our Story</a>
       </nav>
 
-      <div class="header-actions">
-        <!-- Theme Toggle (Dark / Light Atelier) -->
-        <button type="button" class="header-icon-btn header-theme-btn" id="themeToggleBtn" aria-label="Switch to light mode" aria-pressed="false" title="Switch to Light Atelier">
-          <svg class="theme-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <div class="header-utilities">
+        <button type="button" class="utility-icon-btn" id="navSearchTrigger" aria-label="Search collection" title="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7.5"></circle>
+            <line x1="20.5" y1="20.5" x2="16.3" y2="16.3"></line>
+          </svg>
+        </button>
+
+        <button type="button" class="utility-icon-btn utility-theme-btn" id="themeToggleBtn" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to Dark Mode">
+          <svg class="theme-icon theme-icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="theme-icon theme-icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
           </svg>
-          <svg class="theme-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
         </button>
 
-        <!-- Quick Search Trigger -->
-        <button type="button" class="header-icon-btn" id="navSearchTrigger" aria-label="Search collection">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-
-        <!-- Wishlist Trigger -->
-        <button type="button" class="header-icon-btn" id="wishlistTrigger" aria-label="Open wishlist, 0 saved items">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
-          <span class="icon-count-badge" id="wishlistCountBadge">0</span>
-        </button>
-
-        <!-- Customer Profile Trigger -->
-        <button type="button" class="header-icon-btn header-profile-btn" id="profileTrigger" aria-label="Open customer profile">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <button type="button" class="utility-icon-btn" id="profileTrigger" aria-label="Open customer profile" title="Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
-          <span class="profile-btn-initials" id="headerProfileInitials">LA</span>
+          <span class="sr-only" id="headerProfileInitials">LA</span>
         </button>
 
-        <!-- Cart / Bag Trigger -->
-        <button type="button" class="bag-trigger-btn" id="bagTrigger" aria-label="Open shopping cart, 0 items">
-          <span class="bag-label">Cart</span>
-          <span class="bag-count-badge" id="bagCountBadge">0</span>
+        <button type="button" class="utility-icon-btn" id="wishlistTrigger" aria-label="Open wishlist, 0 saved items" title="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="utility-dot-count" id="wishlistCountBadge" data-count="0">0</span>
         </button>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button type="button" class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
+        <button type="button" class="utility-bag-btn" id="bagTrigger" aria-label="Open shopping bag, 0 items" title="Bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="bag-btn-count" id="bagCountBadge">0</span>
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div class="mobile-nav-drawer" id="mobileNavDrawer" hidden>
-      <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
-      <div class="mobile-nav-content">
-        <div class="mobile-nav-header">
-          <span class="mobile-nav-brand">LEE DUH</span>
-          <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    <div class="mobile-drawer" id="mobileNavDrawer" hidden>
+      <div class="mobile-drawer-backdrop" id="mobileNavBackdrop"></div>
+      <div class="mobile-drawer-panel">
+        <div class="mobile-drawer-head">
+          <span class="mobile-drawer-brand">LEE DUH</span>
+          <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close menu">&times;</button>
         </div>
-        <nav class="mobile-nav-links" aria-label="Mobile navigation">
-          <a href="#hero" class="mobile-nav-link" data-section="hero">Home</a>
+        <nav class="mobile-drawer-links" aria-label="Mobile navigation">
           <a href="#bestsellers" class="mobile-nav-link" data-section="bestsellers">Best Sellers</a>
-          <a href="#scents" class="mobile-nav-link" data-section="scents">Fine Perfumes Runway</a>
+          <a href="#perfumes" class="mobile-nav-link" data-section="perfumes">Fine Perfumes</a>
           <a href="#purifiers" class="mobile-nav-link" data-section="purifiers">Home &amp; Car Purifiers</a>
           <a href="#catalog" class="mobile-nav-link" data-section="catalog">All Creations</a>
-          <a href="#about" class="mobile-nav-link" data-section="about">About Atelier</a>
-          <a href="#delivery" class="mobile-nav-link" data-section="delivery">Concierge &amp; Delivery</a>
+          <a href="#about" class="mobile-nav-link" data-section="about">Our Story</a>
         </nav>
-        <div class="mobile-drawer-actions">
-          <button type="button" class="mobile-drawer-action-btn" id="mobileThemeBtn" aria-pressed="false">
-            <span>Atelier Ambience</span>
-            <span class="mobile-drawer-sub" id="mobileThemeLabel">Dark Mode</span>
+        <div class="mobile-drawer-footer-actions">
+          <button type="button" class="drawer-action-row" id="mobileThemeBtn" aria-pressed="false">
+            <span>Appearance</span>
+            <span class="drawer-action-meta" id="mobileThemeLabel">Light Mode</span>
           </button>
-          <button type="button" class="mobile-drawer-action-btn" id="mobileWishlistBtn">
-            <span>Saved Wishlist</span>
-            <span class="mobile-drawer-badge" id="mobileWishlistBadge">0</span>
+          <button type="button" class="drawer-action-row" id="mobileWishlistBtn">
+            <span>Wishlist</span>
+            <span class="drawer-action-meta" id="mobileWishlistBadge">0</span>
           </button>
-          <button type="button" class="mobile-drawer-action-btn" id="mobileProfileBtn">
-            <span>Collector Profile</span>
-            <span class="mobile-drawer-sub" id="mobileProfileLabel">Member</span>
+          <button type="button" class="drawer-action-row" id="mobileProfileBtn">
+            <span>Account</span>
+            <span class="drawer-action-meta" id="mobileProfileLabel">Member</span>
           </button>
-        </div>
-        <div class="mobile-nav-footer">
-          <p class="mobile-nav-note">Hand-poured in Dubai · 25% Pure Extrait</p>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="atelier-hero" id="hero" aria-label="Introduction to Lee Duh Perfumes">
-    <div class="hero-bg-glow" aria-hidden="true"></div>
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="eyebrow-accent">—</span>
-          <span>DUBAI ATELIER · LIMITED HARVEST</span>
-          <span class="eyebrow-accent">—</span>
-        </div>
-        <h1 class="hero-headline">Haute Parfumerie.<br>Hand-Poured in Dubai.</h1>
-        <p class="hero-description">
-          Rare aged Cambodian oud, French extraction, and sculptural crystal flacons.
-          Small-batch extrait crafted in limited vintages of five hundred numbered bottles.
-        </p>
-        
-        <div class="hero-cta-group">
-          <a href="#catalog" class="hero-btn-primary">
-            <span>Shop All Creations</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="#scents" class="hero-btn-secondary">Fine Perfume Runway</a>
-          <a href="#purifiers" class="hero-btn-link">Home &amp; Car Purifiers &rarr;</a>
-        </div>
-
-        <div class="hero-badges-row">
-          <div class="hero-badge-item">
-            <span class="badge-metric">25%</span>
-            <span class="badge-label">Pure Extrait</span>
-          </div>
-          <div class="badge-divider" aria-hidden="true"></div>
-          <div class="hero-badge-item">
-            <span class="badge-metric">500</span>
-            <span class="badge-label">Numbered Flacons</span>
-          </div>
-          <div class="badge-divider" aria-hidden="true"></div>
-          <div class="hero-badge-item">
-            <span class="badge-metric">Dubai</span>
-            <span class="badge-label">Private Atelier</span>
+  <main>
+    <!-- 1. Calm Boutique Hero -->
+    <section class="boutique-hero" id="hero" aria-label="LEEDUH Fine Perfumes Dubai">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="section-kicker">Dubai Atelier &middot; Limited Harvest</span>
+          <h1 class="hero-title">Haute Parfumerie.<br>Hand-Poured in Dubai.</h1>
+          <p class="hero-lead">
+            Four pure 25% extrait perfumes crafted with aged Cambodian oud, balanced by six dedicated architectural home &amp; car purifiers.
+          </p>
+          <div class="hero-actions">
+            <a href="#perfumes" class="btn-solid">Shop Fine Perfumes</a>
+            <a href="#purifiers" class="btn-outline">Home &amp; Car Purifiers</a>
           </div>
         </div>
-      </div>
 
-      <!-- Hero Visual Showcase Grid -->
-      <div class="hero-visual-showcase" aria-label="Four signature scents quick jump">
-        <div class="hero-bottle-card" data-perfume="oud-rose" role="button" tabindex="0" aria-label="Inspect Oud Rose on runway">
-          <img src="bottle-oud-rose.png" alt="Oud Rose Flacon" class="hero-bottle-img">
-          <span class="hero-bottle-name">Oud Rose</span>
-        </div>
-        <div class="hero-bottle-card" data-perfume="avenor" role="button" tabindex="0" aria-label="Inspect Avenor on runway">
-          <img src="bottle-avenor.png" alt="Avenor Flacon" class="hero-bottle-img">
-          <span class="hero-bottle-name">Avenor</span>
-        </div>
-        <div class="hero-bottle-card" data-perfume="scentra" role="button" tabindex="0" aria-label="Inspect Scentra on runway">
-          <img src="bottle-scentra.png" alt="Scentra Flacon" class="hero-bottle-img">
-          <span class="hero-bottle-name">Scentra</span>
-        </div>
-        <div class="hero-bottle-card" data-perfume="oud-maracuja" role="button" tabindex="0" aria-label="Inspect Oud Maracuja on runway">
-          <img src="bottle-oud-maracuja.png" alt="Oud Maracuja Flacon" class="hero-bottle-img">
-          <span class="hero-bottle-name">Oud Maracuja</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Most Selling Product(s) Section -->
-  <section class="atelier-bestsellers-section" id="bestsellers" aria-label="Most Selling Creations">
-    <div class="bestsellers-container">
-      <div class="section-header-editorial">
-        <div class="section-eyebrow">
-          <span class="eyebrow-accent">—</span>
-          <span>HOUSE ARCHIVE · MOST REQUESTED</span>
-          <span class="eyebrow-accent">—</span>
-        </div>
-        <h2 class="section-main-heading">Most Selling Creations</h2>
-        <p class="section-lead-text">
-          The compositions most commissioned at our Dubai atelier this season, led by our #1 house icon.
-        </p>
-      </div>
-
-      <!-- Featured #1 Most Selling Spotlight (Rendered cleanly by JS for full live interactivity) -->
-      <div id="bestsellerSpotlightMount"></div>
-
-      <!-- Top 3 Coveted Editions Grid -->
-      <div class="bestsellers-runners-header">
-        <h3 class="runners-heading">Also Most Coveted</h3>
-        <a href="#catalog" class="runners-view-all">Browse full catalog &rarr;</a>
-      </div>
-      <div class="bestsellers-runners-grid" id="bestsellersRunnersGrid"></div>
-    </div>
-  </section>
-
-  <!-- Runway Main Section -->
-  <main class="runway-layout" id="scents">
-    <!-- Left Stage: Carousel & Runway -->
-    <section class="stage-section" id="stageSection" tabindex="0" role="region" aria-label="Fragrance carousel">
-      <!-- Radial spotlight behind active bottle -->
-      <div class="stage-spotlight" id="stageSpotlight" aria-hidden="true"></div>
-
-      <!-- Stage Editorial Header -->
-      <div class="stage-intro">
-        <h2 class="stage-title">Try the Scent.</h2>
-        <p class="stage-subtitle">Four pure fine perfumes. Dedicated ambient purifiers are crafted separately below.</p>
-      </div>
-
-      <!-- Giant Ghost Arabic Scent Name -->
-      <div class="ghost-arabic-container" aria-hidden="true">
-        <span class="ghost-arabic-text" id="ghostArabic">عود ورد</span>
-      </div>
-
-      <!-- 3D Ring Runway Stage -->
-      <div class="carousel-stage" id="carouselRingStage">
-        <!-- Bottle bodies dynamically rendered into ringBodiesContainer -->
-        <div class="ring-bodies-container" id="ringBodiesContainer"></div>
-      </div>
-
-      <!-- Dark reflective floor horizon -->
-      <div class="stage-floor-reflection" aria-hidden="true"></div>
-
-      <!-- Carousel Controls Row -->
-      <div class="stage-controls-bar">
-        <button type="button" class="control-arrow-btn" id="prevBtn" aria-label="Previous scent">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <div class="progress-ticks-group" id="progressTicksGroup" role="tablist" aria-label="Select fragrance">
-          <!-- Progress ticks injected by JS -->
-        </div>
-
-        <button type="button" class="control-play-btn" id="playPauseBtn" aria-label="Pause autoplay" aria-pressed="false">
-          <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="6" y="4" width="4" height="16"></rect>
-            <rect x="14" y="4" width="4" height="16"></rect>
-          </svg>
-          <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none;">
-            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-          </svg>
-        </button>
-
-        <button type="button" class="control-arrow-btn" id="nextBtn" aria-label="Next scent">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </div>
-
-      <!-- View Scent Overlay Popup -->
-      <div class="scent-notes-popup" id="scentPopup" role="dialog" aria-modal="true" aria-labelledby="popupScentTitle" hidden>
-        <div class="popup-backdrop" id="popupBackdrop"></div>
-        <div class="popup-panel" id="popupPanel">
-          <div class="popup-header">
-            <div class="popup-title-group">
-              <h2 class="popup-title" id="popupScentTitle">Oud Rose</h2>
-              <p class="popup-tagline" id="popupScentTagline">Taif rose & smoky Cambodian oud</p>
-            </div>
-            <button type="button" class="popup-close-btn" id="popupCloseBtn" aria-label="Close scent notes">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-
-          <div class="popup-stage-content">
-            <div class="popup-bottle-showcase" id="popupBottleShowcase">
-              <div class="showcase-bottle-art" id="showcaseBottleArt"></div>
-
-              <!-- Interactive Scent Note Pins -->
-              <div class="note-pin note-pin-top" id="pinTop" style="top: 26%;">
-                <button type="button" class="pin-marker" id="pinBtnTop" aria-label="Top note: Pink pepper and Taif rose">
-                  <span class="pin-number">1</span>
-                  <span class="pin-tag">Top</span>
-                  <span class="pin-pulse" aria-hidden="true"></span>
-                </button>
-                <div class="pin-pill" id="pillTop" role="tooltip">
-                  <span class="pin-label">Top:</span> <span class="pin-desc" id="topNoteText">Pink pepper and Taif rose</span>
-                </div>
-              </div>
-
-              <div class="note-pin note-pin-heart" id="pinHeart" style="top: 56%;">
-                <button type="button" class="pin-marker" id="pinBtnHeart" aria-label="Heart note: Aged Cambodian oud and geranium">
-                  <span class="pin-number">2</span>
-                  <span class="pin-tag">Heart</span>
-                  <span class="pin-pulse" aria-hidden="true"></span>
-                </button>
-                <div class="pin-pill" id="pillHeart" role="tooltip">
-                  <span class="pin-label">Heart:</span> <span class="pin-desc" id="heartNoteText">Aged Cambodian oud and geranium</span>
-                </div>
-              </div>
-
-              <div class="note-pin note-pin-base" id="pinBase" style="top: 86%;">
-                <button type="button" class="pin-marker" id="pinBtnBase" aria-label="Base note: Smoky amber and dark leather">
-                  <span class="pin-number">3</span>
-                  <span class="pin-tag">Base</span>
-                  <span class="pin-pulse" aria-hidden="true"></span>
-                </button>
-                <div class="pin-pill" id="pillBase" role="tooltip">
-                  <span class="pin-label">Base:</span> <span class="pin-desc" id="baseNoteText">Smoky amber and dark leather</span>
-                </div>
-              </div>
-            </div>
-
-            <p class="popup-hint">Tap a dot to read the note</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Custom Inertia Cursor -->
-      <div class="stage-custom-cursor" id="customCursor" aria-hidden="true">
-        <span class="cursor-text" id="cursorText">Drag</span>
-      </div>
-    </section>
-
-    <!-- Right Shopping Panel: In this scent -->
-    <aside class="shopping-panel" id="shoppingPanel" aria-label="Fine perfume editions">
-      <div class="panel-inner">
-        <div class="panel-header">
-          <div class="panel-title-wrap">
-            <h2 class="panel-title">In this perfume</h2>
-            <span class="pieces-count-badge">Extrait Line</span>
-          </div>
-          <p class="panel-scent-current" id="panelCurrentScentName">Oud Rose · Taif rose &amp; smoky Cambodian oud</p>
-        </div>
-
-        <div class="product-rows-list" id="productRowsList">
-          <!-- Dynamically generated perfume format rows -->
-        </div>
-
-        <div class="bundle-footer-card">
-          <div class="bundle-header">
-            <span class="bundle-title">Signature perfume pairing</span>
-            <span class="bundle-discount-badge">All 3 formats · Save 10%</span>
-          </div>
-          <div class="bundle-pricing">
-            <span class="bundle-struck-price" id="bundleStruckPrice">AED 610</span>
-            <span class="bundle-live-price" id="bundleLivePrice">AED 549</span>
-          </div>
-          <button type="button" class="btn-ritual-primary" id="addRitualBtn">
-            Add perfume set to bag
+        <div class="hero-flacons-stage" aria-label="Signature bottles preview">
+          <button type="button" class="hero-flacon-item is-side-left" data-quick-view="avenor-extrait" aria-label="View Avenor Extrait">
+            <img src="bottle-avenor.png" alt="Avenor Extrait de Parfum" class="hero-flacon-img">
+            <span class="hero-flacon-caption">Avenor</span>
+          </button>
+          <button type="button" class="hero-flacon-item is-center" data-quick-view="oud-rose-extrait" aria-label="View Oud Rose Extrait">
+            <img src="bottle-oud-rose.png" alt="Oud Rose Extrait de Parfum" class="hero-flacon-img">
+            <span class="hero-flacon-caption">Oud Rose</span>
+          </button>
+          <button type="button" class="hero-flacon-item is-side-right" data-quick-view="oud-maracuja-extrait" aria-label="View Oud Maracuja Extrait">
+            <img src="bottle-oud-maracuja.png" alt="Oud Maracuja Extrait de Parfum" class="hero-flacon-img">
+            <span class="hero-flacon-caption">Oud Maracuja</span>
           </button>
         </div>
       </div>
-    </aside>
+    </section>
+
+    <!-- 2. Clean Shop-by-Line Strip (Gissah / Lattafa Category Tiles) -->
+    <section class="category-strip-section" id="collections" aria-label="Shop by collection">
+      <div class="container">
+        <div class="category-tiles-grid">
+          <button type="button" class="category-tile" data-jump-category="perfume" data-scroll-target="#perfumes">
+            <div class="category-tile-media">
+              <img src="bottle-oud-rose.png" alt="Fine Perfumes" loading="lazy">
+            </div>
+            <div class="category-tile-meta">
+              <span class="category-tile-title">Fine Perfumes</span>
+              <span class="category-tile-sub">4 Signature Extraits &rarr;</span>
+            </div>
+          </button>
+
+          <button type="button" class="category-tile" data-jump-format="coffret" data-scroll-target="#perfumes">
+            <div class="category-tile-media">
+              <img src="bottle-scentra.png" alt="Discovery &amp; Coffrets" loading="lazy">
+            </div>
+            <div class="category-tile-meta">
+              <span class="category-tile-title">Travel &amp; Coffrets</span>
+              <span class="category-tile-sub">10 ml &amp; Gift Sets &rarr;</span>
+            </div>
+          </button>
+
+          <button type="button" class="category-tile" data-jump-purifier="home-purifier" data-scroll-target="#purifiers">
+            <div class="category-tile-media" id="catHomeSvgMount"></div>
+            <div class="category-tile-meta">
+              <span class="category-tile-title">Home Purifiers</span>
+              <span class="category-tile-sub">Reed Decanters &rarr;</span>
+            </div>
+          </button>
+
+          <button type="button" class="category-tile" data-jump-purifier="car-purifier" data-scroll-target="#purifiers">
+            <div class="category-tile-media" id="catCarSvgMount"></div>
+            <div class="category-tile-meta">
+              <span class="category-tile-title">Car Purifiers</span>
+              <span class="category-tile-sub">Cabin Diffusers &rarr;</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Best Sellers 4-Column Clean Grid -->
+    <section class="boutique-section" id="bestsellers" aria-label="Best Sellers">
+      <div class="container">
+        <div class="section-head-row">
+          <div>
+            <span class="section-kicker">House Favorites</span>
+            <h2 class="section-title">Best Sellers</h2>
+          </div>
+          <a href="#catalog" class="section-link-more">View All Creations &rarr;</a>
+        </div>
+        <div class="product-grid-4" id="bestsellersGrid"></div>
+      </div>
+    </section>
+
+    <!-- 4. Fine Perfumes Line (4 Official Fragrances Only) -->
+    <section class="boutique-section is-tinted" id="perfumes" aria-label="Fine Perfumes Collection">
+      <div class="container">
+        <div class="section-head-row is-wrap">
+          <div>
+            <span class="section-kicker">Personal Extrait &middot; Zero Overlap With Purifiers</span>
+            <h2 class="section-title">The Four Fine Perfumes</h2>
+          </div>
+
+          <div class="segmented-tabs" id="perfumeFormatTabs" role="tablist" aria-label="Select perfume format">
+            <button type="button" class="seg-tab active" role="tab" aria-selected="true" data-perfume-format="extrait">Extrait (25%)</button>
+            <button type="button" class="seg-tab" role="tab" aria-selected="false" data-perfume-format="atomizer">Travel Atomizer</button>
+            <button type="button" class="seg-tab" role="tab" aria-selected="false" data-perfume-format="coffret">Gift Coffret</button>
+          </div>
+        </div>
+
+        <div class="product-grid-4" id="finePerfumesGrid"></div>
+
+        <!-- Calm Single-Line Ritual Set Offer -->
+        <div class="ritual-banner">
+          <div class="ritual-banner-copy">
+            <span class="ritual-banner-tag">Signature Pairing &middot; Save 10%</span>
+            <p class="ritual-banner-text">
+              Combine Extrait (50 ml), Travel Atomizer (10 ml), and Gift Coffret for any fine perfume at <strong id="ritualBannerPrice">AED 549</strong> <span class="struck-inline">AED 610</span>.
+            </p>
+          </div>
+          <div class="ritual-banner-controls">
+            <label for="ritualScentSelect" class="sr-only">Choose perfume for complete set</label>
+            <select id="ritualScentSelect" class="clean-select">
+              <option value="0">Oud Rose</option>
+              <option value="1">Avenor</option>
+              <option value="2">Scentra</option>
+              <option value="3">Oud Maracuja</option>
+            </select>
+            <button type="button" class="btn-solid" id="addRitualSetBtn">Add 3-Piece Set &middot; AED 549</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Dedicated Home & Car Purifiers Section (Separate Scents) -->
+    <section class="boutique-section" id="purifiers" aria-label="Home and Car Purifiers">
+      <div class="container">
+        <div class="section-head-row is-wrap">
+          <div>
+            <span class="section-kicker">Separate Formulations &middot; Space &amp; Drive</span>
+            <h2 class="section-title">Home &amp; Car Purifiers</h2>
+          </div>
+
+          <div class="segmented-tabs" id="purifierSectionTabs" role="tablist" aria-label="Filter purifier line">
+            <button type="button" class="seg-tab active" role="tab" aria-selected="true" data-purifier-tab="all">All (6)</button>
+            <button type="button" class="seg-tab" role="tab" aria-selected="false" data-purifier-tab="home-purifier">Home Purifiers (3)</button>
+            <button type="button" class="seg-tab" role="tab" aria-selected="false" data-purifier-tab="car-purifier">Car Purifiers (3)</button>
+          </div>
+        </div>
+
+        <div class="product-grid-3" id="purifiersShowcaseGrid"></div>
+      </div>
+    </section>
+
+    <!-- 6. Simple Filterable Catalog (All 14 Creations) -->
+    <section class="boutique-section is-tinted" id="catalog" aria-label="All Atelier Creations">
+      <div class="container">
+        <div class="section-head-row is-wrap">
+          <div>
+            <span class="section-kicker">Complete House Archive</span>
+            <h2 class="section-title">All Creations</h2>
+          </div>
+          <span class="catalog-count-label" id="catalogResultCount" aria-live="polite">14 creations</span>
+        </div>
+
+        <div class="catalog-controls-bar">
+          <div class="search-field-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" id="catalogSearchInput" class="clean-search-input" placeholder="Search perfume, purifier, or note (e.g. oud, espresso, velvet)..." aria-label="Search creations">
+            <button type="button" id="catalogSearchClear" class="search-clear-btn" aria-label="Clear search" hidden>&times;</button>
+          </div>
+
+          <div class="sort-field-wrap">
+            <label for="catalogSortSelect" class="sort-text-label">Sort</label>
+            <select id="catalogSortSelect" class="clean-select" aria-label="Sort products">
+              <option value="featured">Curated</option>
+              <option value="bestselling">Best Selling</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="catalog-pills-strip">
+          <div class="pill-group" id="catalogCategoryFilters" role="group" aria-label="Filter by collection">
+            <button type="button" class="filter-chip active" data-category="all">All Lines</button>
+            <button type="button" class="filter-chip" data-category="perfume">Fine Perfumes (8)</button>
+            <button type="button" class="filter-chip" data-category="home-purifier">Home Purifiers (3)</button>
+            <button type="button" class="filter-chip" data-category="car-purifier">Car Purifiers (3)</button>
+          </div>
+
+          <div class="pill-group" id="catalogScentFilters" role="group" aria-label="Filter by signature">
+            <button type="button" class="filter-chip active" data-scent="all">All Signatures</button>
+            <button type="button" class="filter-chip" data-scent="oud-rose">Oud Rose</button>
+            <button type="button" class="filter-chip" data-scent="avenor">Avenor</button>
+            <button type="button" class="filter-chip" data-scent="scentra">Scentra</button>
+            <button type="button" class="filter-chip" data-scent="oud-maracuja">Oud Maracuja</button>
+            <button type="button" class="filter-chip" data-scent="ambient-purifiers">Home &amp; Car Blends</button>
+          </div>
+
+          <button type="button" class="reset-link-btn" id="catalogResetBtn" hidden>Reset Filters</button>
+        </div>
+
+        <div class="product-grid-4" id="catalogGrid"></div>
+      </div>
+    </section>
+
+    <!-- 7. Calm Atelier Story & Concierge Section -->
+    <section class="story-section" id="about" aria-label="About LEE DUH Dubai">
+      <div class="container story-grid">
+        <div class="story-media-frame">
+          <img src="brand-full-lockup.jpg" alt="LEE DUH Perfumes Dubai Crest" class="story-crest-img" loading="lazy">
+        </div>
+        <div class="story-copy-col">
+          <span class="section-kicker">Dubai Design District &middot; Small Batch</span>
+          <h2 class="section-title">The Quiet Art of Slow Parfumerie</h2>
+          <p class="story-paragraph">
+            Founded in Dubai, LEE DUH crafts fine extrait perfumes matured in cedar barrels and bottled in numbered vintages of five hundred flacons. Every room and cabin purifier is composed separately with smoke-free architectural resins.
+          </p>
+          <div class="concierge-promises" id="delivery">
+            <div class="promise-item">
+              <strong>Next-Day UAE Delivery</strong>
+              <span>Complimentary across all seven Emirates over AED 500</span>
+            </div>
+            <div class="promise-item">
+              <strong>Complimentary Discovery</strong>
+              <span>Two 2 ml extrait samples inside every flacon parcel</span>
+            </div>
+            <div class="promise-item">
+              <strong>Linen Presentation</strong>
+              <span>Signed vintage batch card &amp; VAT-inclusive pricing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Separate Collection: Home & Car Purifiers Section -->
-  <section class="atelier-purifiers-section" id="purifiers" aria-label="Home and Car Purifiers Collection">
-    <div class="purifiers-container">
-      <div class="section-header-editorial">
-        <div class="section-eyebrow">
-          <span class="eyebrow-accent">—</span>
-          <span>SEPARATE FORMULATIONS · SPACE &amp; DRIVE</span>
-          <span class="eyebrow-accent">—</span>
-        </div>
-        <h2 class="section-main-heading">Home &amp; Car Purifiers</h2>
-        <p class="section-lead-text">
-          Architectural home diffusers and precision automotive purifiers, formulated with completely distinct ambient compositions separate from our four fine perfumes.
-        </p>
+  <!-- Clean Editorial Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <a href="#hero" class="brand-lockup" aria-label="LEE DUH Home">
+          <img src="brand-monogram.png" alt="LD" class="brand-monogram-img" width="32" height="28">
+          <img src="brand-wordmark.png" alt="LEE DUH" class="brand-wordmark-img" width="104" height="15">
+        </a>
+        <p class="footer-note">Small-batch haute parfumerie &amp; separate architectural purifiers. Hand-poured in Dubai, UAE.</p>
       </div>
 
-      <!-- Purifier Type Switcher -->
-      <div class="purifiers-tabs-row" role="tablist" aria-label="Filter purifier type" id="purifierSectionTabs">
-        <button type="button" class="filter-pill active" role="tab" aria-selected="true" data-purifier-tab="all">All Purifiers (6)</button>
-        <button type="button" class="filter-pill" role="tab" aria-selected="false" data-purifier-tab="home-purifier">Home Purifiers (3)</button>
-        <button type="button" class="filter-pill" role="tab" aria-selected="false" data-purifier-tab="car-purifier">Car Purifiers (3)</button>
+      <div class="footer-links-col">
+        <h3 class="footer-col-head">Collections</h3>
+        <ul>
+          <li><a href="#bestsellers">Best Sellers</a></li>
+          <li><a href="#perfumes">Fine Perfumes (4)</a></li>
+          <li><a href="#purifiers">Home &amp; Car Purifiers (6)</a></li>
+          <li><a href="#catalog">All Creations</a></li>
+        </ul>
       </div>
 
-      <!-- Separate Purifiers Cards Grid -->
-      <div class="purifiers-showcase-grid" id="purifiersShowcaseGrid">
-        <!-- Populated dynamically by app.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- All Products Catalog Section with Search, Filter & Sorting -->
-  <section class="atelier-catalog-section" id="catalog" aria-label="All Atelier Products">
-    <div class="catalog-container">
-      <div class="section-header-editorial">
-        <div class="section-eyebrow">
-          <span class="eyebrow-accent">—</span>
-          <span>COMPLETE ATELIER CATALOG</span>
-          <span class="eyebrow-accent">—</span>
-        </div>
-        <h2 class="section-main-heading">All Creations</h2>
-        <p class="section-lead-text">
-          Browse our four signature fine perfumes separately from our bespoke home and car purifiers. Search by note, filter by collection, or sort to compare.
-        </p>
+      <div class="footer-links-col">
+        <h3 class="footer-col-head">Fine Perfumes</h3>
+        <ul>
+          <li><a href="#perfumes" data-quick-view="oud-rose-extrait">Oud Rose</a></li>
+          <li><a href="#perfumes" data-quick-view="avenor-extrait">Avenor</a></li>
+          <li><a href="#perfumes" data-quick-view="scentra-extrait">Scentra</a></li>
+          <li><a href="#perfumes" data-quick-view="oud-maracuja-extrait">Oud Maracuja</a></li>
+        </ul>
       </div>
 
-      <!-- Search & Sort Controls Row -->
-      <div class="catalog-toolbar">
-        <div class="catalog-search-wrap">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="search" id="catalogSearchInput" class="catalog-search-input" placeholder="Search perfume, purifier, or note (e.g. oud, velvet, espresso)..." aria-label="Search all fragrances and purifiers">
-          <button type="button" id="catalogSearchClear" class="catalog-search-clear" aria-label="Clear search" hidden>&times;</button>
-        </div>
-
-        <div class="catalog-sort-wrap">
-          <label for="catalogSortSelect" class="sort-label">Sort by</label>
-          <select id="catalogSortSelect" class="catalog-sort-select" aria-label="Sort products">
-            <option value="featured">Curated Collection</option>
-            <option value="bestselling">Most Selling</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name-asc">Name: A to Z</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Category & Scent Filter Pills -->
-      <div class="catalog-filters-group">
-        <div class="filter-row" role="group" aria-label="Filter by product collection">
-          <span class="filter-row-label">Line</span>
-          <div class="filter-pills-list" id="catalogCategoryFilters">
-            <button type="button" class="filter-pill active" data-category="all">All Creations</button>
-            <button type="button" class="filter-pill" data-category="perfume">Fine Perfumes</button>
-            <button type="button" class="filter-pill" data-category="home-purifier">Home Purifiers</button>
-            <button type="button" class="filter-pill" data-category="car-purifier">Car Purifiers</button>
-          </div>
-        </div>
-
-        <div class="filter-row" role="group" aria-label="Filter by fragrance signature">
-          <span class="filter-row-label">Scent</span>
-          <div class="filter-pills-list" id="catalogScentFilters">
-            <button type="button" class="filter-pill active" data-scent="all">All Signatures</button>
-            <button type="button" class="filter-pill" data-scent="oud-rose">Oud Rose</button>
-            <button type="button" class="filter-pill" data-scent="avenor">Avenor</button>
-            <button type="button" class="filter-pill" data-scent="scentra">Scentra</button>
-            <button type="button" class="filter-pill" data-scent="oud-maracuja">Oud Maracuja</button>
-            <button type="button" class="filter-pill" data-scent="ambient-purifiers">Home &amp; Car Blends</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Results Count & Reset Meta Bar -->
-      <div class="catalog-meta-bar">
-        <span class="catalog-result-count" id="catalogResultCount" aria-live="polite">Showing 14 creations</span>
-        <button type="button" class="catalog-reset-btn" id="catalogResetBtn" hidden>Reset all filters</button>
-      </div>
-
-      <!-- Product Grid -->
-      <div class="catalog-grid" id="catalogGrid">
-        <!-- Populated dynamically by app.js -->
+      <div class="footer-registry-col">
+        <h3 class="footer-col-head">Atelier Registry</h3>
+        <p class="footer-registry-copy">Receive private allocation invitations and vintage releases.</p>
+        <form id="footerRegistryForm" class="footer-form">
+          <input type="email" id="registryEmailInput" placeholder="Your email address" aria-label="Email for atelier registry" required class="footer-input">
+          <button type="submit" class="btn-solid">Join</button>
+        </form>
       </div>
     </div>
-  </section>
 
-  <!-- About / Atelier Dubai Section -->
-  <section class="atelier-about-section" id="about" aria-label="About Lee Duh Atelier Dubai">
-    <div class="about-container">
-      <div class="about-header-block">
-        <div class="about-eyebrow">
-          <span class="eyebrow-accent">—</span>
-          <span>ATELIER DUBAI</span>
-          <span class="eyebrow-accent">—</span>
-        </div>
-        <h2 class="about-main-heading">The Art of Slow Parfumerie</h2>
-        <p class="about-lead-text">
-          Founded in Dubai, LEE DUH was born from a desire to reclaim the quiet nobility of Arabian fragrance.
-          In an era of mass-market luxury, our atelier operates on an intimate scale: crafting perfumes by hand,
-          maturing ouds in cedar barrels for months, and pouring every flacon in limited vintages of five hundred numbered bottles.
-        </p>
-      </div>
-
-      <!-- 3 Pillars of Craft -->
-      <div class="about-pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-num-crest">01</div>
-          <h3 class="pillar-title">Aged Botanical Ouds</h3>
-          <p class="pillar-description">
-            Distilled from wild-harvested Cambodian and Assam aquilaria trees, then aged until the raw smoke yields to deep, velvety balsam and leather.
-          </p>
-          <div class="pillar-tag">Wild-Harvested</div>
-        </div>
-
-        <div class="pillar-card">
-          <div class="pillar-num-crest">02</div>
-          <h3 class="pillar-title">Architectural Flacons</h3>
-          <p class="pillar-description">
-            Each flacon is an homage to sculptural form: from diamond-faceted black obsidian to heavy crystal crown caps, designed to rest in the hand like a jewel.
-          </p>
-          <div class="pillar-tag">Hand-Cut Crystal</div>
-        </div>
-
-        <div class="pillar-card">
-          <div class="pillar-num-crest">03</div>
-          <h3 class="pillar-title">Private Dubai Atelier</h3>
-          <p class="pillar-description">
-            Every batch is formulated and blended in our Dubai atelier, bottled at a concentrated 25% extrait strength for an enduring twelve-hour sillage.
-          </p>
-          <div class="pillar-tag">25% Pure Extrait</div>
-        </div>
-      </div>
-
-      <!-- Atelier Quote Block -->
-      <div class="about-quote-card">
-        <div class="quote-monogram-wrap">
-          <img src="brand-monogram.png" alt="LD" class="quote-monogram" width="36" height="32">
-        </div>
-        <blockquote class="about-quote-text">
-          “A great fragrance does not clamor for attention. It enters a room like a shadow cast by gold: quiet, magnetic, and impossible to forget.”
-        </blockquote>
-        <cite class="about-quote-author">LEE DUH Atelier Dubai · Master Parfumeur</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- Delivery & Concierge Section -->
-  <section class="atelier-delivery-section" id="delivery" aria-label="Delivery and Client Care">
-    <div class="delivery-container">
-      <div class="delivery-header-block">
-        <div class="delivery-eyebrow">
-          <span class="eyebrow-accent">—</span>
-          <span>ATELIER CONCIERGE</span>
-          <span class="eyebrow-accent">—</span>
-        </div>
-        <h2 class="delivery-main-heading">Complimentary White-Glove Delivery</h2>
-        <p class="delivery-lead-text">
-          Every order is treated as a private commission, delivered across the United Arab Emirates with tailored concierge care.
-        </p>
-      </div>
-
-      <div class="delivery-features-grid">
-        <div class="delivery-feature-card">
-          <div class="delivery-icon-wrap" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-          </div>
-          <h3 class="delivery-feature-title">Next-Day UAE Delivery</h3>
-          <p class="delivery-feature-desc">
-            Complimentary express courier service across Dubai, Abu Dhabi, and all seven Emirates on all orders exceeding AED 500.
-          </p>
-        </div>
-
-        <div class="delivery-feature-card">
-          <div class="delivery-icon-wrap" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-          </div>
-          <h3 class="delivery-feature-title">Extrait Discovery Vials</h3>
-          <p class="delivery-feature-desc">
-            Every full flacon order includes two complimentary 2ml extrait samples, allowing you to experience other scents from the vintage collection.
-          </p>
-        </div>
-
-        <div class="delivery-feature-card">
-          <div class="delivery-icon-wrap" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <h3 class="delivery-feature-title">Hand-Inscribed Presentation</h3>
-          <p class="delivery-feature-desc">
-            Your flacon arrives wrapped in lacquered black linen, sealed with a gold-embossed vintage certificate signed by the atelier.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Atelier Footer -->
-  <footer class="atelier-footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-top-row">
-        <div class="footer-brand-col">
-          <a href="#hero" class="brand-wordmark" aria-label="LEE DUH Perfumes Dubai">
-            <img src="brand-monogram.png" alt="LD" class="header-logo-icon" width="38" height="33">
-            <img src="brand-wordmark.png" alt="LEE DUH" class="header-logo-wordmark" height="18">
-          </a>
-          <p class="footer-brand-tagline">
-            Small-batch haute parfumerie. Hand-poured in Dubai in numbered editions of five hundred.
-          </p>
-        </div>
-
-        <div class="footer-links-col">
-          <h4 class="footer-col-title">Navigation</h4>
-          <ul class="footer-links-list">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#bestsellers">Best Sellers</a></li>
-            <li><a href="#scents">Perfume Runway</a></li>
-            <li><a href="#purifiers">Home &amp; Car Purifiers</a></li>
-            <li><a href="#catalog">All Creations</a></li>
-            <li><a href="#about">About Atelier</a></li>
-            <li><a href="#delivery">Delivery &amp; Care</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-col">
-          <h4 class="footer-col-title">Fine Perfumes</h4>
-          <ul class="footer-links-list">
-            <li><a href="#scents" data-jump-scent="0">Oud Rose</a></li>
-            <li><a href="#scents" data-jump-scent="1">Avenor</a></li>
-            <li><a href="#scents" data-jump-scent="2">Scentra</a></li>
-            <li><a href="#scents" data-jump-scent="3">Oud Maracuja</a></li>
-            <li><a href="#purifiers">Separate Purifiers &rarr;</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-newsletter-col">
-          <h4 class="footer-col-title">Atelier Registry</h4>
-          <p class="footer-newsletter-desc">Receive private allocations and vintage release announcements.</p>
-          <form class="footer-registry-form" id="footerRegistryForm">
-            <input type="email" id="registryEmailInput" placeholder="Your email address" aria-label="Email for atelier registry" required class="registry-input">
-            <button type="submit" class="registry-submit-btn">Request Access</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="footer-bottom-row">
-        <p class="footer-copy-text">© 2026 LEE DUH PERFUMES DUBAI · UAE. All rights reserved. Prices include 5% VAT.</p>
-        <div class="footer-meta-notes">
-          <span>Dubai Design District</span>
-          <span class="meta-dot">·</span>
-          <span>Bespoke Commission</span>
-        </div>
-      </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 LEE DUH PERFUMES DUBAI &middot; UAE. Prices include 5% VAT.</p>
+      <p>Dubai Design District</p>
     </div>
   </footer>
 
-  <!-- Native Cart / Bag Dialog -->
-  <dialog class="bag-dialog" id="bagDialog" aria-labelledby="bagDialogTitle">
-    <div class="dialog-inner">
-      <div class="dialog-header">
-        <h2 class="dialog-title" id="bagDialogTitle">Your Cart</h2>
-        <button type="button" class="dialog-close-btn" id="closeBagDialog" aria-label="Close shopping cart">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+  <!-- Clean Product Quick-View Dialog (Olfactory Notes + Size Selector) -->
+  <dialog class="atelier-dialog quickview-dialog" id="quickViewDialog" aria-labelledby="quickViewTitle">
+    <div class="quickview-shell">
+      <button type="button" class="dialog-close-circle quickview-close" id="closeQuickViewBtn" aria-label="Close product details">&times;</button>
+      <div class="quickview-grid" id="quickViewBody"></div>
+    </div>
+  </dialog>
+
+  <!-- Slide-Over Cart Drawer Dialog -->
+  <dialog class="drawer-dialog" id="bagDialog" aria-labelledby="bagDialogTitle">
+    <div class="drawer-dialog-inner">
+      <div class="dialog-top-bar">
+        <h2 class="dialog-heading" id="bagDialogTitle">Shopping Bag</h2>
+        <button type="button" class="dialog-close-circle" id="closeBagDialog" aria-label="Close shopping bag">&times;</button>
       </div>
 
-      <div class="dialog-body" id="bagDialogBody">
-        <!-- Items or empty state injected by JS -->
-      </div>
+      <div class="dialog-scroll-body" id="bagDialogBody"></div>
 
-      <div class="dialog-footer" id="bagDialogFooter">
-        <div class="delivery-threshold-note" id="deliveryThresholdNote">
-          Free UAE delivery over AED 500 · Prices include 5% VAT
-        </div>
+      <div class="dialog-bottom-bar" id="bagDialogFooter">
+        <p class="delivery-threshold-note" id="deliveryThresholdNote">Free UAE delivery over AED 500 &middot; Prices include 5% VAT</p>
         <div class="bag-subtotal-row">
-          <span class="subtotal-label">Subtotal</span>
-          <span class="subtotal-amount" id="bagSubtotalAmount">AED 0</span>
+          <span>Subtotal</span>
+          <strong id="bagSubtotalAmount">AED 0</strong>
         </div>
-        <button type="button" class="btn-checkout-primary" id="checkoutBtn" disabled>
-          Proceed to checkout
-        </button>
+        <button type="button" class="btn-solid btn-full" id="checkoutBtn" disabled>Proceed to Checkout</button>
         <p class="checkout-status-msg" id="checkoutStatusMsg" aria-live="polite"></p>
       </div>
     </div>
   </dialog>
 
-  <!-- Native Wishlist Dialog -->
-  <dialog class="bag-dialog wishlist-dialog" id="wishlistDialog" aria-labelledby="wishlistDialogTitle">
-    <div class="dialog-inner">
-      <div class="dialog-header">
-        <div class="dialog-title-group">
-          <h2 class="dialog-title" id="wishlistDialogTitle">Your Wishlist</h2>
-          <span class="dialog-subtitle-count" id="wishlistModalCount">0 saved</span>
+  <!-- Slide-Over Wishlist Dialog -->
+  <dialog class="drawer-dialog" id="wishlistDialog" aria-labelledby="wishlistDialogTitle">
+    <div class="drawer-dialog-inner">
+      <div class="dialog-top-bar">
+        <div>
+          <h2 class="dialog-heading" id="wishlistDialogTitle">Wishlist</h2>
+          <span class="dialog-count-sub" id="wishlistModalCount">0 saved</span>
         </div>
-        <button type="button" class="dialog-close-btn" id="closeWishlistDialog" aria-label="Close wishlist">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        <button type="button" class="dialog-close-circle" id="closeWishlistDialog" aria-label="Close wishlist">&times;</button>
       </div>
 
-      <div class="dialog-body" id="wishlistDialogBody">
-        <!-- Wishlist items or empty state injected by JS -->
-      </div>
+      <div class="dialog-scroll-body" id="wishlistDialogBody"></div>
 
-      <div class="dialog-footer" id="wishlistDialogFooter">
-        <button type="button" class="btn-secondary-gold" id="addAllWishlistBtn" hidden>Move All to Cart</button>
+      <div class="dialog-bottom-bar" id="wishlistDialogFooter">
+        <button type="button" class="btn-outline btn-full" id="addAllWishlistBtn" hidden>Move All to Bag</button>
       </div>
     </div>
   </dialog>
 
-  <!-- Native Customer Profile Dialog -->
-  <dialog class="bag-dialog profile-dialog" id="profileDialog" aria-labelledby="profileDialogTitle">
-    <div class="dialog-inner">
-      <div class="dialog-header profile-dialog-header">
-        <div class="profile-identity-head">
-          <div class="profile-avatar-ring" id="profileModalAvatar">LA</div>
+  <!-- Clean Customer Profile Dialog -->
+  <dialog class="atelier-dialog profile-dialog" id="profileDialog" aria-labelledby="profileDialogTitle">
+    <div class="profile-shell">
+      <div class="dialog-top-bar">
+        <div class="profile-head-meta">
+          <div class="profile-avatar" id="profileModalAvatar">LA</div>
           <div>
-            <h2 class="dialog-title" id="profileDialogTitle">Layla Al Maktoum</h2>
-            <p class="profile-tier-subtitle" id="profileTierBadge">Private Atelier Member · Dubai</p>
+            <h2 class="dialog-heading" id="profileDialogTitle">Layla Al Maktoum</h2>
+            <p class="profile-tier-sub" id="profileTierBadge">Private Atelier Member &middot; Dubai</p>
           </div>
         </div>
-        <button type="button" class="dialog-close-btn" id="closeProfileDialog" aria-label="Close customer profile">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+        <button type="button" class="dialog-close-circle" id="closeProfileDialog" aria-label="Close profile">&times;</button>
       </div>
 
-      <!-- Profile Tabs -->
-      <div class="profile-tabs-bar" role="tablist" aria-label="Customer profile sections">
-        <button type="button" class="profile-tab-btn active" role="tab" aria-selected="true" data-profile-tab="details">Account Details</button>
-        <button type="button" class="profile-tab-btn" role="tab" aria-selected="false" data-profile-tab="orders">Orders (<span id="profileOrderCount">1</span>)</button>
-        <button type="button" class="profile-tab-btn" role="tab" aria-selected="false" data-profile-tab="preferences">Scent Wardrobe</button>
+      <div class="profile-tabs-row" role="tablist" aria-label="Profile sections">
+        <button type="button" class="profile-tab active" role="tab" aria-selected="true" data-profile-tab="details">Account</button>
+        <button type="button" class="profile-tab" role="tab" aria-selected="false" data-profile-tab="orders">Orders (<span id="profileOrderCount">1</span>)</button>
+        <button type="button" class="profile-tab" role="tab" aria-selected="false" data-profile-tab="preferences">Scent Wardrobe</button>
       </div>
 
-      <div class="dialog-body profile-dialog-body" id="profileDialogBody">
-        <!-- Tab 1: Account Details -->
-        <div class="profile-tab-pane active" id="profilePane-details">
+      <div class="dialog-scroll-body">
+        <div class="profile-pane active" id="profilePane-details">
           <form id="profileDetailsForm" class="profile-form">
-            <div class="profile-form-grid">
-              <div class="form-field">
+            <div class="profile-form-cols">
+              <div class="field-group">
                 <label for="profName">Full Name</label>
-                <input type="text" id="profName" required class="atelier-input">
+                <input type="text" id="profName" required class="clean-input">
               </div>
-              <div class="form-field">
+              <div class="field-group">
                 <label for="profEmail">Email Address</label>
-                <input type="email" id="profEmail" required class="atelier-input">
+                <input type="email" id="profEmail" required class="clean-input">
               </div>
-              <div class="form-field">
+              <div class="field-group">
                 <label for="profPhone">UAE Mobile</label>
-                <input type="tel" id="profPhone" class="atelier-input">
+                <input type="tel" id="profPhone" class="clean-input">
               </div>
-              <div class="form-field">
+              <div class="field-group">
                 <label for="profEmirate">Emirate</label>
-                <select id="profEmirate" class="atelier-input">
+                <select id="profEmirate" class="clean-input">
                   <option value="Dubai">Dubai</option>
                   <option value="Abu Dhabi">Abu Dhabi</option>
                   <option value="Sharjah">Sharjah</option>
@@ -786,43 +530,40 @@
                 </select>
               </div>
             </div>
-            <div class="form-field">
+            <div class="field-group">
               <label for="profAddress">Concierge Delivery Address</label>
-              <input type="text" id="profAddress" class="atelier-input">
+              <input type="text" id="profAddress" class="clean-input">
             </div>
-            <div class="form-field">
+            <div class="field-group">
               <label for="profScentFamily">Signature Scent Preference</label>
-              <select id="profScentFamily" class="atelier-input">
-                <option value="Oud & Floral">Oud &amp; Taif Rose</option>
-                <option value="Wood & Citrus">Smoky Woods &amp; Bergamot</option>
-                <option value="Amber & Spice">Saffron, Amber &amp; Honey</option>
-                <option value="Oud & Fruit">Dark Oud &amp; Exotic Passionfruit</option>
+              <select id="profScentFamily" class="clean-input">
+                <option value="Oud &amp; Floral">Oud &amp; Taif Rose</option>
+                <option value="Wood &amp; Citrus">Smoky Woods &amp; Bergamot</option>
+                <option value="Amber &amp; Spice">Saffron, Amber &amp; Honey</option>
+                <option value="Oud &amp; Fruit">Dark Oud &amp; Exotic Passionfruit</option>
               </select>
             </div>
-            <div class="profile-form-actions">
-              <button type="submit" class="btn-ritual-primary" id="saveProfileBtn">Save Profile Changes</button>
-              <button type="button" class="btn-secondary-gold" id="toggleSignOutBtn">Sign Out / Guest Mode</button>
+            <div class="profile-actions-row">
+              <button type="submit" class="btn-solid" id="saveProfileBtn">Save Changes</button>
+              <button type="button" class="btn-outline" id="toggleSignOutBtn">Switch to Guest Mode</button>
             </div>
           </form>
         </div>
 
-        <!-- Tab 2: Order History -->
-        <div class="profile-tab-pane" id="profilePane-orders" hidden>
+        <div class="profile-pane" id="profilePane-orders" hidden>
           <div id="profileOrdersList" class="profile-orders-list"></div>
         </div>
 
-        <!-- Tab 3: Scent Wardrobe & Saved Preferences -->
-        <div class="profile-tab-pane" id="profilePane-preferences" hidden>
+        <div class="profile-pane" id="profilePane-preferences" hidden>
           <div id="profileWardrobeContent" class="profile-wardrobe-content"></div>
         </div>
       </div>
     </div>
   </dialog>
 
-  <!-- Accessible Toast Live Region -->
+  <!-- Toast Live Region -->
   <div class="toast-region" id="toastRegion" role="status" aria-live="polite" aria-atomic="true"></div>
 
-  <!-- JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>
