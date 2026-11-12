@@ -575,7 +575,7 @@ function createTravelAtomizerSVG(scent) {
       <rect x="39" y="38" width="5" height="46" rx="1" fill="${scent.color}" opacity="0.9" />
       <rect x="45" y="48" width="14" height="22" rx="1" fill="#0b0a09" stroke="#c9a24a" stroke-width="0.6" stroke-opacity="0.55" />
       <image href="brand-monogram.png" x="45" y="49" width="14" height="13" />
-      <text x="52" y="67" text-anchor="middle" font-family="'Syne', sans-serif" font-size="4.5" font-weight="700" letter-spacing="1" fill="#e6c878">10ML</text>
+      <text x="52" y="67" text-anchor="middle" font-family="'Inter', sans-serif" font-size="4.5" font-weight="700" letter-spacing="1" fill="#e6c878">10ML</text>
     </svg>
   `;
 }
@@ -588,7 +588,7 @@ function createCoffretSVG(scent) {
       <rect x="44" y="26" width="12" height="52" fill="${scent.color}" fill-opacity="0.65" stroke="#c9a24a" stroke-width="0.7" />
       <circle cx="50" cy="42" r="9" fill="#0b0a09" stroke="#e6c878" stroke-width="1.1" />
       <image href="brand-monogram.png" x="43" y="36" width="14" height="12" />
-      <text x="50" y="68" text-anchor="middle" font-family="'Syne', sans-serif" font-size="5" font-weight="700" letter-spacing="1.4" fill="#c9a24a">COFFRET</text>
+      <text x="50" y="68" text-anchor="middle" font-family="'Inter', sans-serif" font-size="5" font-weight="700" letter-spacing="1.4" fill="#c9a24a">COFFRET</text>
     </svg>
   `;
 }
@@ -606,8 +606,8 @@ function createHomePurifierSVG(purifier) {
       <path d="M 38 56 L 41 101" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.22" stroke-linecap="round" />
       <rect x="42" y="60" width="36" height="32" rx="1" fill="#0b0a09" stroke="#c9a24a" stroke-width="0.8" stroke-opacity="0.7" />
       <image href="brand-monogram.png" x="52" y="63" width="16" height="14" />
-      <text x="60" y="84" text-anchor="middle" font-family="'Syne', sans-serif" font-size="5" font-weight="700" letter-spacing="1.2" fill="#e6c878">HOME</text>
-      <text x="60" y="90" text-anchor="middle" font-family="'Newsreader', serif" font-size="4.5" font-style="italic" fill="#c9bfa9">Purifier</text>
+      <text x="60" y="84" text-anchor="middle" font-family="'Inter', sans-serif" font-size="5" font-weight="700" letter-spacing="1.2" fill="#e6c878">HOME</text>
+      <text x="60" y="90" text-anchor="middle" font-family="'Cormorant', serif" font-size="5" font-style="italic" fill="#c9bfa9">Purifier</text>
     </svg>
   `;
 }
@@ -624,7 +624,7 @@ function createCarPurifierSVG(purifier) {
       <line x1="28" y1="56" x2="92" y2="56" stroke="#c9a24a" stroke-width="0.7" stroke-opacity="0.3" />
       <circle cx="60" cy="56" r="16" fill="#0b0a09" stroke="#e6c878" stroke-width="1.2" />
       <image href="brand-monogram.png" x="51" y="45" width="18" height="15" />
-      <text x="60" y="67" text-anchor="middle" font-family="'Syne', sans-serif" font-size="4.8" font-weight="700" letter-spacing="1.2" fill="#e6c878">CAR</text>
+      <text x="60" y="67" text-anchor="middle" font-family="'Inter', sans-serif" font-size="4.8" font-weight="700" letter-spacing="1.2" fill="#e6c878">CAR</text>
       <path d="M 35 36 A 32 32 0 0 1 60 24" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.28" stroke-linecap="round" fill="none" />
     </svg>
   `;
@@ -662,7 +662,7 @@ function renderBoutiqueCard(item, badgeOverride = null) {
   const sizeObj = getSelectedSizeObj(item);
   const saved = isInWishlist(item.catalogId);
   const badgeText = badgeOverride !== null ? badgeOverride : item.badge;
-  const lineCaption = `${item.categoryLabel} · ${item.family}`;
+  const lineCaption = `${item.categoryLabel} · ${sizeObj.size}`;
 
   return `
     <article class="boutique-card" data-catalog-card="${item.catalogId}">
@@ -674,26 +674,15 @@ function renderBoutiqueCard(item, badgeOverride = null) {
         <button type="button" class="card-media-trigger" data-quick-view="${item.catalogId}" aria-label="View details for ${item.title}">
           ${getItemVisualHTML(item)}
         </button>
+        <button type="button" class="card-hover-add-btn" data-card-add="${item.catalogId}">
+          Add to Bag
+        </button>
       </div>
 
       <div class="card-info-body">
         <span class="card-line-caption">${lineCaption}</span>
         <button type="button" class="card-title-btn" data-quick-view="${item.catalogId}">${item.title}</button>
-
-        <div class="card-meta-row">
-          <div class="card-sizes-list" role="radiogroup" aria-label="Select size for ${item.title}">
-            ${item.sizes.map((s) => `
-              <button type="button" class="card-size-pill ${s.size === sizeObj.size ? 'active' : ''}" data-card-id="${item.catalogId}" data-card-size="${s.size}" role="radio" aria-checked="${s.size === sizeObj.size ? 'true' : 'false'}">
-                ${s.size}
-              </button>
-            `).join('')}
-          </div>
-          <span class="card-price-text">${formatAED(sizeObj.price)}</span>
-        </div>
-
-        <button type="button" class="card-add-btn" data-card-add="${item.catalogId}">
-          Add to Bag
-        </button>
+        <span class="card-price-text">${formatAED(sizeObj.price)}</span>
       </div>
     </article>
   `;
@@ -705,18 +694,20 @@ function selectCardSize(catalogId, sizeLabel) {
   const sizeObj = item.sizes.find((s) => s.size === sizeLabel) || item.sizes[0];
   STATE.selectedSizesById[catalogId] = sizeObj.size;
 
-  // Update every rendered card matching catalogId in place without losing focus
+  // Sync price and selected size caption across every matching lookbook card
   document.querySelectorAll(`[data-catalog-card="${catalogId}"]`).forEach((card) => {
     card.querySelectorAll('.card-size-pill').forEach((pill) => {
       const match = pill.getAttribute('data-card-size') === sizeObj.size;
       pill.classList.toggle('active', match);
       pill.setAttribute('aria-checked', match ? 'true' : 'false');
     });
+    const captionEl = card.querySelector('.card-line-caption');
+    if (captionEl) captionEl.textContent = `${item.categoryLabel} · ${sizeObj.size}`;
     const priceEl = card.querySelector('.card-price-text');
     if (priceEl) priceEl.textContent = formatAED(sizeObj.price);
   });
 
-  // Update Quick-View modal in place if open for this item
+  // Update Slide-Over Quick-View drawer in place if open for this item
   if (STATE.quickViewId === catalogId) {
     const qvDialog = document.getElementById('quickViewDialog');
     if (qvDialog && qvDialog.open) {
@@ -773,7 +764,7 @@ function initCategoryTiles() {
 
       const targetEl = document.querySelector(targetSel);
       if (targetEl) {
-        const offsetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - 72;
+        const offsetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - 78;
         window.scrollTo({
           top: Math.max(0, offsetPos),
           behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
@@ -1021,7 +1012,7 @@ function renderCatalog() {
     grid.innerHTML = `
       <div class="catalog-empty-state">
         <p>No creations match your current search or filter selection.</p>
-        <button type="button" class="btn-outline" id="emptyResetFiltersBtn">Reset Filters</button>
+        <button type="button" class="btn-pill-outline" id="emptyResetFiltersBtn">Reset Filters</button>
       </div>
     `;
     const emptyBtn = document.getElementById('emptyResetFiltersBtn');
@@ -1033,7 +1024,7 @@ function renderCatalog() {
 }
 
 /* ==========================================================================
-   7. Quick-View Product Modal (#quickViewDialog)
+   7. Slide-Over Quick-View Drawer (#quickViewDialog)
    ========================================================================== */
 
 const quickViewDialog = document.getElementById('quickViewDialog');
@@ -1050,45 +1041,46 @@ function openQuickView(catalogId) {
   const bundlePricing = getRitualBundlePricing();
 
   quickViewBody.innerHTML = `
-    <div class="quickview-media-col">
+    <div class="qv-drawer-media">
       ${getItemVisualHTML(item)}
     </div>
-    <div class="quickview-info-col">
-      <div>
+
+    <div>
+      <div class="qv-head-row">
         <span class="section-kicker">${item.categoryLabel} &middot; ${item.family}</span>
         <span class="quickview-arabic" dir="rtl" lang="ar">${item.arabic}</span>
-        <h2 class="section-title" id="quickViewTitle">${item.title}</h2>
       </div>
+      <h2 class="qv-drawer-title" id="quickViewTitle">${item.title}</h2>
+      <div class="qv-live-price" id="qvLivePrice">${formatAED(sizeObj.price)}</div>
+    </div>
 
-      <p class="quickview-desc">${item.story}</p>
+    <p class="quickview-desc">${item.story}</p>
 
-      <div class="quickview-notes">
-        <div class="qv-note-line"><strong>Top</strong><span>${item.top}</span></div>
-        <div class="qv-note-line"><strong>Heart</strong><span>${item.heart}</span></div>
-        <div class="qv-note-line"><strong>Base</strong><span>${item.base}</span></div>
+    <div class="quickview-notes">
+      <div class="qv-note-line"><strong>Top</strong><span>${item.top}</span></div>
+      <div class="qv-note-line"><strong>Heart</strong><span>${item.heart}</span></div>
+      <div class="qv-note-line"><strong>Base</strong><span>${item.base}</span></div>
+    </div>
+
+    <div class="qv-sizes-block">
+      <span class="qv-sizes-label">Select Size / Format</span>
+      <div class="card-sizes-list" role="radiogroup" aria-label="Select format size for ${item.title}">
+        ${item.sizes.map((s) => `
+          <button type="button" class="card-size-pill ${s.size === sizeObj.size ? 'active' : ''}" data-qv-size="${s.size}" role="radio" aria-checked="${s.size === sizeObj.size ? 'true' : 'false'}">
+            ${s.size}
+          </button>
+        `).join('')}
       </div>
+    </div>
 
-      <div class="qv-price-row">
-        <div class="card-sizes-list" role="radiogroup" aria-label="Select format size for ${item.title}">
-          ${item.sizes.map((s) => `
-            <button type="button" class="card-size-pill ${s.size === sizeObj.size ? 'active' : ''}" data-qv-size="${s.size}" role="radio" aria-checked="${s.size === sizeObj.size ? 'true' : 'false'}">
-              ${s.size}
-            </button>
-          `).join('')}
-        </div>
-        <span class="qv-live-price" id="qvLivePrice">${formatAED(sizeObj.price)}</span>
-      </div>
-
-      <div class="qv-actions-row">
-        <button type="button" class="btn-solid" id="qvAddToBagBtn">Add to Bag &middot; ${formatAED(sizeObj.price)}</button>
-        <button type="button" class="btn-outline qv-wish-btn ${isSaved ? 'active' : ''}" id="qvWishlistBtn" data-wishlist-id="${item.catalogId}" aria-pressed="${isSaved ? 'true' : 'false'}" aria-label="Save ${item.title} to wishlist">
-          ${getHeartSVG(isSaved)}
-          <span>${isSaved ? 'Saved' : 'Save'}</span>
-        </button>
-      </div>
-
+    <div class="qv-actions-stack">
+      <button type="button" class="btn-pill-dark btn-full" id="qvAddToBagBtn">Add to Bag &middot; ${formatAED(sizeObj.price)}</button>
+      <button type="button" class="btn-pill-outline btn-full qv-wish-btn ${isSaved ? 'active' : ''}" id="qvWishlistBtn" data-wishlist-id="${item.catalogId}" aria-pressed="${isSaved ? 'true' : 'false'}" aria-label="Save ${item.title} to wishlist">
+        ${getHeartSVG(isSaved)}
+        <span>${isSaved ? 'Saved' : 'Save'}</span>
+      </button>
       ${item.category === 'perfume' ? `
-        <button type="button" class="btn-outline btn-full" id="qvRitualSetBtn">
+        <button type="button" class="btn-pill-outline btn-full" id="qvRitualSetBtn">
           Add 3-Piece Perfume Set (-10%) &middot; ${formatAED(bundlePricing.discounted)}
         </button>
       ` : ''}
@@ -1699,7 +1691,7 @@ function renderProfileWardrobe() {
       closeProfileModal();
       const purifiersSec = document.getElementById('purifiers');
       if (purifiersSec) {
-        const offset = purifiersSec.getBoundingClientRect().top + window.pageYOffset - 72;
+        const offset = purifiersSec.getBoundingClientRect().top + window.pageYOffset - 78;
         window.scrollTo({ top: Math.max(0, offset), behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
       }
     });
@@ -1849,6 +1841,15 @@ function initNavigation() {
   const mobileWishlistBtn = document.getElementById('mobileWishlistBtn');
   const mobileProfileBtn = document.getElementById('mobileProfileBtn');
   const footerRegistryForm = document.getElementById('footerRegistryForm');
+  const mainHeader = document.getElementById('mainHeader');
+
+  if (mainHeader) {
+    const syncHeaderShadow = () => {
+      mainHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
+    window.addEventListener('scroll', syncHeaderShadow, { passive: true });
+    syncHeaderShadow();
+  }
 
   function openMobileNav() {
     if (!mobileNavDrawer) return;
@@ -1904,7 +1905,7 @@ function initNavigation() {
       const catalogSec = document.getElementById('catalog');
       const searchInput = document.getElementById('catalogSearchInput');
       if (catalogSec) {
-        const offsetPos = catalogSec.getBoundingClientRect().top + window.pageYOffset - 72;
+        const offsetPos = catalogSec.getBoundingClientRect().top + window.pageYOffset - 78;
         window.scrollTo({
           top: Math.max(0, offsetPos),
           behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
@@ -1924,7 +1925,7 @@ function initNavigation() {
       if (targetElem) {
         e.preventDefault();
         closeMobileNav();
-        const offsetPos = targetElem.getBoundingClientRect().top + window.pageYOffset - 72;
+        const offsetPos = targetElem.getBoundingClientRect().top + window.pageYOffset - 78;
         window.scrollTo({
           top: Math.max(0, offsetPos),
           behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
