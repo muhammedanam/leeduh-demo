@@ -21,7 +21,7 @@ Fine **Skin Perfumes** and **Home & Car Purifiers** are curated as completely se
 
 4. **The Four Fine Perfumes & Separate Purifiers ([`#perfumes`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L220-L257) & [`#purifiers`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L260-L277))**
    - **Fine Perfumes**: Strictly the **4 Fine Perfumes** rendered by [`renderFinePerfumes`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L821-L832) with capsule format tabs (`Extrait (25%)`, `Travel Atomizer`, `Gift Coffret`) and the single-row **3-Piece Signature Pairing (-10%)** bar ([`addRitualSetForScent`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L843-L855), `AED 549` vs `AED 610`).
-   - **Home & Car Purifiers**: Warm sand (`#F3EEEA`) band rendered by [`renderPurifiersShowcase`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L876-L888) with category capsule tabs (`All (6)`, `Home Purifiers (3)`, `Car Purifiers (3)`) and inline architectural reed decanter & anodized vent diffuser SVGs.
+   - **Home & Car Purifiers**: Warm sand (`#F3EEEA`) band rendered by [`renderPurifiersShowcase`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L876-L888) with category capsule tabs (`All (6)`, `Home Purifiers (3)`, `Car Purifiers (3)`) and photorealistic architectural reed decanter & precision-milled anodized rotary vent diffuser packshots.
 
 5. **All Creations Archive ([`#catalog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/index.html#L280-L334))**
    - Complete 14-item searchable catalog (`8 Fine Perfumes` + `3 Home Purifiers` + `3 Car Purifiers`) in [`CATALOG`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L289-L363) and [`renderCatalog`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L982-L1034), supporting pill search, Line & Signature filter chips, live price/name/popularity sorting, empty-state reset, and synchronized cross-grid size & caption updates ([`selectCardSize`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L691-L730)).
@@ -58,16 +58,16 @@ Fine **Skin Perfumes** and **Home & Car Purifiers** are curated as completely se
 | **Scentra** | [`bottle-scentra.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/bottle-scentra.png) | `سنترا` | `#3d1d07` / `#e59b2d` | Golden saffron & crushed cardamom / Warm cedar & white honey / Precious amber & bourbon vanilla |
 | **Oud Maracuja** | [`bottle-oud-maracuja.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/bottle-oud-maracuja.png) | `عود ماراكوجا` | `#7a3e12` / `#e8a538` | Ripe passionfruit & Turkish rose / Dark Assam oud & Indonesian patchouli / Leather, labdanum & benzoin |
 
-### B. Separate Home & Car Purifiers ([`PURIFIER_LINES`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L131-L270))
+### B. Separate Home & Car Purifiers ([`PURIFIER_LINES`](file:///c:/Users/ASUS/Documents/demo%20leeduh/app.js#L131-L276))
 
-| Purifier | Type | Arabic | Notes (`Top` / `Base`) | Formats & Pricing (incl. 5% VAT) |
-| :--- | :--- | :---: | :--- | :--- |
-| **Qasr Velvet** | Home Purifier | `قصر مخمل` | Smoked frankincense & white tea / Atlas cedarwood & cashmere | `200 ml Diffuser` AED 310 · `500 ml Decanter` AED 590 |
-| **Alabaster Dusk** | Home Purifier | `مرمر الغسق` | Fresh neroli & silver eucalyptus / Mineral musk & hinoki cypress | `200 ml Diffuser` AED 290 · `500 ml Decanter` AED 550 |
-| **Sahara Incense** | Home Purifier | `بخور الصحراء` | Black cardamom & elemi resin / Guaiac wood & toasted tonka | `200 ml Diffuser` AED 330 · `500 ml Decanter` AED 620 |
-| **Carbon Drift** | Car Purifier | `كربون دريفت` | Alpine ozone & cold mint leaf / Smoked leather & black vetiver | `Diffuser + 2 Cores` AED 190 · `3 Refill Cores` AED 140 |
-| **Dune Espresso** | Car Purifier | `قهوة الكثبان` | Spiced petitgrain & black pepper / Virginia cedar & dry amber | `Diffuser + 2 Cores` AED 210 · `3 Refill Cores` AED 150 |
-| **Chrome Citrus** | Car Purifier | `حمضيات الكروم` | Crushed green mandarin & lemon / Driftwood & sheer air musk | `Diffuser + 2 Cores` AED 180 · `3 Refill Cores` AED 130 |
+| Purifier | Type | Visual Asset | Arabic | Notes (`Top` / `Base`) | Formats & Pricing (incl. 5% VAT) |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| **Qasr Velvet** | Home Purifier | [`diffuser-home-qasr-velvet.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/diffuser-home-qasr-velvet.png) | `قصر مخمل` | Smoked frankincense & white tea / Atlas cedarwood & cashmere | `200 ml Diffuser` AED 310 · `500 ml Decanter` AED 590 |
+| **Alabaster Dusk** | Home Purifier | [`diffuser-home-alabaster-dusk.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/diffuser-home-alabaster-dusk.png) | `مرمر الغسق` | Fresh neroli & silver eucalyptus / Mineral musk & hinoki cypress | `200 ml Diffuser` AED 290 · `500 ml Decanter` AED 550 |
+| **Sahara Incense** | Home Purifier | [`diffuser-home-sahara-incense.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/diffuser-home-sahara-incense.png) | `بخور الصحراء` | Black cardamom & elemi resin / Guaiac wood & toasted tonka | `200 ml Diffuser` AED 330 · `500 ml Decanter` AED 620 |
+| **Carbon Drift** | Car Purifier | [`purifier-car-carbon-drift.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/purifier-car-carbon-drift.png) | `كربون دريفت` | Alpine ozone & cold mint leaf / Smoked leather & black vetiver | `Diffuser + 2 Cores` AED 190 · `3 Refill Cores` AED 140 |
+| **Dune Espresso** | Car Purifier | [`purifier-car-dune-espresso.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/purifier-car-dune-espresso.png) | `قهوة الكثبان` | Spiced petitgrain & black pepper / Virginia cedar & dry amber | `Diffuser + 2 Cores` AED 210 · `3 Refill Cores` AED 150 |
+| **Chrome Citrus** | Car Purifier | [`purifier-car-chrome-citrus.png`](file:///c:/Users/ASUS/Documents/demo%20leeduh/purifier-car-chrome-citrus.png) | `حمضيات الكروم` | Crushed green mandarin & lemon / Driftwood & sheer air musk | `Diffuser + 2 Cores` AED 180 · `3 Refill Cores` AED 130 |
 
 ---
 

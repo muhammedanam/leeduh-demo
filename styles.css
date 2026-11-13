@@ -1063,6 +1063,7 @@ img {
 
 .card-media-box img {
   max-height: 82%;
+  max-width: 82%;
   width: auto;
   object-fit: contain;
   filter: var(--bottle-shadow);
@@ -1827,6 +1828,7 @@ dialog::backdrop {
 .qv-drawer-media img {
   max-height: 178px;
   width: auto;
+  object-fit: contain;
   filter: var(--bottle-shadow);
 }
 
@@ -1986,6 +1988,7 @@ dialog::backdrop {
 .wishlist-item-thumb img {
   max-height: 100%;
   width: auto;
+  object-fit: contain;
 }
 
 .wishlist-item-thumb svg {

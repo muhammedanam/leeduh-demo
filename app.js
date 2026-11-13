@@ -140,6 +140,7 @@ const PURIFIER_LINES = [
     family: 'Frankincense & Fig Suede',
     color: '#543d25',
     highlight: '#d6b16a',
+    img: 'diffuser-home-qasr-velvet.png',
     top: 'Smoked frankincense and white tea',
     heart: 'Dried fig leaf and soft suede',
     base: 'Atlas cedarwood and cashmere',
@@ -163,6 +164,7 @@ const PURIFIER_LINES = [
     family: 'White Iris & Mineral Musk',
     color: '#2c3335',
     highlight: '#b9c3c4',
+    img: 'diffuser-home-alabaster-dusk.png',
     top: 'Fresh neroli and silver eucalyptus',
     heart: 'Orris butter and white iris',
     base: 'Mineral musk and hinoki cypress',
@@ -186,6 +188,7 @@ const PURIFIER_LINES = [
     family: 'Roasted Myrrh & Tonka',
     color: '#4c2416',
     highlight: '#df9555',
+    img: 'diffuser-home-sahara-incense.png',
     top: 'Black cardamom and elemi resin',
     heart: 'Roasted myrrh and dry amber',
     base: 'Guaiac wood and toasted tonka',
@@ -209,6 +212,7 @@ const PURIFIER_LINES = [
     family: 'Ozone & Smoked Cabin Leather',
     color: '#1e242b',
     highlight: '#a3b8cc',
+    img: 'purifier-car-carbon-drift.png',
     top: 'Alpine ozone and cold mint leaf',
     heart: 'Brushed grey suede and violet',
     base: 'Smoked leather and black vetiver',
@@ -232,6 +236,7 @@ const PURIFIER_LINES = [
     family: 'Roasted Arabica & Cedar',
     color: '#3d2817',
     highlight: '#cfa061',
+    img: 'purifier-car-dune-espresso.png',
     top: 'Spiced petitgrain and black pepper',
     heart: 'Dark-roasted Arabica and cocoa nib',
     base: 'Virginia cedar and dry amber',
@@ -255,6 +260,7 @@ const PURIFIER_LINES = [
     family: 'Green Mandarin & Neroli',
     color: '#22362d',
     highlight: '#8fc9a7',
+    img: 'purifier-car-chrome-citrus.png',
     top: 'Crushed green mandarin and lemon',
     heart: 'Crisp orange blossom and bamboo',
     base: 'Driftwood and sheer air musk',
@@ -338,7 +344,7 @@ const CATALOG = (() => {
       arabic: purifier.arabic,
       color: purifier.color,
       highlight: purifier.highlight,
-      bottleImg: null,
+      bottleImg: purifier.img || null,
       visualType: purifier.category, // 'home-purifier' or 'car-purifier'
       category: purifier.category,
       categoryLabel: purifier.categoryLabel,
@@ -631,7 +637,7 @@ function createCarPurifierSVG(purifier) {
 }
 
 function getItemVisualHTML(item) {
-  if (item.visualType === 'parfum' && item.bottleImg) {
+  if (item.bottleImg) {
     return `<img src="${item.bottleImg}" alt="${item.title}" loading="lazy">`;
   }
   if (item.visualType === 'atomizer') {
@@ -646,7 +652,7 @@ function getItemVisualHTML(item) {
   if (item.visualType === 'car-purifier') {
     return createCarPurifierSVG(item);
   }
-  return item.bottleImg ? `<img src="${item.bottleImg}" alt="${item.title}" loading="lazy">` : createHomePurifierSVG(item);
+  return createHomePurifierSVG(item);
 }
 
 /* ==========================================================================
@@ -736,11 +742,11 @@ function selectCardSize(catalogId, sizeLabel) {
 function mountCategoryIcons() {
   const homeMount = document.getElementById('catHomeSvgMount');
   const carMount = document.getElementById('catCarSvgMount');
-  if (homeMount && PURIFIER_LINES[0]) {
-    homeMount.innerHTML = createHomePurifierSVG(PURIFIER_LINES[0]);
+  if (homeMount) {
+    homeMount.innerHTML = `<img src="${PURIFIER_LINES[0].img}" alt="Home Purifiers" loading="lazy">`;
   }
-  if (carMount && PURIFIER_LINES[3]) {
-    carMount.innerHTML = createCarPurifierSVG(PURIFIER_LINES[3]);
+  if (carMount) {
+    carMount.innerHTML = `<img src="${PURIFIER_LINES[3].img}" alt="Car Purifiers" loading="lazy">`;
   }
 }
 
