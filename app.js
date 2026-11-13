@@ -2042,7 +2042,31 @@ function initScrollReveals() {
   });
 }
 
+function initPreloader() {
+  const preloader = document.getElementById('atelierPreloader');
+  if (!preloader) return;
+
+  if (prefersReducedMotion.matches) {
+    preloader.classList.add('is-done');
+    return;
+  }
+
+  let dismissed = false;
+  const dismissPreloader = () => {
+    if (dismissed) return;
+    dismissed = true;
+    preloader.classList.add('is-leaving');
+    setTimeout(() => {
+      preloader.classList.add('is-done');
+    }, 620);
+  };
+
+  setTimeout(dismissPreloader, 720);
+  preloader.addEventListener('click', dismissPreloader, { once: true });
+}
+
 function init() {
+  initPreloader();
   loadBag();
   loadWishlist();
   loadProfile();

@@ -143,6 +143,93 @@ img {
 }
 
 /* ==========================================================================
+   Initial Atelier Curtain Preloader (GPU-Composited)
+   ========================================================================== */
+.atelier-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-hero);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition: transform 0.58s var(--ease-calm), opacity 0.48s ease;
+  will-change: transform, opacity;
+}
+
+.atelier-preloader.is-leaving {
+  transform: translate3d(0, -100%, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.atelier-preloader.is-done {
+  display: none;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.05rem;
+  padding: 1.5rem;
+  transition: transform 0.38s var(--ease-calm), opacity 0.34s ease;
+}
+
+.atelier-preloader.is-leaving .preloader-inner {
+  transform: translate3d(0, -24px, 0);
+  opacity: 0;
+}
+
+.preloader-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  animation: preloaderReveal 0.45s var(--ease-calm) both;
+}
+
+.preloader-monogram {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.preloader-wordmark {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+}
+
+.preloader-line {
+  width: 148px;
+  height: 1.5px;
+  background-color: rgba(140, 102, 28, 0.22);
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+}
+
+.preloader-line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-champagne));
+  transform-origin: left center;
+  animation: preloaderLineFill 0.68s var(--ease-calm) 0.08s both;
+}
+
+.preloader-note {
+  font-family: var(--font-sans);
+  font-size: 0.65625rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  animation: preloaderReveal 0.5s var(--ease-calm) 0.14s both;
+}
+
+/* ==========================================================================
    Top Espresso Announcement Strip & Minimal Sticky Header
    ========================================================================== */
 .announcement-bar {
@@ -677,7 +764,7 @@ img {
   text-transform: uppercase;
   color: var(--accent-gold);
   margin-bottom: 0.7rem;
-  animation: heroGentleSettle 0.75s var(--ease-calm) both;
+  animation: heroGentleSettle 0.75s var(--ease-calm) 0.68s backwards;
 }
 
 .hero-title {
@@ -688,7 +775,7 @@ img {
   letter-spacing: -0.028em;
   color: var(--ink-strong);
   margin-bottom: 0.85rem;
-  animation: heroGentleSettle 0.85s var(--ease-calm) 0.08s both;
+  animation: heroGentleSettle 0.85s var(--ease-calm) 0.74s backwards;
 }
 
 .hero-title em {
@@ -704,7 +791,7 @@ img {
   color: var(--ink-secondary);
   max-width: 580px;
   margin: 0 auto 1.5rem;
-  animation: heroGentleSettle 0.85s var(--ease-calm) 0.16s both;
+  animation: heroGentleSettle 0.85s var(--ease-calm) 0.8s backwards;
 }
 
 /* Hero Staggered Trio Showcase */
@@ -745,15 +832,15 @@ img {
 }
 
 .hero-flacon-item.is-side-left {
-  animation-delay: 0.2s;
+  animation-delay: 0.84s;
 }
 
 .hero-flacon-item.is-center {
-  animation-delay: 0.1s;
+  animation-delay: 0.74s;
 }
 
 .hero-flacon-item.is-side-right {
-  animation-delay: 0.3s;
+  animation-delay: 0.92s;
 }
 
 .hero-flacon-item:hover {
@@ -806,7 +893,7 @@ img {
   flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 0.75rem;
-  animation: heroGentleSettle 0.85s var(--ease-calm) 0.24s both;
+  animation: heroGentleSettle 0.85s var(--ease-calm) 0.88s backwards;
 }
 
 /* ==========================================================================
@@ -2257,6 +2344,26 @@ dialog::backdrop {
 /* ==========================================================================
    GPU-Composited Luxury Motion Layer (transform + opacity only)
    ========================================================================== */
+@keyframes preloaderReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes preloaderLineFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes heroGentleSettle {
   from {
     transform: translate3d(0, 26px, 0) scale(0.985);
@@ -2531,6 +2638,9 @@ dialog[open]::backdrop {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .atelier-preloader {
+    display: none !important;
+  }
   .anim-ready .reveal-item {
     opacity: 1 !important;
     transform: none !important;
