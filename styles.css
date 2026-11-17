@@ -5,47 +5,47 @@
 :root {
   color-scheme: light;
 
-  /* Light Lookbook Palette (Crisp White + Warm Stone/Sand + Deep Espresso + Champagne Gold) */
+  /* Gissah UAE Minimalist Luxury Palette (Pure Crisp White Canvas + Rich Black + Champagne Gold) */
   --bg-page: #ffffff;
-  --bg-warm-stone: #f5f2ed;
-  --bg-warm-sand: #f3eeea;
-  --bg-card-tile: #f7f7f7;
+  --bg-warm-stone: #fafafa;
+  --bg-warm-sand: #f8f8f8;
+  --bg-card-tile: #fafafa;
   --bg-card-on-stone: #ffffff;
-  --bg-input: #f5f5f5;
-  --bg-hero: linear-gradient(180deg, #faf8f4 0%, #f1ece2 100%);
-  --bg-header: rgba(255, 255, 255, 0.96);
+  --bg-input: #f7f7f7;
+  --bg-hero: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  --bg-header: rgba(255, 255, 255, 0.98);
   --bg-announcement: #352824;
   --ink-announcement: #ffffff;
 
-  --ink-primary: #1f1f1f;
+  --ink-primary: #111111;
   --ink-strong: #000000;
-  --ink-secondary: rgba(31, 31, 31, 0.66);
-  --ink-muted: rgba(31, 31, 31, 0.48);
+  --ink-secondary: #666666;
+  --ink-muted: #888888;
 
-  --accent-champagne: #d7b56d;
-  --accent-champagne-hover: #caa352;
-  --cta-champagne-ink: #1f2937;
+  --accent-champagne: #c5a880;
+  --accent-champagne-hover: #b4956a;
+  --cta-champagne-ink: #ffffff;
   --accent-gold: #8c661c;
   --accent-gold-hover: #6f4f12;
-  --accent-gold-tint: rgba(215, 181, 109, 0.16);
+  --accent-gold-tint: rgba(197, 168, 128, 0.16);
 
-  --border-subtle: rgba(31, 31, 31, 0.08);
-  --border-medium: rgba(31, 31, 31, 0.16);
-  --border-strong: rgba(31, 31, 31, 0.36);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.28);
 
-  --btn-solid-bg: #1f1f1f;
+  --btn-solid-bg: #111111;
   --btn-solid-hover: #000000;
   --btn-solid-ink: #ffffff;
-  --badge-dark-bg: #1f1f1f;
+  --badge-dark-bg: #111111;
   --badge-dark-ink: #ffffff;
 
   --backdrop-color: rgba(18, 17, 16, 0.42);
-  --shadow-header: 0 4px 20px rgba(0, 0, 0, 0.05);
-  --shadow-pill: 0 6px 20px rgba(0, 0, 0, 0.10);
+  --shadow-header: 0 2px 14px rgba(0, 0, 0, 0.04);
+  --shadow-pill: 0 4px 18px rgba(0, 0, 0, 0.12);
   --shadow-modal: 0 24px 60px rgba(18, 17, 16, 0.16);
   --shadow-drawer: -12px 0 42px rgba(18, 17, 16, 0.14);
-  --bottle-shadow: drop-shadow(0 18px 26px rgba(31, 31, 31, 0.15));
-  --svg-shadow: drop-shadow(0 12px 18px rgba(31, 31, 31, 0.12));
+  --bottle-shadow: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.12));
+  --svg-shadow: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.10));
 
   /* Typography */
   --font-serif: 'Cormorant', Georgia, 'Times New Roman', serif;
@@ -235,20 +235,49 @@ img {
 .announcement-bar {
   background-color: var(--bg-announcement);
   color: var(--ink-announcement);
-  min-height: 36px;
+  min-height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem 1rem;
+  padding: 0.45rem 0;
   text-align: center;
 }
 
-.announcement-bar p {
+.announcement-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.announcement-region,
+.announcement-badge {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
+.announcement-bar p,
+.announcement-text {
   font-family: var(--font-sans);
   font-size: 0.71875rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  flex: 1;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .announcement-region,
+  .announcement-badge {
+    display: none;
+  }
 }
 
 .site-header {
@@ -532,17 +561,18 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 46px;
-  padding: 0 1.85rem;
-  background-color: var(--accent-champagne);
-  color: var(--cta-champagne-ink);
+  height: 48px;
+  padding: 0 2rem;
+  background-color: var(--btn-solid-bg);
+  color: var(--btn-solid-ink);
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   border-radius: var(--radius-btn);
-  transition: background-color 0.22s ease, transform 0.28s var(--ease-calm);
+  border: 1px solid var(--btn-solid-bg);
+  transition: background-color 0.22s ease, transform 0.28s var(--ease-calm), box-shadow 0.22s ease;
   white-space: nowrap;
 }
 
@@ -551,15 +581,16 @@ img {
   position: absolute;
   inset: 0;
   width: 45%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.34) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0) 100%);
   transform: translate3d(-160%, 0, 0) skewX(-20deg);
   animation: sheenSweep 6.5s var(--ease-calm) 1.5s infinite;
   pointer-events: none;
 }
 
 .btn-champagne:hover {
-  background-color: var(--accent-champagne-hover);
+  background-color: var(--btn-solid-hover);
   transform: translate3d(0, -2px, 0);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
 .btn-discover-link {
@@ -879,10 +910,27 @@ img {
   text-transform: uppercase;
   white-space: nowrap;
   color: var(--ink-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: color 0.2s ease;
+}
+
+.hero-flacon-ar {
+  font-family: var(--font-arabic);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-muted);
+  direction: rtl;
   transition: color 0.2s ease;
 }
 
 .hero-flacon-item:hover .hero-flacon-caption {
+  color: var(--ink-strong);
+}
+
+.hero-flacon-item:hover .hero-flacon-ar {
   color: var(--accent-gold);
 }
 
@@ -947,12 +995,13 @@ img {
   aspect-ratio: 1 / 1;
   background-color: var(--bg-card-on-stone);
   border-radius: var(--radius-tile);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.75rem;
   overflow: hidden;
-  transition: transform 0.35s var(--ease-calm);
+  transition: transform 0.35s var(--ease-calm), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .category-tile-media img,
@@ -967,6 +1016,8 @@ img {
 
 .category-tile:hover .category-tile-media {
   transform: translate3d(0, -5px, 0);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
 }
 
 .category-tile:hover .category-tile-media img,
@@ -1036,16 +1087,24 @@ img {
   aspect-ratio: 1 / 1;
   background-color: var(--bg-card-tile);
   border-radius: var(--radius-tile);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.75rem;
   overflow: hidden;
+  transition: border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.boutique-card:hover .card-media-box {
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 
 .boutique-section.is-on-stone .card-media-box,
 .boutique-section.is-warm-stone .card-media-box {
-  background-color: var(--bg-card-on-stone);
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.05);
 }
 
 .product-grid-3 .card-media-box {
@@ -1137,7 +1196,7 @@ img {
   color: var(--accent-gold);
 }
 
-/* Hover-Revealed Bottom Pill Add Button (Lattafa Pattern) */
+/* Hover-Revealed Bottom Pill Add Button (Gissah High-Contrast DNA) */
 .card-hover-add-btn {
   position: absolute;
   left: 0.9rem;
@@ -1145,18 +1204,18 @@ img {
   bottom: 0.9rem;
   z-index: 3;
   height: 42px;
-  border-radius: 24px;
-  background-color: #ffffff;
-  color: var(--ink-strong);
+  border-radius: var(--radius-pill);
+  background-color: var(--btn-solid-bg);
+  color: var(--btn-solid-ink);
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: var(--shadow-pill);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.24s var(--ease-calm), transform 0.24s var(--ease-calm), background-color 0.2s ease, color 0.2s ease;
+  transition: opacity 0.24s var(--ease-calm), transform 0.24s var(--ease-calm), background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .boutique-card:hover .card-hover-add-btn,
@@ -1166,8 +1225,8 @@ img {
 }
 
 .card-hover-add-btn:hover {
-  background-color: var(--ink-primary);
-  color: #ffffff;
+  background-color: var(--btn-solid-hover);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24);
 }
 
 /* Touch / No-Hover Devices: Reserve top & bottom bands so badge/heart/Add pill never overlap bottle */
@@ -1198,7 +1257,7 @@ img {
     right: 0.5rem;
   }
   .card-hover-add-btn {
-    opacity: 0.96;
+    opacity: 1;
     transform: none;
     left: 0.55rem;
     right: 0.55rem;
@@ -1208,24 +1267,27 @@ img {
     padding: 0 0.8rem;
     font-size: 0.65625rem;
     letter-spacing: 0.05em;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background-color: var(--btn-solid-bg);
+    color: var(--btn-solid-ink);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   }
 }
 
-/* Left-Aligned 3-Line Editorial Product Meta */
+/* Left-Aligned Editorial Product Meta (Gissah Bilingual & Notes DNA) */
 .card-info-body {
-  padding-top: 0.9rem;
+  padding-top: 0.95rem;
   display: flex;
   flex-direction: column;
-  gap: 0.22rem;
+  gap: 0.25rem;
 }
 
 .card-line-caption {
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--ink-secondary);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1234,10 +1296,14 @@ img {
 .card-title-btn {
   text-align: left;
   font-family: var(--font-sans);
-  font-size: 0.96875rem;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 600;
   line-height: 1.35;
   color: var(--ink-strong);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem;
   transition: color 0.2s ease;
 }
 
@@ -1245,12 +1311,53 @@ img {
   color: var(--accent-gold);
 }
 
+.card-title-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-title-arabic {
+  font-family: var(--font-arabic);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  direction: rtl;
+}
+
+.card-notes-sub {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: 0.15rem;
+}
+
 .card-price-text {
   font-family: var(--font-sans);
-  font-size: 0.96875rem;
+  font-size: 1rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--ink-strong);
-  margin-top: 0.1rem;
+}
+
+.card-vat-pill {
+  font-family: var(--font-sans);
+  font-size: 0.65625rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* ==========================================================================
@@ -1290,9 +1397,10 @@ img {
 }
 
 .ritual-banner {
-  margin-top: 3rem;
-  padding: 1.35rem 1.75rem;
+  margin-top: 3.5rem;
+  padding: 1.5rem 2rem;
   background-color: var(--bg-warm-stone);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-tile);
   display: flex;
   align-items: center;
@@ -1498,6 +1606,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-radius: var(--radius-tile);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
   background-color: var(--bg-warm-sand);
 }
@@ -2588,6 +2697,15 @@ dialog[open]::backdrop {
   }
   .hero-flacon-item.is-center .hero-flacon-img {
     height: 174px;
+  }
+  .hero-flacon-caption {
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+  }
+  .hero-flacon-ar {
+    font-size: 0.6875rem;
   }
   .hero-actions {
     flex-direction: column;

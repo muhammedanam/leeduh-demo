@@ -687,8 +687,15 @@ function renderBoutiqueCard(item, badgeOverride = null) {
 
       <div class="card-info-body">
         <span class="card-line-caption">${lineCaption}</span>
-        <button type="button" class="card-title-btn" data-quick-view="${item.catalogId}">${item.title}</button>
-        <span class="card-price-text">${formatAED(sizeObj.price)}</span>
+        <button type="button" class="card-title-btn" data-quick-view="${item.catalogId}">
+          <span class="card-title-text">${item.title}</span>
+          ${item.arabic ? `<span class="card-title-arabic">${item.arabic}</span>` : ''}
+        </button>
+        <span class="card-notes-sub">${item.family || item.subtitle || ''}</span>
+        <div class="card-price-row">
+          <span class="card-price-text">${formatAED(sizeObj.price)}</span>
+          <span class="card-vat-pill">VAT incl.</span>
+        </div>
       </div>
     </article>
   `;
