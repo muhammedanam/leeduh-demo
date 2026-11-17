@@ -12,7 +12,15 @@
   --bg-card-tile: #fafafa;
   --bg-card-on-stone: #ffffff;
   --bg-input: #f7f7f7;
-  --bg-hero: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  /* Gissah Vibrant Campaign Stage: Multi-layered luminous sunset amber, terracotta coral, twilight orchid & emerald oasis */
+  --bg-hero:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0) 75%),
+    radial-gradient(circle 540px at 12% 24%, rgba(245, 166, 35, 0.44) 0%, rgba(245, 166, 35, 0) 65%),
+    radial-gradient(circle 560px at 88% 26%, rgba(228, 98, 72, 0.40) 0%, rgba(228, 98, 72, 0) 65%),
+    radial-gradient(circle 620px at 50% 86%, rgba(212, 175, 55, 0.42) 0%, rgba(212, 175, 55, 0) 70%),
+    radial-gradient(circle 480px at 85% 80%, rgba(138, 75, 150, 0.32) 0%, rgba(138, 75, 150, 0) 65%),
+    radial-gradient(circle 480px at 15% 78%, rgba(46, 139, 87, 0.26) 0%, rgba(46, 139, 87, 0) 62%),
+    linear-gradient(135deg, #fff7ee 0%, #feeddc 32%, #fde4eb 66%, #f1e6f8 100%);
   --bg-header: rgba(255, 255, 255, 0.98);
   --bg-announcement: #352824;
   --ink-announcement: #ffffff;
@@ -152,7 +160,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-hero);
+  background: #ffffff;
   transform: translate3d(0, 0, 0);
   opacity: 1;
   transition: transform 0.58s var(--ease-calm), opacity 0.48s ease;
@@ -814,7 +822,7 @@ img {
 }
 
 /* ==========================================================================
-   1. Centered Editorial Campaign Hero (Gissah & Lattafa Lookbook)
+   1. Centered Editorial Campaign Hero (Gissah Vibrant Campaign Stage)
    ========================================================================== */
 .boutique-hero {
   background: var(--bg-hero);
@@ -823,7 +831,39 @@ img {
   overflow: hidden;
 }
 
+/* Luminous Ambient Drifting Color Auras (Gissah Campaign Lighting) */
+.boutique-hero::before,
+.boutique-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(55px);
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+.boutique-hero::before {
+  top: -15%;
+  left: -8%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.44) 0%, rgba(228, 98, 72, 0.32) 50%, rgba(245, 166, 35, 0) 72%);
+  animation: heroAuraFloatLeft 14s ease-in-out infinite alternate;
+}
+
+.boutique-hero::after {
+  bottom: -15%;
+  right: -8%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(138, 75, 150, 0.35) 0%, rgba(46, 139, 87, 0.28) 45%, rgba(212, 175, 55, 0.22) 70%, transparent 82%);
+  animation: heroAuraFloatRight 18s ease-in-out infinite alternate;
+}
+
 .hero-stage-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -886,6 +926,21 @@ img {
   position: relative;
 }
 
+/* Luminous Backlight halo behind transparent crystal flacons */
+.hero-flacons-stage::before {
+  content: '';
+  position: absolute;
+  top: 14%;
+  left: 6%;
+  right: 6%;
+  bottom: 12%;
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(255, 255, 255, 0.88) 0%, rgba(255, 235, 190, 0.58) 40%, rgba(245, 180, 80, 0.28) 70%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(26px);
+  z-index: 1;
+}
+
 .hero-flacons-stage::after {
   content: '';
   position: absolute;
@@ -896,6 +951,7 @@ img {
   background: radial-gradient(ellipse at center, rgba(53, 40, 36, 0.16) 0%, rgba(53, 40, 36, 0) 72%);
   pointer-events: none;
   animation: stageShadowPulse 4.2s ease-in-out infinite;
+  z-index: 1;
 }
 
 .hero-flacon-item {
@@ -2548,6 +2604,36 @@ dialog::backdrop {
   }
   50% {
     transform: scale(1.05);
+  }
+}
+
+@keyframes heroAuraFloatLeft {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate3d(40px, 25px, 0) scale(1.08);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(-20px, 35px, 0) scale(0.96);
+    opacity: 0.78;
+  }
+}
+
+@keyframes heroAuraFloatRight {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.68;
+  }
+  50% {
+    transform: translate3d(-35px, -20px, 0) scale(1.06);
+    opacity: 0.88;
+  }
+  100% {
+    transform: translate3d(25px, -30px, 0) scale(0.98);
+    opacity: 0.72;
   }
 }
 
