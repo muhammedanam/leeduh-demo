@@ -173,27 +173,66 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.05rem;
+  gap: 1.15rem;
   padding: 1.5rem;
-  transition: transform 0.38s var(--ease-calm), opacity 0.34s ease;
+  transition: transform 0.42s var(--ease-calm), opacity 0.38s ease;
 }
 
 .atelier-preloader.is-leaving .preloader-inner {
-  transform: translate3d(0, -24px, 0);
+  transform: translate3d(0, -28px, 0);
   opacity: 0;
 }
 
-.preloader-brand {
+/* Gissah Signature Rotating Outer Ring Stage */
+.preloader-emblem-stage {
+  position: relative;
+  width: 200px;
+  height: 200px;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  animation: preloaderReveal 0.45s var(--ease-calm) both;
+  justify-content: center;
+  animation: preloaderReveal 0.5s var(--ease-calm) both;
+}
+
+.preloader-outer-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-origin: center center;
+}
+
+.preloader-outer-ring.is-clockwise {
+  animation: ringSpinClockwise 16s linear infinite;
+}
+
+.preloader-outer-ring.is-counter {
+  animation: ringSpinCounter 22s linear infinite;
+}
+
+.preloader-core-emblem {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: emblemAuraPulse 3.4s ease-in-out infinite;
 }
 
 .preloader-monogram {
-  height: 36px;
+  height: 60px;
   width: auto;
   object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(197, 168, 128, 0.55));
+}
+
+.preloader-brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  animation: preloaderReveal 0.5s var(--ease-calm) 0.12s both;
 }
 
 .preloader-wordmark {
@@ -202,10 +241,19 @@ img {
   object-fit: contain;
 }
 
+.preloader-arabic-tag {
+  font-family: var(--font-arabic);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 0.05em;
+  direction: rtl;
+}
+
 .preloader-line {
-  width: 148px;
+  width: 160px;
   height: 1.5px;
-  background-color: rgba(140, 102, 28, 0.22);
+  background-color: rgba(140, 102, 28, 0.2);
   overflow: hidden;
   border-radius: var(--radius-pill);
 }
@@ -216,7 +264,7 @@ img {
   height: 100%;
   background: linear-gradient(90deg, var(--accent-gold), var(--accent-champagne));
   transform-origin: left center;
-  animation: preloaderLineFill 0.68s var(--ease-calm) 0.08s both;
+  animation: preloaderLineFill 0.95s var(--ease-calm) 0.12s both;
 }
 
 .preloader-note {
@@ -226,7 +274,7 @@ img {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-secondary);
-  animation: preloaderReveal 0.5s var(--ease-calm) 0.14s both;
+  animation: preloaderReveal 0.5s var(--ease-calm) 0.18s both;
 }
 
 /* ==========================================================================
@@ -2476,6 +2524,33 @@ dialog::backdrop {
   }
 }
 
+@keyframes ringSpinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ringSpinCounter {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes emblemAuraPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
 @keyframes heroGentleSettle {
   from {
     transform: translate3d(0, 26px, 0) scale(0.985);
@@ -2687,6 +2762,13 @@ dialog[open]::backdrop {
   }
   .boutique-hero {
     padding: 2.25rem 0 2.5rem;
+  }
+  .preloader-emblem-stage {
+    width: 168px;
+    height: 168px;
+  }
+  .preloader-monogram {
+    height: 50px;
   }
   .hero-flacons-stage {
     gap: 0.65rem;

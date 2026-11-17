@@ -2074,7 +2074,7 @@ function initPreloader() {
     }, 620);
   };
 
-  setTimeout(dismissPreloader, 720);
+  setTimeout(dismissPreloader, 1100);
   preloader.addEventListener('click', dismissPreloader, { once: true });
 }
 
