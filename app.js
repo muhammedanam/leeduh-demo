@@ -1227,6 +1227,62 @@ function addCatalogItemToBag(catalogItem, selectedSize) {
   addItemToBag(pseudoScent, pseudoPiece, sizeObj.size, sizeObj.price, false);
 }
 
+function addHeroOfferToBag(offerKey) {
+  const offers = {
+    'duo-99': {
+      id: 'hero-offer-duo-99',
+      title: 'Signature Duo (Oud Rose + Avenor)',
+      size: '2 Perfumes · Was AED 110',
+      price: 99,
+      offerTag: 'duo AED 99',
+      toast: 'Duo Offer (2 for AED 99) added to bag'
+    },
+    'b2g1-110': {
+      id: 'hero-offer-b2g1-110',
+      title: 'Signature Trio (Avenor, Oud Rose & Oud Maracuja)',
+      size: '3 Perfumes · Buy 2, Get 1 Free',
+      price: 110,
+      offerTag: 'buy 2 get 1',
+      toast: 'Buy 2, Get 1 Free Trio (AED 110) added to bag'
+    }
+  };
+
+  const offer = offers[offerKey];
+  if (!offer) return;
+
+  const existing = STATE.bag.find((entry) => entry.id === offer.id);
+  if (existing) {
+    if (existing.qty < 20) existing.qty += 1;
+  } else {
+    STATE.bag.push({
+      id: offer.id,
+      title: offer.title,
+      size: offer.size,
+      price: offer.price,
+      qty: 1,
+      isRitual: false,
+      offerTag: offer.offerTag
+    });
+  }
+
+  saveBag();
+  updateBagUI();
+  if (bagCountBadge && !prefersReducedMotion.matches) {
+    bagCountBadge.classList.remove('is-bump');
+    void bagCountBadge.offsetWidth;
+    bagCountBadge.classList.add('is-bump');
+  }
+  showToast(offer.toast);
+}
+
+function initHeroOffers() {
+  document.querySelectorAll('[data-hero-offer]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      addHeroOfferToBag(btn.getAttribute('data-hero-offer'));
+    });
+  });
+}
+
 function updateBagUI() {
   const totalCount = STATE.bag.reduce((acc, item) => acc + item.qty, 0);
   if (bagCountBadge) bagCountBadge.textContent = totalCount;
@@ -1264,6 +1320,7 @@ function updateBagUI() {
               <div class="bag-row-sub">
                 <span>${item.size}</span>
                 ${item.isRitual ? '<span class="ritual-tag">set -10%</span>' : ''}
+                ${item.offerTag ? `<span class="ritual-tag">${item.offerTag}</span>` : ''}
               </div>
               <div class="qty-controls">
                 <button type="button" class="qty-btn" aria-label="Decrease quantity" data-bag-action="dec" data-bag-index="${index}">&minus;</button>
@@ -2021,7 +2078,7 @@ function initScrollReveals() {
   if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) return;
 
   const targets = document.querySelectorAll(
-    '.section-center-head, .editorial-quote, .section-head-row, .category-tile, .boutique-card, .ritual-banner, .editorial-split-card, .trust-item'
+    '.section-center-head, .editorial-quote, .campaign-media-frame, .campaign-copy-col, .section-head-row, .category-tile, .boutique-card, .ritual-banner, .editorial-split-card, .trust-item'
   );
   if (targets.length === 0) return;
 
@@ -2091,6 +2148,7 @@ function init() {
   if (addRitualBtn) addRitualBtn.textContent = `Add 3-Piece Set · ${formatAED(bundlePricing.discounted)}`;
 
   mountCategoryIcons();
+  initHeroOffers();
   initCategoryTiles();
   initPerfumeFormatTabs();
   initPurifierTabs();
