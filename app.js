@@ -680,9 +680,14 @@ function renderBoutiqueCard(item, badgeOverride = null) {
         <button type="button" class="card-media-trigger" data-quick-view="${item.catalogId}" aria-label="View details for ${item.title}">
           ${getItemVisualHTML(item)}
         </button>
-        <button type="button" class="card-hover-add-btn" data-card-add="${item.catalogId}">
-          Add to Bag
-        </button>
+        <div class="card-gissah-actions">
+          <button type="button" class="card-hover-add-btn" data-card-add="${item.catalogId}">
+            Add to Cart
+          </button>
+          <button type="button" class="card-hover-buy-btn" data-card-buy="${item.catalogId}">
+            &#9889; Buy Now
+          </button>
+        </div>
       </div>
 
       <div class="card-info-body">
@@ -1103,7 +1108,10 @@ function openQuickView(catalogId) {
     </div>
 
     <div class="qv-actions-stack">
-      <button type="button" class="btn-pill-dark btn-full" id="qvAddToBagBtn">Add to Bag &middot; ${formatAED(sizeObj.price)}</button>
+      <div class="qv-gissah-btn-row">
+        <button type="button" class="gissah-pdp-add" id="qvAddToBagBtn">Add to Cart &middot; ${formatAED(sizeObj.price)}</button>
+        <button type="button" class="gissah-pdp-buy" id="qvBuyNowBtn">&#9889; Buy Now</button>
+      </div>
       <button type="button" class="btn-pill-outline btn-full qv-wish-btn ${isSaved ? 'active' : ''}" id="qvWishlistBtn" data-wishlist-id="${item.catalogId}" aria-pressed="${isSaved ? 'true' : 'false'}" aria-label="Save ${item.title} to wishlist">
         ${getHeartSVG(isSaved)}
         <span>${isSaved ? 'Saved' : 'Save'}</span>
@@ -1127,6 +1135,16 @@ function openQuickView(catalogId) {
     qvAddBtn.addEventListener('click', () => {
       const currentSize = getSelectedSizeObj(item);
       addCatalogItemToBag(item, currentSize.size);
+    });
+  }
+
+  const qvBuyNowBtn = document.getElementById('qvBuyNowBtn');
+  if (qvBuyNowBtn) {
+    qvBuyNowBtn.addEventListener('click', () => {
+      const currentSize = getSelectedSizeObj(item);
+      addCatalogItemToBag(item, currentSize.size);
+      closeQuickViewModal();
+      openBagModal();
     });
   }
 
@@ -1279,6 +1297,19 @@ function initHeroOffers() {
   document.querySelectorAll('[data-hero-offer]').forEach((btn) => {
     btn.addEventListener('click', () => {
       addHeroOfferToBag(btn.getAttribute('data-hero-offer'));
+      if (btn.getAttribute('data-buy-now') === 'true') {
+        openBagModal();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-bundle-ritual]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const scentIdx = Number(btn.getAttribute('data-bundle-ritual') || '0');
+      addRitualSetForScent(scentIdx);
+      if (btn.getAttribute('data-buy-now') === 'true') {
+        openBagModal();
+      }
     });
   });
 }
@@ -2043,6 +2074,17 @@ function initDelegatedCardActions() {
       return;
     }
 
+    const buyBtn = e.target.closest('[data-card-buy]');
+    if (buyBtn) {
+      const id = buyBtn.getAttribute('data-card-buy');
+      const item = findBuyableItem(id);
+      if (item) {
+        addCatalogItemToBag(item, getSelectedSizeObj(item).size);
+        openBagModal();
+      }
+      return;
+    }
+
     const qvTrigger = e.target.closest('[data-quick-view]');
     if (qvTrigger) {
       const qvId = qvTrigger.getAttribute('data-quick-view');
@@ -2169,7 +2211,7 @@ function initNavigation() {
   }
 
   // Scroll Spy
-  const sectionsToWatch = ['hero', 'bestsellers', 'perfumes', 'purifiers', 'catalog', 'about'];
+  const sectionsToWatch = ['hero', 'bestsellers', 'bundles', 'perfumes', 'purifiers', 'catalog', 'about'];
   const sectionElements = sectionsToWatch.map((id) => document.getElementById(id)).filter(Boolean);
 
   if ('IntersectionObserver' in window && sectionElements.length > 0) {
@@ -2202,7 +2244,7 @@ function initScrollReveals() {
   if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) return;
 
   const targets = document.querySelectorAll(
-    '.section-center-head, .editorial-quote, .campaign-media-frame, .campaign-copy-col, .section-head-row, .category-tile, .boutique-card, .ritual-banner, .editorial-split-card, .trust-item'
+    '.section-center-head, .editorial-quote, .campaign-media-frame, .campaign-copy-col, .bundle-card, .section-head-row, .category-tile, .boutique-card, .ritual-banner, .editorial-split-card, .trust-item'
   );
   if (targets.length === 0) return;
 

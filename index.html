@@ -127,6 +127,7 @@
 
       <nav class="main-nav" id="desktopNav" aria-label="Main navigation">
         <a href="#bestsellers" class="nav-link" data-section="bestsellers">Best Sellers</a>
+        <a href="#bundles" class="nav-link" data-section="bundles">Sets &amp; Gifts</a>
         <a href="#perfumes" class="nav-link" data-section="perfumes">Fine Perfumes</a>
         <a href="#purifiers" class="nav-link" data-section="purifiers">Home &amp; Car</a>
         <a href="#catalog" class="nav-link" data-section="catalog">All Creations</a>
@@ -183,6 +184,7 @@
       </div>
       <nav class="mobile-drawer-links" aria-label="Mobile navigation">
         <a href="#bestsellers" class="mobile-nav-link" data-section="bestsellers">Best Sellers</a>
+        <a href="#bundles" class="mobile-nav-link" data-section="bundles">Sets &amp; Gifts</a>
         <a href="#perfumes" class="mobile-nav-link" data-section="perfumes">Fine Perfumes</a>
         <a href="#purifiers" class="mobile-nav-link" data-section="purifiers">Home &amp; Car Purifiers</a>
         <a href="#catalog" class="mobile-nav-link" data-section="catalog">All Creations</a>
@@ -356,14 +358,14 @@
       </div>
     </section>
 
-    <!-- 2. Best Sellers 4-Column Unboxed Gallery Grid (#FFFFFF) -->
-    <section class="boutique-section" id="bestsellers" aria-label="Best Sellers">
+    <!-- 2. Best Sellers — Gissah-Style Frameless Gallery Grid (#FFFFFF) -->
+    <section class="boutique-section" id="bestsellers" aria-label="Recommended Creations &amp; Best Sellers">
       <div class="container">
         <div class="section-center-head">
-          <span class="section-track-eyebrow">Most Coveted Creations</span>
-          <h2 class="section-serif-heading">Best <em>Sellers</em></h2>
+          <h2 class="section-serif-heading">Bring <em>presence</em> home, keep it <em>close</em>.</h2>
+          <span class="section-track-eyebrow">Recommended For You</span>
         </div>
-        <div class="product-grid-4" id="bestsellersGrid"></div>
+        <div class="product-grid-4 gissah-gallery-grid" id="bestsellersGrid"></div>
       </div>
     </section>
 
@@ -394,52 +396,140 @@
       </div>
     </section>
 
-    <!-- 4. Shop-by-Line Tiles (#FFFFFF Band) -->
-    <section class="boutique-section" id="collections" aria-label="Explore collections">
+    <!-- 4. Gissah-Style Curated Sets, Bundles & Gift Boxes (#FFFFFF) -->
+    <section class="boutique-section gissah-bundles-section" id="bundles" aria-label="Curated Sets, Bundles and Luxury Gifts">
       <div class="container">
         <div class="section-center-head">
-          <span class="section-track-eyebrow">Curated Categories</span>
-          <h2 class="section-serif-heading">Bring <em>presence</em> home, keep it <em>close</em>.</h2>
+          <span class="section-track-eyebrow">Sets Line &middot; Ready To Gift</span>
+          <h2 class="section-serif-heading">Curated <em>Sets</em> &amp; Luxury <em>Gifts</em></h2>
         </div>
 
-        <div class="category-tiles-grid">
+        <div class="bundles-grid-3">
+          <!-- Bundle 1: The Signature Trio Set (Buy 2, Get 1 Free) -->
+          <article class="bundle-card">
+            <div class="bundle-stage is-stage-ruby">
+              <span class="bundle-save-badge">Buy 2, Get 1 Free &middot; Save AED 55</span>
+              <div class="bundle-visual-cluster is-trio">
+                <img src="bottle-avenor.png" alt="Avenor" class="bundle-bottle is-left" loading="lazy">
+                <img src="bottle-oud-rose.png" alt="Oud Rose" class="bundle-bottle is-center" loading="lazy">
+                <img src="bottle-oud-maracuja.png" alt="Oud Maracuja" class="bundle-bottle is-right" loading="lazy">
+              </div>
+              <span class="bundle-box-pedestal" aria-hidden="true"></span>
+            </div>
+            <div class="bundle-meta">
+              <span class="bundle-eyebrow">Sets Line &middot; 3 Signature Scents</span>
+              <h3 class="bundle-title">The Signature Trio Set <span class="card-title-ar">طقم الثلاثي</span></h3>
+              <p class="bundle-includes">Includes Avenor, Oud Rose &amp; Oud Maracuja in rigid linen gift presentation.</p>
+              <div class="bundle-price-row">
+                <strong class="bundle-price">AED 110</strong>
+                <span class="bundle-was">AED 165</span>
+              </div>
+              <div class="gissah-dual-btns">
+                <button type="button" class="gissah-btn-add" data-hero-offer="b2g1-110">Add to Cart</button>
+                <button type="button" class="gissah-btn-buy" data-hero-offer="b2g1-110" data-buy-now="true">&#9889; Buy Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bundle 2: The Iconic Duo Set (2 for AED 99) -->
+          <article class="bundle-card">
+            <div class="bundle-stage is-stage-obsidian">
+              <span class="bundle-save-badge is-gold">Duo Offer &middot; Save AED 11</span>
+              <div class="bundle-visual-cluster is-duo">
+                <img src="bottle-avenor.png" alt="Avenor" class="bundle-bottle is-duo-a" loading="lazy">
+                <img src="bottle-oud-rose.png" alt="Oud Rose" class="bundle-bottle is-duo-b" loading="lazy">
+              </div>
+              <span class="bundle-box-pedestal" aria-hidden="true"></span>
+            </div>
+            <div class="bundle-meta">
+              <span class="bundle-eyebrow">Sets Line &middot; 2 Signature Scents</span>
+              <h3 class="bundle-title">The Iconic Duo Set <span class="card-title-ar">طقم الثنائي</span></h3>
+              <p class="bundle-includes">Our two icons—Oud Rose &amp; Avenor—paired together at AED 99 instead of AED 110.</p>
+              <div class="bundle-price-row">
+                <strong class="bundle-price">AED 99</strong>
+                <span class="bundle-was">AED 110</span>
+              </div>
+              <div class="gissah-dual-btns">
+                <button type="button" class="gissah-btn-add" data-hero-offer="duo-99">Add to Cart</button>
+                <button type="button" class="gissah-btn-buy" data-hero-offer="duo-99" data-buy-now="true">&#9889; Buy Now</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bundle 3: The Atelier 3-Piece Luxury Coffret (-10%) -->
+          <article class="bundle-card">
+            <div class="bundle-stage is-stage-emerald">
+              <span class="bundle-save-badge">Atelier Gift Box &middot; Save 10%</span>
+              <div class="bundle-visual-cluster is-coffret">
+                <img src="bottle-scentra.png" alt="Scentra" class="bundle-bottle is-left" loading="lazy">
+                <img src="bottle-oud-rose.png" alt="Oud Rose 50ml" class="bundle-bottle is-center" loading="lazy">
+                <img src="bottle-oud-maracuja.png" alt="Travel Vault" class="bundle-bottle is-right" loading="lazy">
+              </div>
+              <span class="bundle-box-pedestal" aria-hidden="true"></span>
+            </div>
+            <div class="bundle-meta">
+              <span class="bundle-eyebrow">Luxury Gift &middot; Complete Ritual</span>
+              <h3 class="bundle-title">Atelier 3-Piece Coffret <span class="card-title-ar">صندوق الهدايا</span></h3>
+              <p class="bundle-includes">50 ml Extrait, 10 ml Gold Travel Atomizer &amp; Lacquered Vault Gift Coffret.</p>
+              <div class="bundle-price-row">
+                <strong class="bundle-price">AED 549</strong>
+                <span class="bundle-was">AED 610</span>
+              </div>
+              <div class="gissah-dual-btns">
+                <button type="button" class="gissah-btn-add" data-bundle-ritual="0">Add to Cart</button>
+                <button type="button" class="gissah-btn-buy" data-bundle-ritual="0" data-buy-now="true">&#9889; Buy Now</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gissah-Style Warm Stone Editorial Quote & Collection Lookbook (#F5F2ED) -->
+    <section class="boutique-section is-gissah-stone" id="collections" aria-label="Explore collections">
+      <div class="container">
+        <p class="editorial-quote">
+          Explore the house by <em>line</em>—from 25% <em>extrait</em> icons to <em>gift coffrets</em> and smoke-free <em>interior</em> purifiers.
+        </p>
+
+        <div class="category-tiles-grid gissah-category-grid">
           <button type="button" class="category-tile" data-jump-category="perfume" data-scroll-target="#perfumes">
-            <div class="category-tile-media">
+            <div class="category-tile-media is-mood-ruby">
               <img src="bottle-oud-rose.png" alt="Fine Perfumes" loading="lazy">
             </div>
-            <div class="category-tile-meta">
-              <h3 class="category-tile-title">Fine Perfumes</h3>
-              <span class="category-tile-sub">Discover</span>
+            <div class="category-tile-meta is-centered">
+              <h3 class="category-tile-title">SIGNATURE LINE</h3>
+              <span class="category-tile-sub">DISCOVER</span>
             </div>
           </button>
 
           <button type="button" class="category-tile" data-jump-format="coffret" data-scroll-target="#perfumes">
-            <div class="category-tile-media">
+            <div class="category-tile-media is-mood-emerald">
               <img src="bottle-scentra.png" alt="Travel &amp; Coffrets" loading="lazy">
             </div>
-            <div class="category-tile-meta">
-              <h3 class="category-tile-title">Travel &amp; Coffrets</h3>
-              <span class="category-tile-sub">Discover</span>
+            <div class="category-tile-meta is-centered">
+              <h3 class="category-tile-title">SETS &amp; COFFRETS</h3>
+              <span class="category-tile-sub">DISCOVER</span>
             </div>
           </button>
 
           <button type="button" class="category-tile" data-jump-purifier="home-purifier" data-scroll-target="#purifiers">
-            <div class="category-tile-media" id="catHomeSvgMount">
+            <div class="category-tile-media is-mood-sand" id="catHomeSvgMount">
               <img src="diffuser-home-qasr-velvet.png" alt="Home Purifiers" loading="lazy">
             </div>
-            <div class="category-tile-meta">
-              <h3 class="category-tile-title">Home Purifiers</h3>
-              <span class="category-tile-sub">Discover</span>
+            <div class="category-tile-meta is-centered">
+              <h3 class="category-tile-title">HOME FRAGRANCE</h3>
+              <span class="category-tile-sub">DISCOVER</span>
             </div>
           </button>
 
           <button type="button" class="category-tile" data-jump-purifier="car-purifier" data-scroll-target="#purifiers">
-            <div class="category-tile-media" id="catCarSvgMount">
+            <div class="category-tile-media is-mood-obsidian" id="catCarSvgMount">
               <img src="purifier-car-carbon-drift.png" alt="Car Purifiers" loading="lazy">
             </div>
-            <div class="category-tile-meta">
-              <h3 class="category-tile-title">Car Purifiers</h3>
-              <span class="category-tile-sub">Discover</span>
+            <div class="category-tile-meta is-centered">
+              <h3 class="category-tile-title">CAR PURIFIERS</h3>
+              <span class="category-tile-sub">DISCOVER</span>
             </div>
           </button>
         </div>
@@ -563,7 +653,25 @@
       </div>
     </section>
 
-    <!-- 7. Lattafa-Inspired 50/50 Editorial Split Spotlight (#about) -->
+    <!-- 8. Gissah-Inspired Full-Bleed Dark Highlight Banner ("Sets & Gifts Line") -->
+    <section class="gissah-highlight-banner" id="setsHighlight" aria-label="Sets and Gifts Line Highlight">
+      <div class="gissah-highlight-backdrop" aria-hidden="true">
+        <span class="highlight-arabic-crest" lang="ar">مجموعة الهدايا</span>
+        <div class="highlight-flacons-silhouette">
+          <img src="bottle-avenor.png" alt="" class="highlight-bottle-l" loading="lazy">
+          <img src="bottle-oud-rose.png" alt="" class="highlight-bottle-c" loading="lazy">
+          <img src="bottle-oud-maracuja.png" alt="" class="highlight-bottle-r" loading="lazy">
+        </div>
+      </div>
+      <div class="container gissah-highlight-inner">
+        <span class="highlight-kicker">LEE DUH &middot; DUBAI GIFT ATELIER</span>
+        <h2 class="highlight-title">Sets &amp; Gifts Line</h2>
+        <p class="highlight-sub">Curated duos, buy 2 get 1 trios &amp; lacquered atelier coffrets.</p>
+        <a href="#bundles" class="highlight-discover-link">DISCOVER</a>
+      </div>
+    </section>
+
+    <!-- 9. Editorial Split Spotlight (#about) -->
     <section class="story-split-section" id="about" aria-label="About LEE DUH Dubai">
       <div class="container">
         <div class="editorial-split-card">
