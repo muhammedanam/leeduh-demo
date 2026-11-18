@@ -202,64 +202,156 @@
   </div>
 
   <main>
-    <!-- 1. Product-First Campaign Hero (3 Highlighted Products & Exclusive Offers) -->
-    <section class="boutique-hero" id="hero" aria-label="LEEDUH Signature Perfumes &amp; Offers">
-      <div class="container hero-stage-inner">
-        <div class="hero-offer-kicker-row">
-          <span class="hero-offer-pill">Signature Offers &middot; Starting at AED 55</span>
-        </div>
+    <!-- 1. Creative Product-Presentation Hero Carousel (Offers & Buttons Overlaid) -->
+    <section class="hero-carousel-section" id="hero" aria-label="LEEDUH Signature Perfumes &amp; Offers Showcase" aria-roledescription="carousel">
+      <h1 class="sr-only">LEEDUH Fine Perfumes Dubai — Signature Collection &amp; Exclusive Offers</h1>
 
-        <h1 class="sr-only">LEEDUH Fine Perfumes Dubai — Signature Perfumes &amp; Exclusive Offers</h1>
+      <div class="hero-carousel-viewport" id="heroCarousel">
+        <!-- Slide 1: Signature Trio — Buy 2, Get 1 Free (Sunset Amber & Rose Gold Stage) -->
+        <article class="hero-slide is-slide-sunset is-active" data-hero-slide="0" aria-roledescription="slide" aria-label="1 of 3: Buy 2, Get 1 Free Signature Trio" aria-hidden="false">
+          <div class="hero-slide-atmosphere" aria-hidden="true">
+            <span class="hero-arch-silhouette"></span>
+            <span class="hero-sunbeam-layer"></span>
+            <svg class="hero-orbital-ring" viewBox="0 0 420 420" fill="none">
+              <circle cx="210" cy="210" r="196" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.35" stroke-dasharray="10 8" />
+              <circle cx="210" cy="210" r="162" stroke="currentColor" stroke-width="0.7" stroke-opacity="0.22" />
+            </svg>
+            <span class="hero-arabic-watermark" lang="ar">ليدوه</span>
+          </div>
 
-        <div class="hero-flacons-stage" aria-label="Signature flacons showcase">
-          <button type="button" class="hero-flacon-item is-side-left" data-quick-view="avenor-extrait" aria-label="View Avenor Extrait">
-            <img src="bottle-avenor.png" alt="Avenor Extrait de Parfum" class="hero-flacon-img">
-            <span class="hero-flacon-caption">Avenor <span class="hero-flacon-ar">أفينور</span></span>
-            <span class="hero-flacon-price">AED 55</span>
-          </button>
-          <button type="button" class="hero-flacon-item is-center" data-quick-view="oud-rose-extrait" aria-label="View Oud Rose Extrait">
-            <span class="hero-flacon-badge">#1 Signature</span>
-            <img src="bottle-oud-rose.png" alt="Oud Rose Extrait de Parfum" class="hero-flacon-img">
-            <span class="hero-flacon-caption">Oud Rose <span class="hero-flacon-ar">عود ورد</span></span>
-            <span class="hero-flacon-price">AED 55</span>
-          </button>
-          <button type="button" class="hero-flacon-item is-side-right" data-quick-view="oud-maracuja-extrait" aria-label="View Oud Maracuja Extrait">
-            <img src="bottle-oud-maracuja.png" alt="Oud Maracuja Extrait de Parfum" class="hero-flacon-img">
-            <span class="hero-flacon-caption">Oud Maracuja <span class="hero-flacon-ar">عود ماراكوجا</span></span>
-            <span class="hero-flacon-price">AED 55</span>
-          </button>
-        </div>
-
-        <!-- Exclusive Promotional Offer Highlights -->
-        <div class="hero-offers-grid" aria-label="Exclusive perfume bundle offers">
-          <button type="button" class="hero-offer-card" data-hero-offer="duo-99">
-            <div class="hero-offer-card-top">
-              <span class="hero-offer-tag">Duo Offer</span>
-              <span class="hero-offer-save">Save AED 11</span>
+          <div class="container hero-slide-grid">
+            <div class="hero-overlay-copy">
+              <span class="hero-overlay-pill is-gold">Best Value &middot; Save AED 55</span>
+              <h2 class="hero-overlay-title">Buy 2,<br>Get 1 <em>Free</em></h2>
+              <div class="hero-overlay-price-row">
+                <strong class="hero-overlay-price">AED 110</strong>
+                <span class="hero-overlay-was">AED 165</span>
+                <span class="hero-overlay-meta">&middot; AED 55 each</span>
+              </div>
+              <div class="hero-overlay-actions">
+                <button type="button" class="hero-btn-primary" data-hero-offer="b2g1-110">Claim 3 for 2</button>
+                <a href="#bestsellers" class="hero-btn-ghost">Shop Now</a>
+              </div>
             </div>
-            <div class="hero-offer-headline">
-              <strong>2 for AED 99</strong>
-              <span class="hero-offer-was">AED 110</span>
-            </div>
-            <span class="hero-offer-sub">Any 2 perfumes (AED 55 each) &middot; Add Duo &rarr;</span>
-          </button>
 
-          <button type="button" class="hero-offer-card is-featured" data-hero-offer="b2g1-110">
-            <div class="hero-offer-card-top">
-              <span class="hero-offer-tag is-dark">Best Value</span>
-              <span class="hero-offer-save">Save AED 55</span>
+            <div class="hero-visual-stage is-trio-stage" aria-label="Three signature perfumes on sculptural plinths">
+              <button type="button" class="stage-bottle-unit is-left" data-quick-view="avenor-extrait" aria-label="View Avenor Extrait">
+                <img src="bottle-avenor.png" alt="LEE DUH Avenor Extrait de Parfum" class="stage-bottle-img">
+                <img src="bottle-avenor.png" alt="" aria-hidden="true" class="stage-bottle-reflect">
+                <span class="stage-plinth"></span>
+              </button>
+              <button type="button" class="stage-bottle-unit is-center" data-quick-view="oud-rose-extrait" aria-label="View Oud Rose Extrait">
+                <img src="bottle-oud-rose.png" alt="LEE DUH Oud Rose Extrait de Parfum" class="stage-bottle-img">
+                <img src="bottle-oud-rose.png" alt="" aria-hidden="true" class="stage-bottle-reflect">
+                <span class="stage-plinth is-tall"></span>
+              </button>
+              <button type="button" class="stage-bottle-unit is-right" data-quick-view="oud-maracuja-extrait" aria-label="View Oud Maracuja Extrait">
+                <img src="bottle-oud-maracuja.png" alt="LEE DUH Oud Maracuja Extrait de Parfum" class="stage-bottle-img">
+                <img src="bottle-oud-maracuja.png" alt="" aria-hidden="true" class="stage-bottle-reflect">
+                <span class="stage-plinth"></span>
+              </button>
             </div>
-            <div class="hero-offer-headline">
-              <strong>Buy 2, Get 1 Free</strong>
-              <span class="hero-offer-was">AED 165</span>
-            </div>
-            <span class="hero-offer-sub">All 3 hero perfumes for AED 110 &middot; Claim Offer &rarr;</span>
-          </button>
-        </div>
+          </div>
+        </article>
 
-        <div class="hero-actions">
-          <a href="#bestsellers" class="btn-champagne">Shop Now</a>
-          <a href="#purifiers" class="btn-discover-link">Discover Home &amp; Car Purifiers</a>
+        <!-- Slide 2: Iconic Duo — 2 for AED 99 (Obsidian, Amber & Twilight Orchid Stage) -->
+        <article class="hero-slide is-slide-twilight" data-hero-slide="1" aria-roledescription="slide" aria-label="2 of 3: Duo Offer 2 for AED 99" aria-hidden="true">
+          <div class="hero-slide-atmosphere" aria-hidden="true">
+            <span class="hero-eclipse-halo"></span>
+            <span class="hero-sunbeam-layer is-amber"></span>
+            <svg class="hero-orbital-ring" viewBox="0 0 420 420" fill="none">
+              <circle cx="210" cy="210" r="196" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.32" stroke-dasharray="4 10" />
+              <circle cx="210" cy="210" r="154" stroke="currentColor" stroke-width="0.8" stroke-opacity="0.2" />
+            </svg>
+            <span class="hero-arabic-watermark" lang="ar">عود ورد</span>
+          </div>
+
+          <div class="container hero-slide-grid">
+            <div class="hero-overlay-copy">
+              <span class="hero-overlay-pill is-light">Duo Offer &middot; Save AED 11</span>
+              <h2 class="hero-overlay-title">2 for <em>AED 99</em></h2>
+              <div class="hero-overlay-price-row">
+                <span class="hero-overlay-was">AED 110</span>
+                <span class="hero-overlay-meta">Oud Rose &amp; Avenor</span>
+              </div>
+              <div class="hero-overlay-actions">
+                <button type="button" class="hero-btn-primary is-light" data-hero-offer="duo-99">Add Duo &middot; AED 99</button>
+                <button type="button" class="hero-btn-ghost is-light" data-quick-view="avenor-extrait">View Avenor</button>
+              </div>
+            </div>
+
+            <div class="hero-visual-stage is-duo-stage" aria-label="Oud Rose and Avenor luxury duo presentation">
+              <button type="button" class="stage-bottle-unit is-duo-left" data-quick-view="avenor-extrait" aria-label="View Avenor Extrait">
+                <img src="bottle-avenor.png" alt="LEE DUH Avenor Extrait de Parfum" class="stage-bottle-img">
+                <img src="bottle-avenor.png" alt="" aria-hidden="true" class="stage-bottle-reflect">
+                <span class="stage-plinth is-obsidian"></span>
+              </button>
+              <button type="button" class="stage-bottle-unit is-duo-right" data-quick-view="oud-rose-extrait" aria-label="View Oud Rose Extrait">
+                <img src="bottle-oud-rose.png" alt="LEE DUH Oud Rose Extrait de Parfum" class="stage-bottle-img">
+                <img src="bottle-oud-rose.png" alt="" aria-hidden="true" class="stage-bottle-reflect">
+                <span class="stage-plinth is-obsidian is-tall"></span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3: Solo Jewel Spotlight — Oud Maracuja (Emerald Oasis & Molten Gold Stage) -->
+        <article class="hero-slide is-slide-emerald" data-hero-slide="2" aria-roledescription="slide" aria-label="3 of 3: Oud Maracuja Signature AED 55" aria-hidden="true">
+          <div class="hero-slide-atmosphere" aria-hidden="true">
+            <span class="hero-prism-beam"></span>
+            <svg class="hero-orbital-ring" viewBox="0 0 420 420" fill="none">
+              <circle cx="210" cy="210" r="196" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.34" stroke-dasharray="14 6" />
+              <circle cx="210" cy="210" r="144" stroke="currentColor" stroke-width="0.7" stroke-opacity="0.22" />
+            </svg>
+            <span class="hero-arabic-watermark" lang="ar">ماراكوجا</span>
+          </div>
+
+          <div class="container hero-slide-grid">
+            <div class="hero-overlay-copy">
+              <span class="hero-overlay-pill is-light">Signature &middot; AED 55</span>
+              <h2 class="hero-overlay-title">Oud <em>Maracuja</em></h2>
+              <div class="hero-overlay-price-row">
+                <strong class="hero-overlay-price">AED 55</strong>
+                <span class="hero-overlay-meta">&middot; 25% Extrait</span>
+              </div>
+              <div class="hero-overlay-actions">
+                <a href="#perfumes" class="hero-btn-primary is-light">Shop Now</a>
+                <button type="button" class="hero-btn-ghost is-light" data-quick-view="oud-maracuja-extrait">Quick View</button>
+              </div>
+            </div>
+
+            <div class="hero-visual-stage is-solo-stage" aria-label="Oud Maracuja sculptural spotlight">
+              <button type="button" class="stage-bottle-unit is-solo" data-quick-view="oud-maracuja-extrait" aria-label="View Oud Maracuja Extrait">
+                <img src="bottle-oud-maracuja.png" alt="LEE DUH Oud Maracuja Extrait de Parfum" class="stage-bottle-img">
+                <img src="bottle-oud-maracuja.png" alt="" aria-hidden="true" class="stage-bottle-reflect">
+                <span class="stage-plinth is-emerald"></span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Minimal Overlaid Carousel Arrows -->
+        <button type="button" class="hero-nav-arrow is-prev" id="heroCarouselPrev" aria-label="Previous campaign slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button type="button" class="hero-nav-arrow is-next" id="heroCarouselNext" aria-label="Next campaign slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Bottom Minimal Progress Bar Controls & Counter -->
+        <div class="hero-carousel-controls">
+          <div class="container hero-controls-inner">
+            <div class="hero-progress-dots" role="tablist" aria-label="Choose campaign slide">
+              <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1: Buy 2, Get 1 Free" data-hero-goto="0"><span></span></button>
+              <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 2: 2 for AED 99" data-hero-goto="1"><span></span></button>
+              <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 3: Oud Maracuja" data-hero-goto="2"><span></span></button>
+            </div>
+            <span class="hero-slide-counter" id="heroSlideCounter" aria-live="polite">01 / 03</span>
+          </div>
         </div>
       </div>
     </section>

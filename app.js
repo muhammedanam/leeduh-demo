@@ -1283,6 +1283,130 @@ function initHeroOffers() {
   });
 }
 
+function initHeroCarousel() {
+  const viewport = document.getElementById('heroCarousel');
+  if (!viewport) return;
+
+  const slides = Array.from(viewport.querySelectorAll('[data-hero-slide]'));
+  const dots = Array.from(viewport.querySelectorAll('[data-hero-goto]'));
+  const prevBtn = document.getElementById('heroCarouselPrev');
+  const nextBtn = document.getElementById('heroCarouselNext');
+  const counterEl = document.getElementById('heroSlideCounter');
+
+  if (slides.length === 0) return;
+
+  let currentIdx = 0;
+  let autoplayTimer = null;
+  let isPaused = false;
+  const AUTOPLAY_MS = 5500;
+
+  function renderSlide(nextIdx) {
+    currentIdx = ((nextIdx % slides.length) + slides.length) % slides.length;
+
+    slides.forEach((slide, idx) => {
+      const active = idx === currentIdx;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+
+    dots.forEach((dot, idx) => {
+      const active = idx === currentIdx;
+      dot.classList.remove('is-active');
+      dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      if (active) {
+        void dot.offsetWidth;
+        dot.classList.add('is-active');
+      }
+    });
+
+    const activeSlide = slides[currentIdx];
+    const isDark = activeSlide.classList.contains('is-slide-twilight') ||
+      activeSlide.classList.contains('is-slide-emerald');
+    viewport.classList.toggle('is-dark-slide', isDark);
+
+    if (counterEl) {
+      counterEl.textContent = `${String(currentIdx + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    }
+  }
+
+  function startAutoplay() {
+    clearInterval(autoplayTimer);
+    if (prefersReducedMotion.matches || isPaused) return;
+    autoplayTimer = setInterval(() => {
+      renderSlide(currentIdx + 1);
+    }, AUTOPLAY_MS);
+  }
+
+  function goToSlide(idx) {
+    renderSlide(idx);
+    startAutoplay();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIdx - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIdx + 1));
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const target = Number(dot.getAttribute('data-hero-goto'));
+      if (!Number.isNaN(target)) goToSlide(target);
+    });
+  });
+
+  viewport.addEventListener('mouseenter', () => {
+    isPaused = true;
+    viewport.classList.add('is-paused');
+    clearInterval(autoplayTimer);
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    isPaused = false;
+    viewport.classList.remove('is-paused');
+    startAutoplay();
+  });
+
+  viewport.addEventListener('focusin', () => {
+    isPaused = true;
+    viewport.classList.add('is-paused');
+    clearInterval(autoplayTimer);
+  });
+
+  viewport.addEventListener('focusout', (e) => {
+    if (!viewport.contains(e.relatedTarget)) {
+      isPaused = false;
+      viewport.classList.remove('is-paused');
+      startAutoplay();
+    }
+  });
+
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goToSlide(currentIdx - 1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goToSlide(currentIdx + 1);
+    }
+  });
+
+  let touchStartX = 0;
+  viewport.addEventListener('touchstart', (e) => {
+    if (e.changedTouches && e.changedTouches[0]) {
+      touchStartX = e.changedTouches[0].clientX;
+    }
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', (e) => {
+    if (!e.changedTouches || !e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) >= 42) {
+      goToSlide(dx < 0 ? currentIdx + 1 : currentIdx - 1);
+    }
+  }, { passive: true });
+
+  renderSlide(0);
+  startAutoplay();
+}
+
 function updateBagUI() {
   const totalCount = STATE.bag.reduce((acc, item) => acc + item.qty, 0);
   if (bagCountBadge) bagCountBadge.textContent = totalCount;
@@ -2149,6 +2273,7 @@ function init() {
 
   mountCategoryIcons();
   initHeroOffers();
+  initHeroCarousel();
   initCategoryTiles();
   initPerfumeFormatTabs();
   initPurifierTabs();
