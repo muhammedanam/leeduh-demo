@@ -774,14 +774,25 @@ function initCategoryTiles() {
       const jumpCategory = tile.getAttribute('data-jump-category');
       const jumpPurifier = tile.getAttribute('data-jump-purifier');
 
+      if (jumpPurifier) {
+        const targetEl = document.querySelector(targetSel);
+        if (targetEl) {
+          setActivePurifierTab(jumpPurifier);
+          const offsetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - 78;
+          window.scrollTo({
+            top: Math.max(0, offsetPos),
+            behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
+          });
+        } else {
+          window.location.href = `purifiers.html?tab=${jumpPurifier}`;
+        }
+        return;
+      }
+
       if (jumpFormat) {
         setActivePerfumeFormat(jumpFormat);
       } else if (jumpCategory === 'perfume') {
         setActivePerfumeFormat('extrait');
-      }
-
-      if (jumpPurifier) {
-        setActivePurifierTab(jumpPurifier);
       }
 
       const targetEl = document.querySelector(targetSel);
@@ -888,7 +899,19 @@ function setActivePurifierTab(tabName) {
 }
 
 function initPurifierTabs() {
+  if (typeof window !== 'undefined' && window.location.search) {
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab') || params.get('category');
+    if (tabParam && ['all', 'home-purifier', 'car-purifier'].includes(tabParam)) {
+      STATE.purifierTab = tabParam;
+    }
+  }
+
   document.querySelectorAll('#purifierSectionTabs [data-purifier-tab]').forEach((tab) => {
+    const active = tab.getAttribute('data-purifier-tab') === STATE.purifierTab;
+    tab.classList.toggle('active', active);
+    tab.setAttribute('aria-selected', active ? 'true' : 'false');
+
     tab.addEventListener('click', () => {
       setActivePurifierTab(tab.getAttribute('data-purifier-tab') || 'all');
     });

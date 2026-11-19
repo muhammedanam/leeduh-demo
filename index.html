@@ -126,12 +126,27 @@
       </a>
 
       <nav class="main-nav" id="desktopNav" aria-label="Main navigation">
-        <a href="#bestsellers" class="nav-link" data-section="bestsellers">Best Sellers</a>
-        <a href="#bundles" class="nav-link" data-section="bundles">Sets &amp; Gifts</a>
-        <a href="#perfumes" class="nav-link" data-section="perfumes">Fine Perfumes</a>
-        <a href="#purifiers" class="nav-link" data-section="purifiers">Home &amp; Car</a>
-        <a href="shop.html" class="nav-link">All Creations</a>
-        <a href="#about" class="nav-link" data-section="about">Our Story</a>
+        <!-- Home Page In-Page Buttons (Grouped Together) -->
+        <div class="nav-home-group">
+          <a href="#bestsellers" class="nav-link" data-section="bestsellers">Best Sellers</a>
+          <a href="#bundles" class="nav-link" data-section="bundles">Sets &amp; Gifts</a>
+          <a href="#perfumes" class="nav-link" data-section="perfumes">Fine Perfumes</a>
+          <a href="#about" class="nav-link" data-section="about">Our Story</a>
+        </div>
+
+        <span class="nav-group-divider" aria-hidden="true"></span>
+
+        <!-- Standalone Destination Collections (Visually Distinct) -->
+        <div class="nav-destinations-group">
+          <a href="purifiers.html" class="nav-dest-btn nav-btn-purifiers" title="Home &amp; Car Purifiers">
+            <span class="nav-dest-dot" aria-hidden="true"></span>
+            <span>Home &amp; Car Purifiers</span>
+          </a>
+          <a href="shop.html" class="nav-dest-btn nav-btn-collections" title="All Collections">
+            <span>All Collections</span>
+            <span class="nav-dest-badge">14</span>
+          </a>
+        </div>
       </nav>
 
       <div class="header-utilities">
@@ -183,12 +198,29 @@
         <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close menu">&times;</button>
       </div>
       <nav class="mobile-drawer-links" aria-label="Mobile navigation">
+        <div class="mobile-nav-section-label">House &amp; Stories</div>
         <a href="#bestsellers" class="mobile-nav-link" data-section="bestsellers">Best Sellers</a>
         <a href="#bundles" class="mobile-nav-link" data-section="bundles">Sets &amp; Gifts</a>
         <a href="#perfumes" class="mobile-nav-link" data-section="perfumes">Fine Perfumes</a>
-        <a href="#purifiers" class="mobile-nav-link" data-section="purifiers">Home &amp; Car Purifiers</a>
-        <a href="shop.html" class="mobile-nav-link">All Creations</a>
         <a href="#about" class="mobile-nav-link" data-section="about">Our Story</a>
+
+        <div class="mobile-nav-section-label is-destinations">Dedicated Archives</div>
+        <div class="mobile-dest-group">
+          <a href="purifiers.html" class="mobile-dest-card mobile-btn-purifiers">
+            <div class="mobile-dest-info">
+              <span class="mobile-dest-title">Home &amp; Car Purifiers</span>
+              <span class="mobile-dest-sub">6 Dedicated Ambient &amp; Cabin Formulations</span>
+            </div>
+            <span class="mobile-dest-arrow">&rarr;</span>
+          </a>
+          <a href="shop.html" class="mobile-dest-card mobile-btn-collections">
+            <div class="mobile-dest-info">
+              <span class="mobile-dest-title">All Collections</span>
+              <span class="mobile-dest-sub">Complete 14 Creations Archive · Filters &amp; Search</span>
+            </div>
+            <span class="mobile-dest-arrow">&rarr;</span>
+          </a>
+        </div>
       </nav>
       <div class="mobile-drawer-footer-actions">
         <button type="button" class="drawer-action-row" id="mobileWishlistBtn">
@@ -576,23 +608,37 @@
       </div>
     </section>
 
-    <!-- 5. Separate Home & Car Purifiers Section (#F3EEEA Warm Sand Band, 3-Column) -->
-    <section class="boutique-section is-warm-stone is-on-stone" id="purifiers" aria-label="Home and Car Purifiers">
+    <!-- 5. Space & Drive Showcase Banner (Redirects to Dedicated Purifiers Page) -->
+    <section class="boutique-section space-drive-teaser-section" id="purifiersTeaser" aria-label="Home and Car Purifiers Showcase">
       <div class="container">
-        <div class="section-head-row is-wrap">
-          <div>
-            <span class="section-kicker">Separate Formulations &middot; Space &amp; Drive</span>
-            <h2 class="section-title">Home &amp; Car Purifiers</h2>
+        <div class="space-drive-teaser-card">
+          <div class="space-drive-teaser-visual">
+            <div class="purifiers-visual-duo">
+              <img src="diffuser-home-qasr-velvet.png" alt="Qasr Velvet Home Diffuser" class="teaser-purifier-img home-img" width="140" height="200" loading="lazy">
+              <img src="purifier-car-carbon-drift.png" alt="Carbon Drift Car Purifier" class="teaser-purifier-img car-img" width="130" height="130" loading="lazy">
+            </div>
           </div>
-
-          <div class="segmented-tabs" id="purifierSectionTabs" role="tablist" aria-label="Filter purifier line">
-            <button type="button" class="seg-tab active" role="tab" aria-selected="true" data-purifier-tab="all">All (6)</button>
-            <button type="button" class="seg-tab" role="tab" aria-selected="false" data-purifier-tab="home-purifier">Home Purifiers (3)</button>
-            <button type="button" class="seg-tab" role="tab" aria-selected="false" data-purifier-tab="car-purifier">Car Purifiers (3)</button>
+          <div class="space-drive-teaser-content">
+            <span class="section-kicker">Separate Formulations &middot; Space &amp; Drive</span>
+            <h2 class="space-drive-teaser-title">Home &amp; Car Purifiers</h2>
+            <p class="space-drive-teaser-desc">
+              Dedicated architectural reed diffusers and precision rotary automotive vent diffusers. Formulated strictly independent from fine perfumes to create serene, smoke-free residential spaces and crisp grand tourer cabins.
+            </p>
+            <div class="space-drive-teaser-specs">
+              <span class="spec-pill">3 Architectural Diffusers (200ml / 500ml)</span>
+              <span class="spec-pill">3 Milled Rotary Vent Clips</span>
+              <span class="spec-pill">Zero Fine Perfume Overlap</span>
+            </div>
+            <div class="space-drive-teaser-actions">
+              <a href="purifiers.html" class="btn-pill-dark">
+                <span>Explore Home &amp; Car Line</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="purifiers.html?tab=home-purifier" class="btn-pill-outline">Home Diffusers (3)</a>
+              <a href="purifiers.html?tab=car-purifier" class="btn-pill-outline">Car Purifiers (3)</a>
+            </div>
           </div>
         </div>
-
-        <div class="product-grid-3" id="purifiersShowcaseGrid"></div>
       </div>
     </section>
 
@@ -728,9 +774,10 @@
         <h3 class="footer-serif-head">Collections</h3>
         <ul>
           <li><a href="#bestsellers">Best Sellers</a></li>
+          <li><a href="#bundles">Sets &amp; Gifts</a></li>
           <li><a href="#perfumes">Fine Perfumes (4)</a></li>
-          <li><a href="#purifiers">Home &amp; Car Purifiers (6)</a></li>
-          <li><a href="shop.html">All Creations</a></li>
+          <li><a href="purifiers.html">Home &amp; Car Purifiers (6)</a></li>
+          <li><a href="shop.html">All Collections (14)</a></li>
         </ul>
       </div>
 

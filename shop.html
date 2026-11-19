@@ -30,12 +30,27 @@
       </a>
 
       <nav class="main-nav" id="desktopNav" aria-label="Main navigation">
-        <a href="index.html#bestsellers" class="nav-link">Best Sellers</a>
-        <a href="index.html#bundles" class="nav-link">Sets &amp; Gifts</a>
-        <a href="index.html#perfumes" class="nav-link">Fine Perfumes</a>
-        <a href="index.html#purifiers" class="nav-link">Home &amp; Car</a>
-        <a href="shop.html" class="nav-link active" aria-current="page">All Creations</a>
-        <a href="index.html#about" class="nav-link">Our Story</a>
+        <!-- Home Page In-Page Buttons (Grouped Together) -->
+        <div class="nav-home-group">
+          <a href="index.html#bestsellers" class="nav-link">Best Sellers</a>
+          <a href="index.html#bundles" class="nav-link">Sets &amp; Gifts</a>
+          <a href="index.html#perfumes" class="nav-link">Fine Perfumes</a>
+          <a href="index.html#about" class="nav-link">Our Story</a>
+        </div>
+
+        <span class="nav-group-divider" aria-hidden="true"></span>
+
+        <!-- Standalone Destination Collections (Visually Distinct) -->
+        <div class="nav-destinations-group">
+          <a href="purifiers.html" class="nav-dest-btn nav-btn-purifiers" title="Home &amp; Car Purifiers">
+            <span class="nav-dest-dot" aria-hidden="true"></span>
+            <span>Home &amp; Car Purifiers</span>
+          </a>
+          <a href="shop.html" class="nav-dest-btn nav-btn-collections active" aria-current="page" title="All Collections">
+            <span>All Collections</span>
+            <span class="nav-dest-badge">14</span>
+          </a>
+        </div>
       </nav>
 
       <div class="header-utilities">
@@ -86,13 +101,30 @@
         <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close menu">&times;</button>
       </div>
       <nav class="mobile-drawer-links" aria-label="Mobile navigation">
-        <a href="index.html" class="mobile-nav-link">Home</a>
+        <div class="mobile-nav-section-label">House &amp; Stories</div>
+        <a href="index.html" class="mobile-nav-link">Home Flagship</a>
         <a href="index.html#bestsellers" class="mobile-nav-link">Best Sellers</a>
         <a href="index.html#bundles" class="mobile-nav-link">Sets &amp; Gifts</a>
         <a href="index.html#perfumes" class="mobile-nav-link">Fine Perfumes</a>
-        <a href="index.html#purifiers" class="mobile-nav-link">Home &amp; Car Purifiers</a>
-        <a href="shop.html" class="mobile-nav-link active" aria-current="page">All Creations</a>
         <a href="index.html#about" class="mobile-nav-link">Our Story</a>
+
+        <div class="mobile-nav-section-label is-destinations">Dedicated Archives</div>
+        <div class="mobile-dest-group">
+          <a href="purifiers.html" class="mobile-dest-card mobile-btn-purifiers">
+            <div class="mobile-dest-info">
+              <span class="mobile-dest-title">Home &amp; Car Purifiers</span>
+              <span class="mobile-dest-sub">6 Dedicated Ambient &amp; Cabin Formulations</span>
+            </div>
+            <span class="mobile-dest-arrow">&rarr;</span>
+          </a>
+          <a href="shop.html" class="mobile-dest-card mobile-btn-collections active" aria-current="page">
+            <div class="mobile-dest-info">
+              <span class="mobile-dest-title">All Collections</span>
+              <span class="mobile-dest-sub">Complete 14 Creations Archive · Filters &amp; Search</span>
+            </div>
+            <span class="mobile-dest-arrow">&rarr;</span>
+          </a>
+        </div>
       </nav>
       <div class="mobile-drawer-footer-actions">
         <button type="button" class="drawer-action-row" id="mobileWishlistBtn">

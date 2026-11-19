@@ -4935,3 +4935,598 @@ dialog[open]::backdrop {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   19. Rearranged Main Navigation & Standalone Collections Distinct Styling
+   ========================================================================== */
+
+.nav-home-group {
+  display: flex;
+  align-items: center;
+  gap: 1.65rem;
+}
+
+.nav-group-divider {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background-color: var(--border-medium);
+  margin: 0 0.25rem;
+}
+
+.nav-destinations-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Standalone Destination Buttons (Visually Distinct from Home Section Links) */
+.nav-dest-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.22s var(--ease-calm);
+}
+
+.nav-dest-btn::after {
+  display: none !important;
+}
+
+/* Home & Car Purifiers Pill */
+.nav-btn-purifiers {
+  background: #faf7f2;
+  border: 1px solid rgba(197, 168, 128, 0.48);
+  color: #382c23;
+}
+
+.nav-btn-purifiers:hover {
+  background: #f4eee6;
+  border-color: var(--accent-champagne-hover);
+  color: #111111;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(197, 168, 128, 0.2);
+}
+
+.nav-btn-purifiers.active {
+  background: #231d18;
+  color: #ffffff;
+  border-color: #231d18;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+}
+
+.nav-dest-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-champagne);
+  box-shadow: 0 0 6px rgba(197, 168, 128, 0.6);
+}
+
+.nav-btn-purifiers.active .nav-dest-dot {
+  background-color: #e6c59b;
+}
+
+/* All Collections Pill */
+.nav-btn-collections {
+  background: #111111;
+  border: 1px solid #111111;
+  color: #ffffff;
+}
+
+.nav-btn-collections:hover {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.nav-btn-collections.active {
+  background: #111111;
+  color: #ffffff;
+  border-color: var(--accent-champagne);
+  box-shadow: 0 0 0 1.5px var(--accent-champagne);
+}
+
+.nav-dest-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Mobile Drawer Labels & Distinct Destination Cards */
+.mobile-nav-section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  padding: 0.75rem 0 0.35rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-nav-section-label:first-of-type {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.mobile-nav-section-label.is-destinations {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  color: var(--accent-champagne-hover);
+}
+
+.mobile-dest-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.35rem;
+}
+
+.mobile-dest-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.mobile-btn-purifiers {
+  background: #fbf9f6;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  color: #221c17;
+}
+
+.mobile-btn-purifiers:hover,
+.mobile-btn-purifiers.active {
+  background: #f4eee6;
+  border-color: var(--accent-champagne);
+}
+
+.mobile-btn-collections {
+  background: #181513;
+  border: 1px solid #181513;
+  color: #ffffff;
+}
+
+.mobile-btn-collections:hover,
+.mobile-btn-collections.active {
+  background: #000000;
+  border-color: var(--accent-champagne);
+}
+
+.mobile-dest-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.mobile-dest-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.mobile-dest-sub {
+  font-size: 0.6875rem;
+  opacity: 0.75;
+}
+
+.mobile-dest-arrow {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.mobile-dest-card:hover .mobile-dest-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   20. Dedicated Home & Car Purifiers Page Styles (#purifiers.html)
+   ========================================================================== */
+
+.page-purifiers {
+  background-color: var(--bg-page);
+}
+
+.purifiers-hero-banner {
+  background: linear-gradient(180deg, #f7f4ee 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 3.25rem 0 2.5rem;
+}
+
+.purifiers-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.purifiers-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.purifiers-pills-row .archive-pill {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-medium);
+  color: var(--ink-primary);
+}
+
+.purifiers-archive-section {
+  padding: 3.5rem 0 4.5rem;
+}
+
+.purifiers-main-grid {
+  margin-top: 1.5rem;
+}
+
+/* Architectural Formulation Craft Section */
+.purifiers-craft-section {
+  background: #faf8f5;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 4.5rem 0;
+}
+
+.purifiers-craft-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.25rem;
+}
+
+.craft-feature-card {
+  background: #ffffff;
+  padding: 2.25rem 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.craft-feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.craft-icon {
+  font-size: 1.75rem;
+  color: var(--accent-champagne);
+  margin-bottom: 1.15rem;
+  line-height: 1;
+}
+
+.craft-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink-primary);
+  margin: 0 0 0.75rem;
+}
+
+.craft-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  margin: 0 0 1.25rem;
+  flex-grow: 1;
+}
+
+.craft-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-champagne-hover);
+  border-top: 1px dashed var(--border-medium);
+  padding-top: 0.85rem;
+}
+
+/* Purifiers Split Section (Home Sanctuary vs Nocturne Drive) */
+.purifiers-split-section {
+  padding: 4rem 0 3rem;
+}
+
+.purifiers-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.purifier-ambient-banner {
+  border-radius: 14px;
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.purifier-ambient-banner:hover {
+  transform: translateY(-2px);
+}
+
+.purifier-ambient-banner.is-home-banner {
+  background: linear-gradient(135deg, #f7f3ee 0%, #efe8de 100%);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+}
+
+.purifier-ambient-banner.is-car-banner {
+  background: linear-gradient(135deg, #242220 0%, #151312 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.purifier-ambient-banner.is-car-banner .section-kicker {
+  color: var(--accent-champagne);
+}
+
+.ambient-banner-content {
+  flex: 1;
+  max-width: 320px;
+}
+
+.ambient-banner-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0.4rem 0 0.85rem;
+}
+
+.ambient-banner-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin: 0 0 1.5rem;
+}
+
+.purifier-ambient-banner.is-car-banner .btn-pill-dark {
+  background-color: var(--accent-champagne);
+  color: #111111;
+  border-color: var(--accent-champagne);
+}
+
+.purifier-ambient-banner.is-car-banner .btn-pill-dark:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.ambient-banner-media {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.ambient-banner-media img {
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.18));
+  transition: transform 0.3s ease;
+}
+
+.purifier-ambient-banner:hover .ambient-banner-media img {
+  transform: scale(1.05);
+}
+
+/* Purifiers Bridge Section */
+.purifiers-bridge-section {
+  padding: 1.5rem 0 4.5rem;
+}
+
+.purifiers-bridge-card {
+  background: #ffffff;
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.purifiers-bridge-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ink-primary);
+  margin: 0.25rem 0 0.35rem;
+}
+
+.purifiers-bridge-sub {
+  font-size: 0.875rem;
+  color: var(--ink-secondary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   21. Space & Drive Showcase Teaser Banner on Home Page (index.html)
+   ========================================================================== */
+
+.space-drive-teaser-section {
+  padding: 2rem 0 4rem;
+}
+
+.space-drive-teaser-card {
+  background: linear-gradient(135deg, #f7f4ee 0%, #eee8de 60%, #e8dfd2 100%);
+  border-radius: 16px;
+  padding: 3.5rem 3.25rem;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(197, 168, 128, 0.32);
+}
+
+.space-drive-teaser-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.purifiers-visual-duo {
+  display: flex;
+  align-items: flex-end;
+  gap: -20px;
+  position: relative;
+}
+
+.teaser-purifier-img {
+  object-fit: contain;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.16));
+  transition: transform 0.3s ease;
+}
+
+.teaser-purifier-img.home-img {
+  z-index: 1;
+}
+
+.teaser-purifier-img.car-img {
+  z-index: 2;
+  margin-left: -35px;
+  margin-bottom: -10px;
+}
+
+.space-drive-teaser-card:hover .teaser-purifier-img.home-img {
+  transform: translateY(-4px) rotate(-2deg);
+}
+
+.space-drive-teaser-card:hover .teaser-purifier-img.car-img {
+  transform: translateY(-6px) scale(1.05);
+}
+
+.space-drive-teaser-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-drive-teaser-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #1a1715;
+  margin: 0.35rem 0 1rem;
+}
+
+.space-drive-teaser-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #4a3e35;
+  margin: 0 0 1.35rem;
+  max-width: 520px;
+}
+
+.space-drive-teaser-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.spec-pill {
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  color: #382c23;
+  font-weight: 500;
+}
+
+.space-drive-teaser-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.space-drive-teaser-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   22. Responsive Breakpoints for Purifiers & Nav
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .nav-home-group {
+    gap: 1.15rem;
+  }
+  .nav-dest-btn {
+    padding: 0.32rem 0.65rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .space-drive-teaser-card {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 2rem;
+    gap: 2rem;
+  }
+  .purifiers-craft-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .purifiers-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .purifier-ambient-banner {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .space-drive-teaser-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .space-drive-teaser-actions a {
+    justify-content: center;
+  }
+  .purifiers-bridge-card {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .purifiers-bridge-card a {
+    justify-content: center;
+  }
+}
