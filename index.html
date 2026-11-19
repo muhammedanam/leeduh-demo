@@ -130,7 +130,7 @@
         <a href="#bundles" class="nav-link" data-section="bundles">Sets &amp; Gifts</a>
         <a href="#perfumes" class="nav-link" data-section="perfumes">Fine Perfumes</a>
         <a href="#purifiers" class="nav-link" data-section="purifiers">Home &amp; Car</a>
-        <a href="#catalog" class="nav-link" data-section="catalog">All Creations</a>
+        <a href="shop.html" class="nav-link">All Creations</a>
         <a href="#about" class="nav-link" data-section="about">Our Story</a>
       </nav>
 
@@ -187,7 +187,7 @@
         <a href="#bundles" class="mobile-nav-link" data-section="bundles">Sets &amp; Gifts</a>
         <a href="#perfumes" class="mobile-nav-link" data-section="perfumes">Fine Perfumes</a>
         <a href="#purifiers" class="mobile-nav-link" data-section="purifiers">Home &amp; Car Purifiers</a>
-        <a href="#catalog" class="mobile-nav-link" data-section="catalog">All Creations</a>
+        <a href="shop.html" class="mobile-nav-link">All Creations</a>
         <a href="#about" class="mobile-nav-link" data-section="about">Our Story</a>
       </nav>
       <div class="mobile-drawer-footer-actions">
@@ -596,60 +596,39 @@
       </div>
     </section>
 
-    <!-- 6. Filterable All Creations Catalog (14 Creations, #FFFFFF) -->
-    <section class="boutique-section" id="catalog" aria-label="All Atelier Creations">
+    <!-- 6. Dedicated All Creations Archive Showcase Banner -->
+    <section class="boutique-section archive-teaser-section" id="archiveTeaser" aria-label="Explore Full Creations Archive">
       <div class="container">
-        <div class="section-head-row is-wrap">
-          <div>
+        <div class="archive-teaser-card">
+          <div class="archive-teaser-content">
             <span class="section-kicker">Complete House Archive</span>
-            <h2 class="section-title">All Creations</h2>
+            <h2 class="archive-teaser-title">All Atelier Creations</h2>
+            <p class="archive-teaser-desc">
+              Explore all 14 hand-crafted formulations—small-batch 25% extrait fine perfumes, travel atomizers, and dedicated architectural home and automotive purifiers. Filter by fragrance signature, family, format, and price on our dedicated catalog page.
+            </p>
+            <div class="archive-teaser-features">
+              <span class="archive-pill">8 Fine Perfumes</span>
+              <span class="archive-pill">3 Architectural Diffusers</span>
+              <span class="archive-pill">3 Car Purifiers</span>
+              <span class="archive-pill">Interactive Notes &amp; Price Filters</span>
+            </div>
+            <div class="archive-teaser-actions">
+              <a href="shop.html" class="btn-pill-dark archive-explore-btn">
+                <span>Explore All Creations</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="shop.html?category=perfume" class="btn-pill-outline archive-explore-btn">Fine Perfumes Only</a>
+              <a href="shop.html?category=home-purifier" class="btn-pill-outline archive-explore-btn">Home &amp; Car Only</a>
+            </div>
           </div>
-          <span class="catalog-count-label" id="catalogResultCount" aria-live="polite">14 creations</span>
+          <div class="archive-teaser-visual" aria-hidden="true">
+            <div class="teaser-bottles-cluster">
+              <img src="bottle-oud-rose.png" alt="" class="teaser-bottle b1" width="110" height="220" loading="lazy">
+              <img src="bottle-scentra.png" alt="" class="teaser-bottle b2" width="120" height="240" loading="lazy">
+              <img src="bottle-avenor.png" alt="" class="teaser-bottle b3" width="110" height="220" loading="lazy">
+            </div>
+          </div>
         </div>
-
-        <div class="catalog-controls-bar">
-          <div class="search-field-wrap">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="search" id="catalogSearchInput" class="clean-search-input" placeholder="Search perfume, purifier, or note (e.g. oud, espresso, velvet)..." aria-label="Search creations">
-            <button type="button" id="catalogSearchClear" class="search-clear-btn" aria-label="Clear search" hidden>&times;</button>
-          </div>
-
-          <div class="sort-field-wrap">
-            <label for="catalogSortSelect" class="sort-text-label">Sort</label>
-            <select id="catalogSortSelect" class="clean-select" aria-label="Sort products">
-              <option value="featured">Curated</option>
-              <option value="bestselling">Best Selling</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="name-asc">Name: A–Z</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="catalog-pills-strip">
-          <div class="pill-group" id="catalogCategoryFilters" role="group" aria-label="Filter by collection">
-            <button type="button" class="filter-chip active" data-category="all">All Lines</button>
-            <button type="button" class="filter-chip" data-category="perfume">Fine Perfumes (8)</button>
-            <button type="button" class="filter-chip" data-category="home-purifier">Home Purifiers (3)</button>
-            <button type="button" class="filter-chip" data-category="car-purifier">Car Purifiers (3)</button>
-          </div>
-
-          <div class="pill-group" id="catalogScentFilters" role="group" aria-label="Filter by signature">
-            <button type="button" class="filter-chip active" data-scent="all">All Signatures</button>
-            <button type="button" class="filter-chip" data-scent="oud-rose">Oud Rose</button>
-            <button type="button" class="filter-chip" data-scent="avenor">Avenor</button>
-            <button type="button" class="filter-chip" data-scent="scentra">Scentra</button>
-            <button type="button" class="filter-chip" data-scent="oud-maracuja">Oud Maracuja</button>
-            <button type="button" class="filter-chip" data-scent="ambient-purifiers">Home &amp; Car Blends</button>
-          </div>
-
-          <button type="button" class="reset-link-btn" id="catalogResetBtn" hidden>Reset Filters</button>
-        </div>
-
-        <div class="product-grid-4" id="catalogGrid"></div>
       </div>
     </section>
 
@@ -751,7 +730,7 @@
           <li><a href="#bestsellers">Best Sellers</a></li>
           <li><a href="#perfumes">Fine Perfumes (4)</a></li>
           <li><a href="#purifiers">Home &amp; Car Purifiers (6)</a></li>
-          <li><a href="#catalog">All Creations</a></li>
+          <li><a href="shop.html">All Creations</a></li>
         </ul>
       </div>
 
