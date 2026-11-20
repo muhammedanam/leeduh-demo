@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Management Console · LEE DUH Perfumes Dubai</title>
+  <meta name="description" content="Private Atelier Administrative Console for LEE DUH Perfumes Dubai. Manage creations catalog, pricing, olfactory pyramids, and storefront editorial content.">
+  <link rel="icon" type="image/png" href="brand-monogram.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-admin">
+  <!-- Minimal Top Environment Notice -->
+  <div class="admin-env-bar" role="region" aria-label="Console environment notice">
+    <div class="container admin-env-inner">
+      <div class="admin-env-left">
+        <span class="admin-env-dot"></span>
+        <span class="admin-env-label">ATELIER CONSOLE &middot; PRODUCTION ENVIRONMENT</span>
+      </div>
+      <div class="admin-env-right">
+        <span>Dubai Design District (d3), UAE &middot; AED Live Currency</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 1: 1-Click Fast Authentication Screen (Shown when logged out) -->
+  <div class="admin-auth-shell" id="adminAuthScreen">
+    <div class="admin-auth-card">
+      <div class="admin-auth-head">
+        <a href="index.html" class="brand-lockup is-centered" aria-label="LEE DUH Home">
+          <img src="brand-monogram.png" alt="LD" class="brand-monogram-img" width="38" height="34">
+          <img src="brand-wordmark.png" alt="LEE DUH" class="brand-wordmark-img" width="118" height="17">
+        </a>
+        <h1 class="admin-auth-title">Atelier Management Console</h1>
+        <p class="admin-auth-subtitle">Private house administrative access for formulation management, pricing, inventory allocations, and editorial content.</p>
+      </div>
+
+      <div class="admin-auth-body">
+        <!-- Single-Click Login Fast Track -->
+        <div class="admin-quick-login-box">
+          <div class="admin-user-pill">
+            <div class="admin-avatar">LA</div>
+            <div class="admin-user-meta">
+              <strong>Layla Al Maktoum</strong>
+              <span>Head of Atelier &amp; Master Perfumer &middot; Dubai</span>
+            </div>
+            <span class="admin-master-badge">MASTER</span>
+          </div>
+
+          <button type="button" class="btn-pill-dark btn-full admin-fast-btn" id="quickMasterLoginBtn">
+            <span>&#9889; 1-Click Master Sign-In</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="admin-auth-divider">
+          <span>OR SIGN IN WITH PASSCODE</span>
+        </div>
+
+        <!-- Optional Passcode Form -->
+        <form id="adminPasscodeForm" class="admin-passcode-form">
+          <div class="field-group">
+            <label for="adminPasscodeInput">Atelier Master Passcode</label>
+            <div class="passcode-input-wrap">
+              <input type="password" id="adminPasscodeInput" value="leeduh2026" required class="clean-input" autocomplete="current-password">
+              <button type="button" class="passcode-toggle-btn" id="togglePasscodeBtn" aria-label="Show passcode">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-pill-outline btn-full" id="passcodeSubmitBtn">Sign In with Passcode</button>
+        </form>
+
+        <div class="admin-auth-footer">
+          <a href="index.html" class="admin-back-link">&larr; Return to Storefront</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 2: Complete Interactive Admin Console (Shown when authenticated) -->
+  <div class="admin-console-shell" id="adminConsoleScreen" hidden>
+    <!-- Top Fixed Admin Navigation Bar -->
+    <header class="admin-header" role="banner">
+      <div class="container admin-header-inner">
+        <div class="admin-brand-group">
+          <a href="index.html" class="brand-lockup" aria-label="LEE DUH Storefront">
+            <img src="brand-monogram.png" alt="LD" width="28" height="24">
+            <img src="brand-wordmark.png" alt="LEE DUH" width="94" height="14">
+          </a>
+          <span class="admin-title-badge">Atelier Console</span>
+        </div>
+
+        <div class="admin-header-actions">
+          <div class="admin-current-user">
+            <span class="admin-avatar-small">LA</span>
+            <div class="admin-user-text">
+              <span class="admin-user-name">Layla Al Maktoum</span>
+              <span class="admin-user-role">Master Administrator</span>
+            </div>
+          </div>
+
+          <div class="admin-quick-links">
+            <a href="index.html" class="btn-pill-outline admin-header-btn" target="_blank" rel="noopener" title="Open storefront in new tab">
+              <span>View Storefront</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+            <button type="button" class="btn-pill-dark admin-header-btn" id="adminSignOutBtn" title="Sign out of Atelier Console">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="container">
+        <!-- Overview Banner -->
+        <div class="admin-hero-banner">
+          <div>
+            <span class="section-kicker">Atelier Management &middot; UAE Live</span>
+            <h1 class="admin-heading">House Formulations &amp; Merchandising</h1>
+            <p class="admin-subheading">Update small-batch extrait perfumes, dedicated space purifiers, real-time AED pricing, olfactory pyramids, and storefront promotions.</p>
+          </div>
+          <div class="admin-hero-actions">
+            <button type="button" class="btn-pill-dark" id="openAddProductHeroBtn">
+              <span>+ Add New Creation</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Summary Cards Row -->
+        <div class="admin-kpi-grid">
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Total Formulations</span>
+            <strong class="admin-kpi-val" id="kpiTotalCreations">14</strong>
+            <span class="admin-kpi-sub">Active in House Archive</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Fine Perfumes</span>
+            <strong class="admin-kpi-val" id="kpiFinePerfumes">8</strong>
+            <span class="admin-kpi-sub">4 Extraits &middot; 4 Travel Atomizers</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Ambient &amp; Car</span>
+            <strong class="admin-kpi-val" id="kpiPurifiers">6</strong>
+            <span class="admin-kpi-sub">3 Home Diffusers &middot; 3 Car Clips</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Captured Orders</span>
+            <strong class="admin-kpi-val" id="kpiOrdersCount">0</strong>
+            <span class="admin-kpi-sub" id="kpiOrdersTotal">AED 0 Total Commissions</span>
+          </div>
+
+          <div class="admin-kpi-card">
+            <span class="admin-kpi-label">Registry Members</span>
+            <strong class="admin-kpi-val" id="kpiSubscribersCount">0</strong>
+            <span class="admin-kpi-sub">Private Allocation Subscriptions</span>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="admin-tabs-row" role="tablist" aria-label="Console Sections">
+          <button type="button" class="admin-tab active" role="tab" aria-selected="true" data-admin-tab="creations">
+            <span>Creations Catalog (<span id="tabCountCreations">14</span>)</span>
+          </button>
+          <button type="button" class="admin-tab" role="tab" aria-selected="false" data-admin-tab="editorial">
+            <span>Storefront &amp; Editorial Content</span>
+          </button>
+          <button type="button" class="admin-tab" role="tab" aria-selected="false" data-admin-tab="orders">
+            <span>Commissions &amp; Registry</span>
+          </button>
+          <button type="button" class="admin-tab" role="tab" aria-selected="false" data-admin-tab="backup">
+            <span>Data Portability &amp; Reset</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: CREATIONS CATALOG (CRUD) -->
+        <section class="admin-tab-pane active" id="pane-creations" role="tabpanel" aria-label="Creations Catalog">
+          <div class="admin-pane-toolbar">
+            <div class="admin-search-wrap">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="search" id="adminProductSearch" class="clean-search-input" placeholder="Search creations by name, Arabic name, notes, or category..." aria-label="Search creations">
+            </div>
+
+            <div class="admin-pane-filters">
+              <div class="admin-filter-group">
+                <label for="adminCategoryFilter" class="sr-only">Filter by category</label>
+                <select id="adminCategoryFilter" class="clean-select" aria-label="Filter by category">
+                  <option value="all">All Lines (14)</option>
+                  <option value="perfume">Fine Perfumes (8)</option>
+                  <option value="home-purifier">Home Diffusers (3)</option>
+                  <option value="car-purifier">Car Vent Clips (3)</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn-pill-dark" id="openAddProductBtn">
+                <span>+ Add Formulation</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Creations Data Table -->
+          <div class="admin-table-card">
+            <div class="table-responsive">
+              <table class="admin-table" id="adminCreationsTable">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 70px;">Piece</th>
+                    <th scope="col">Creation &amp; Arabic</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Scent Family</th>
+                    <th scope="col">Olfactory Notes</th>
+                    <th scope="col">Base Price</th>
+                    <th scope="col">Merchandising</th>
+                    <th scope="col" class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminCreationsTableBody">
+                  <!-- Injected dynamically by admin.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="admin-table-foot">
+              <span id="adminTableCountLabel">Showing 14 formulations</span>
+              <button type="button" class="reset-link-btn" id="adminResetTableFilterBtn" hidden>Clear Table Filter</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: STOREFRONT & EDITORIAL CONTENT -->
+        <section class="admin-tab-pane" id="pane-editorial" role="tabpanel" aria-label="Storefront Content" hidden>
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <div>
+                <h2 class="admin-card-title">Storefront Marquee &amp; Logistics</h2>
+                <p class="admin-card-sub">Control what appears across the top announcement bar, checkout thresholds, and concierge contact details.</p>
+              </div>
+            </div>
+
+            <form id="adminStorefrontForm" class="admin-form">
+              <div class="admin-form-grid">
+                <div class="field-group full-width">
+                  <label for="settingAnnouncementText">Top Announcement Marquee Text</label>
+                  <input type="text" id="settingAnnouncementText" class="clean-input" required>
+                  <span class="field-hint">Displayed across the top espresso bar on Home, Catalog, and Purifiers pages.</span>
+                </div>
+
+                <div class="field-group">
+                  <label for="settingDeliveryThreshold">Complimentary UAE Delivery Threshold (AED)</label>
+                  <input type="number" id="settingDeliveryThreshold" min="0" step="10" class="clean-input" required>
+                  <span class="field-hint">Orders over this amount qualify for free delivery (Standard: AED 500).</span>
+                </div>
+
+                <div class="field-group">
+                  <label for="settingRitualBundlePrice">3-Piece Coffret Promotional Price (AED)</label>
+                  <input type="number" id="settingRitualBundlePrice" min="0" step="5" class="clean-input" required>
+                  <span class="field-hint">Price displayed on the Ritual Sets highlight banner (Default: AED 549).</span>
+                </div>
+
+                <div class="field-group">
+                  <label for="settingRitualBundleWasPrice">3-Piece Coffret Original Value (AED)</label>
+                  <input type="number" id="settingRitualBundleWasPrice" min="0" step="5" class="clean-input" required>
+                  <span class="field-hint">Strikethrough reference price (Default: AED 610).</span>
+                </div>
+
+                <div class="field-group">
+                  <label for="settingConciergePhone">Concierge WhatsApp / Phone</label>
+                  <input type="text" id="settingConciergePhone" class="clean-input">
+                </div>
+
+                <div class="field-group full-width">
+                  <label for="settingConciergeAddress">Atelier Physical Address</label>
+                  <input type="text" id="settingConciergeAddress" class="clean-input">
+                </div>
+              </div>
+
+              <div class="admin-form-actions">
+                <button type="submit" class="btn-pill-dark" id="saveStorefrontSettingsBtn">Save Storefront Settings</button>
+                <button type="button" class="btn-pill-outline" id="resetStorefrontSettingsBtn">Reset to Defaults</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- TAB 3: COMMISSIONS & PRIVATE REGISTRY -->
+        <section class="admin-tab-pane" id="pane-orders" role="tabpanel" aria-label="Commissions &amp; Registry" hidden>
+          <div class="admin-card-stack">
+            <!-- Customer Orders Card -->
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <div>
+                  <h2 class="admin-card-title">Completed Orders Log</h2>
+                  <p class="admin-card-sub">Recorded orders submitted through the shopping bag drawer during sessions.</p>
+                </div>
+                <button type="button" class="btn-pill-outline btn-sm" id="clearOrdersBtn">Clear Orders Log</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Order ID</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Client</th>
+                      <th scope="col">Emirate</th>
+                      <th scope="col">Creations</th>
+                      <th scope="col">Subtotal</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminOrdersTableBody">
+                    <!-- Populated by admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Registry Subscribers Card -->
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <div>
+                  <h2 class="admin-card-title">Atelier Private Registry Subscribers</h2>
+                  <p class="admin-card-sub">Customer emails collected via the footer newsletter / private allocation form.</p>
+                </div>
+                <div class="admin-head-btn-row">
+                  <button type="button" class="btn-pill-dark btn-sm" id="exportRegistryCsvBtn">Export CSV</button>
+                  <button type="button" class="btn-pill-outline btn-sm" id="clearRegistryBtn">Clear Subscribers</button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Email Address</th>
+                      <th scope="col">Captured Date</th>
+                      <th scope="col">Source</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminRegistryTableBody">
+                    <!-- Populated by admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 4: DATA PORTABILITY & RESTORE -->
+        <section class="admin-tab-pane" id="pane-backup" role="tabpanel" aria-label="Data Portability &amp; Reset" hidden>
+          <div class="admin-backup-grid">
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <div>
+                  <h2 class="admin-card-title">Export Catalog &amp; Settings</h2>
+                  <p class="admin-card-sub">Download the live state of all 14+ formulations, prices, and settings as a clean JSON backup file.</p>
+                </div>
+              </div>
+              <p class="admin-card-desc">Use this export to backup changes made in the browser or deploy updated formulations permanently into repository source files.</p>
+              <button type="button" class="btn-pill-dark" id="exportDatabaseBtn">
+                <span>Download Database (JSON)</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              </button>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <div>
+                  <h2 class="admin-card-title">Import Catalog (JSON)</h2>
+                  <p class="admin-card-sub">Upload an existing catalog JSON file to instantly overwrite or restore creations.</p>
+                </div>
+              </div>
+              <p class="admin-card-desc">Select a previously exported JSON file to load into the live store immediately.</p>
+              <input type="file" id="importJsonFileInput" accept=".json" style="display: none;">
+              <button type="button" class="btn-pill-outline" id="importDatabaseBtn">
+                <span>Select JSON File to Restore</span>
+              </button>
+            </div>
+
+            <div class="admin-card is-danger-card">
+              <div class="admin-card-head">
+                <div>
+                  <h2 class="admin-card-title">Restore Factory Seed Catalog</h2>
+                  <p class="admin-card-sub">Reverts all products, prices, and settings back to the original 14 handcrafted LEE DUH formulations.</p>
+                </div>
+              </div>
+              <p class="admin-card-desc">This action clears any custom additions or edits in localStorage and reinstates the original master catalog.</p>
+              <button type="button" class="btn-pill-danger" id="factoryResetBtn">
+                <span>Reset to Factory Catalog</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL 1: Edit Creation Modal -->
+  <dialog class="admin-dialog" id="editCreationModal" aria-labelledby="editCreationModalTitle">
+    <div class="admin-dialog-shell">
+      <div class="admin-dialog-head">
+        <div>
+          <span class="dialog-top-eyebrow">Modify Formulation</span>
+          <h2 class="dialog-heading" id="editCreationModalTitle">Edit Creation</h2>
+        </div>
+        <button type="button" class="dialog-close-circle" id="closeEditModalBtn" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="admin-dialog-body">
+        <form id="editCreationForm" class="admin-form">
+          <input type="hidden" id="editItemCatalogId">
+
+          <div class="admin-form-grid">
+            <div class="field-group">
+              <label for="editItemTitle">Creation Title</label>
+              <input type="text" id="editItemTitle" required class="clean-input">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemArabic">Arabic Inscription</label>
+              <input type="text" id="editItemArabic" class="clean-input" dir="rtl" placeholder="e.g. عود ورد">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemCategory">Category</label>
+              <select id="editItemCategory" class="clean-input" required>
+                <option value="perfume">Fine Perfume</option>
+                <option value="home-purifier">Home Purifier</option>
+                <option value="car-purifier">Car Purifier</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="editItemFamily">Fragrance Family</label>
+              <input type="text" id="editItemFamily" required class="clean-input" placeholder="e.g. Oud &amp; Taif Rose">
+            </div>
+
+            <div class="field-group full-width">
+              <label for="editItemSubtitle">Subtitle / Designation</label>
+              <input type="text" id="editItemSubtitle" class="clean-input" placeholder="e.g. 25% Pure Extrait · Macerated 12 Weeks">
+            </div>
+
+            <div class="field-group full-width">
+              <label for="editItemStory">Editorial Formulation Story</label>
+              <textarea id="editItemStory" class="clean-input" rows="3"></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="editItemTop">Top Notes</label>
+              <input type="text" id="editItemTop" class="clean-input" placeholder="e.g. Pink pepper and Taif rose">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemHeart">Heart Notes</label>
+              <input type="text" id="editItemHeart" class="clean-input" placeholder="e.g. Aged Cambodian oud">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemBase">Base Notes</label>
+              <input type="text" id="editItemBase" class="clean-input" placeholder="e.g. Smoky amber and leather">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemBadge">Merchandising Badge</label>
+              <input type="text" id="editItemBadge" class="clean-input" placeholder="e.g. #1 Best Seller, Sanctuary Blend, or leave blank">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemSalesCount">Verified Sales Count</label>
+              <input type="number" id="editItemSalesCount" class="clean-input" min="0">
+            </div>
+
+            <div class="field-group">
+              <label for="editItemRating">Customer Rating</label>
+              <input type="text" id="editItemRating" class="clean-input" placeholder="4.92">
+            </div>
+          </div>
+
+          <!-- Sizes & Pricing Table Editor -->
+          <div class="sizes-pricing-editor">
+            <h3 class="sizes-editor-title">Formats &amp; Prices (AED)</h3>
+            <p class="sizes-editor-sub">Configure active sizes, vessels, and pricing in AED for this formulation.</p>
+            <div id="editSizesContainer" class="sizes-container">
+              <!-- Dynamically populated size rows -->
+            </div>
+            <button type="button" class="btn-pill-outline btn-sm" id="addSizeRowBtn">+ Add Size Variant</button>
+          </div>
+
+          <div class="admin-modal-actions">
+            <button type="submit" class="btn-pill-dark" id="saveEditCreationBtn">Save Changes</button>
+            <button type="button" class="btn-pill-outline" id="cancelEditBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- MODAL 2: Add New Creation Modal -->
+  <dialog class="admin-dialog" id="addCreationModal" aria-labelledby="addCreationModalTitle">
+    <div class="admin-dialog-shell">
+      <div class="admin-dialog-head">
+        <div>
+          <span class="dialog-top-eyebrow">New Commission</span>
+          <h2 class="dialog-heading" id="addCreationModalTitle">Add New Formulation</h2>
+        </div>
+        <button type="button" class="dialog-close-circle" id="closeAddModalBtn" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <div class="admin-dialog-body">
+        <form id="addCreationForm" class="admin-form">
+          <div class="admin-form-grid">
+            <div class="field-group">
+              <label for="addItemTitle">Creation Title</label>
+              <input type="text" id="addItemTitle" required class="clean-input" placeholder="e.g. Amber Imperial Extrait">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemArabic">Arabic Inscription</label>
+              <input type="text" id="addItemArabic" class="clean-input" dir="rtl" placeholder="e.g. عنبر ملكي">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemCategory">Category</label>
+              <select id="addItemCategory" class="clean-input" required>
+                <option value="perfume">Fine Perfume</option>
+                <option value="home-purifier">Home Purifier</option>
+                <option value="car-purifier">Car Purifier</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="addItemFamily">Fragrance Family</label>
+              <input type="text" id="addItemFamily" required class="clean-input" placeholder="e.g. Amber &amp; Smoky Incense">
+            </div>
+
+            <div class="field-group full-width">
+              <label for="addItemSubtitle">Subtitle / Specification</label>
+              <input type="text" id="addItemSubtitle" class="clean-input" placeholder="e.g. 25% Pure Extrait de Parfum">
+            </div>
+
+            <div class="field-group full-width">
+              <label for="addItemStory">Editorial Story</label>
+              <textarea id="addItemStory" class="clean-input" rows="2" placeholder="Describe the concept, origin, and maceration..."></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="addItemTop">Top Notes</label>
+              <input type="text" id="addItemTop" class="clean-input" placeholder="e.g. Bergamot and saffron">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemHeart">Heart Notes</label>
+              <input type="text" id="addItemHeart" class="clean-input" placeholder="e.g. Cedar and bourbon vanilla">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemBase">Base Notes</label>
+              <input type="text" id="addItemBase" class="clean-input" placeholder="e.g. Ambergris and smoked wood">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemImage">Flacon / Diffuser Image</label>
+              <select id="addItemImage" class="clean-input">
+                <option value="bottle-oud-rose.png">Oud Rose Flacon (Amber-Rose)</option>
+                <option value="bottle-avenor.png">Avenor Flacon (Obsidian)</option>
+                <option value="bottle-scentra.png">Scentra Flacon (Golden Amber)</option>
+                <option value="bottle-oud-maracuja.png">Oud Maracuja Flacon (Nocturne Gold)</option>
+                <option value="diffuser-home-qasr-velvet.png">Qasr Velvet Reed Diffuser</option>
+                <option value="diffuser-home-alabaster-dusk.png">Alabaster Dusk Diffuser</option>
+                <option value="diffuser-home-sahara-incense.png">Sahara Incense Diffuser</option>
+                <option value="purifier-car-carbon-drift.png">Carbon Drift Car Purifier</option>
+                <option value="purifier-car-dune-espresso.png">Dune Espresso Car Purifier</option>
+                <option value="purifier-car-chrome-citrus.png">Chrome Citrus Car Purifier</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="addItemDefaultSize">Default Size / Format</label>
+              <input type="text" id="addItemDefaultSize" required class="clean-input" value="50 ml Extrait">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemDefaultPrice">Price in AED (includes 5% VAT)</label>
+              <input type="number" id="addItemDefaultPrice" required min="10" step="5" class="clean-input" value="340">
+            </div>
+
+            <div class="field-group">
+              <label for="addItemBadge">Merchandising Badge</label>
+              <input type="text" id="addItemBadge" class="clean-input" value="New Vintage">
+            </div>
+          </div>
+
+          <div class="admin-modal-actions">
+            <button type="submit" class="btn-pill-dark" id="submitAddCreationBtn">Create Formulation</button>
+            <button type="button" class="btn-pill-outline" id="cancelAddBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Live Toast Region -->
+  <div class="toast-region" id="toastRegion" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

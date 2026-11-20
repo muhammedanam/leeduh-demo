@@ -292,7 +292,7 @@ const SALES_RANK_METRICS = {
  * - 3 Home Purifiers (separate ambient scents)
  * - 3 Car Purifiers (separate automotive scents)
  */
-const CATALOG = (() => {
+const SEED_CATALOG = (() => {
   const items = [];
 
   S.forEach((scent, scentIndex) => {
@@ -367,6 +367,134 @@ const CATALOG = (() => {
 
   return items;
 })();
+
+/* ==========================================================================
+   Atelier CMS Client-Side Persistence & Live State Service
+   ========================================================================== */
+
+let CATALOG = null;
+
+const CMS_STORAGE_KEY = 'leeduh_cms_catalog';
+const CMS_SETTINGS_KEY = 'leeduh_cms_settings';
+const CMS_ORDERS_KEY = 'leeduh_cms_orders';
+const CMS_REGISTRY_KEY = 'leeduh_cms_registry';
+
+const DEFAULT_SETTINGS = {
+  announcementText: 'Complimentary UAE delivery on orders over AED 500 · Prices include 5% VAT',
+  deliveryThreshold: 500,
+  bundleDiscountPercent: 10,
+  ritualBundlePrice: 549,
+  ritualBundleWasPrice: 610,
+  featuredScentIndex: 0,
+  conciergePhone: '+971 4 248 1900',
+  conciergeEmail: 'concierge@leeduh.ae',
+  conciergeAddress: 'Building 7, Dubai Design District (d3), Dubai, UAE'
+};
+
+const AtelierCMS = {
+  getSeedCatalog() {
+    return JSON.parse(JSON.stringify(SEED_CATALOG));
+  },
+  getCatalog() {
+    try {
+      const raw = localStorage.getItem(CMS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {
+      console.warn('CMS read catalog fallback:', e);
+    }
+    const seed = this.getSeedCatalog();
+    this.saveCatalog(seed, false);
+    return seed;
+  },
+  saveCatalog(items, notify = true) {
+    try {
+      localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(items));
+      CATALOG = items;
+      if (notify) {
+        window.dispatchEvent(new CustomEvent('atelier-cms-catalog-updated', { detail: items }));
+      }
+    } catch (e) {
+      console.error('CMS save catalog error:', e);
+    }
+  },
+  getSettings() {
+    try {
+      const raw = localStorage.getItem(CMS_SETTINGS_KEY);
+      if (raw) {
+        return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+      }
+    } catch (e) {
+      console.warn('CMS read settings fallback:', e);
+    }
+    return { ...DEFAULT_SETTINGS };
+  },
+  saveSettings(settings, notify = true) {
+    try {
+      const merged = { ...this.getSettings(), ...settings };
+      localStorage.setItem(CMS_SETTINGS_KEY, JSON.stringify(merged));
+      if (notify) {
+        window.dispatchEvent(new CustomEvent('atelier-cms-settings-updated', { detail: merged }));
+      }
+      return merged;
+    } catch (e) {
+      console.error('CMS save settings error:', e);
+      return settings;
+    }
+  },
+  getOrders() {
+    try {
+      const raw = localStorage.getItem(CMS_ORDERS_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return [];
+  },
+  saveOrder(order) {
+    try {
+      const orders = this.getOrders();
+      orders.unshift(order);
+      localStorage.setItem(CMS_ORDERS_KEY, JSON.stringify(orders));
+      return orders;
+    } catch (e) {
+      console.error('CMS save order error:', e);
+      return [];
+    }
+  },
+  getSubscribers() {
+    try {
+      const raw = localStorage.getItem(CMS_REGISTRY_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return [];
+  },
+  addSubscriber(email) {
+    try {
+      const subs = this.getSubscribers();
+      if (!subs.some((s) => s.email.toLowerCase() === email.toLowerCase())) {
+        subs.unshift({ email, date: new Date().toLocaleDateString('en-GB') });
+        localStorage.setItem(CMS_REGISTRY_KEY, JSON.stringify(subs));
+      }
+      return subs;
+    } catch (e) {
+      return [];
+    }
+  },
+  clearSubscribers() {
+    localStorage.removeItem(CMS_REGISTRY_KEY);
+  },
+  resetToFactory() {
+    const seed = this.getSeedCatalog();
+    this.saveCatalog(seed, true);
+    this.saveSettings(DEFAULT_SETTINGS, true);
+    return { catalog: seed, settings: DEFAULT_SETTINGS };
+  }
+};
+
+window.AtelierCMS = AtelierCMS;
+
+CATALOG = AtelierCMS.getCatalog();
 
 /**
  * Helper: Build a formatted Fine Perfume item for #perfumes (including Gift Coffret)
@@ -2006,6 +2134,23 @@ if (checkoutBtn) {
       updateProfileUI();
     }
 
+    if (window.AtelierCMS) {
+      window.AtelierCMS.saveOrder({
+        id: orderId,
+        date: todayStr,
+        customer: (STATE.profile && STATE.profile.name) ? STATE.profile.name : 'Layla Al Maktoum',
+        emirate: (STATE.profile && STATE.profile.emirate) ? STATE.profile.emirate : 'Dubai',
+        total: totalAmount,
+        status: 'Confirmed Commission',
+        items: STATE.bag.map((i) => ({
+          title: i.title,
+          size: i.size,
+          qty: i.qty,
+          price: i.price
+        }))
+      });
+    }
+
     STATE.bag = [];
     saveBag();
     updateBagUI();
@@ -2628,6 +2773,7 @@ function initNavigation() {
       const emailInput = document.getElementById('registryEmailInput');
       const val = emailInput ? emailInput.value.trim() : '';
       if (val) {
+        if (window.AtelierCMS) window.AtelierCMS.addSubscriber(val);
         showToast(`Welcome to the Private Atelier Registry (${val})`);
         if (emailInput) emailInput.value = '';
       }
@@ -2725,17 +2871,37 @@ function initPreloader() {
   preloader.addEventListener('click', dismissPreloader, { once: true });
 }
 
+function applyStorefrontSettings() {
+  if (!window.AtelierCMS) return;
+  const settings = window.AtelierCMS.getSettings();
+
+  const annTextEl = document.querySelector('.announcement-text');
+  if (annTextEl && settings.announcementText) {
+    annTextEl.textContent = settings.announcementText;
+  }
+
+  const thresholdNoteEl = document.getElementById('deliveryThresholdNote');
+  if (thresholdNoteEl && settings.deliveryThreshold) {
+    thresholdNoteEl.textContent = `Free UAE delivery over AED ${settings.deliveryThreshold} · Prices include 5% VAT`;
+  }
+
+  const ritualPriceEl = document.getElementById('ritualBannerPrice');
+  const addRitualBtn = document.getElementById('addRitualSetBtn');
+  if (ritualPriceEl && settings.ritualBundlePrice) {
+    ritualPriceEl.textContent = formatAED(settings.ritualBundlePrice);
+  }
+  if (addRitualBtn && settings.ritualBundlePrice) {
+    addRitualBtn.textContent = `Add 3-Piece Set · ${formatAED(settings.ritualBundlePrice)}`;
+  }
+}
+
 function init() {
   initPreloader();
   loadBag();
   loadWishlist();
   loadProfile();
 
-  const bundlePricing = getRitualBundlePricing();
-  const ritualPriceEl = document.getElementById('ritualBannerPrice');
-  const addRitualBtn = document.getElementById('addRitualSetBtn');
-  if (ritualPriceEl) ritualPriceEl.textContent = formatAED(bundlePricing.discounted);
-  if (addRitualBtn) addRitualBtn.textContent = `Add 3-Piece Set · ${formatAED(bundlePricing.discounted)}`;
+  applyStorefrontSettings();
 
   mountCategoryIcons();
   initHeroOffers();
@@ -2755,6 +2921,31 @@ function init() {
   updateWishlistUI();
   updateProfileUI();
   initScrollReveals();
+
+  // Cross-tab real-time sync with Atelier CMS Console
+  window.addEventListener('storage', (e) => {
+    if (e.key === CMS_STORAGE_KEY) {
+      CATALOG = window.AtelierCMS.getCatalog();
+      renderBestSellers();
+      renderFinePerfumes();
+      renderPurifiersShowcase();
+      renderCatalog();
+    } else if (e.key === CMS_SETTINGS_KEY) {
+      applyStorefrontSettings();
+    }
+  });
+
+  window.addEventListener('atelier-cms-catalog-updated', (e) => {
+    CATALOG = e.detail || window.AtelierCMS.getCatalog();
+    renderBestSellers();
+    renderFinePerfumes();
+    renderPurifiersShowcase();
+    renderCatalog();
+  });
+
+  window.addEventListener('atelier-cms-settings-updated', () => {
+    applyStorefrontSettings();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
